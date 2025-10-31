@@ -20,7 +20,7 @@ export default function Nav() {
     return (
         <>
             <nav className='w-full z-[99999] transition-all duration-300'>
-                <div className='flex justify-between items-center px-[8%] lg:*:px-[16%] py-6'>
+                <div className='flex justify-between items-center px-[8%] lg:px-[16%] py-6'>
                     <Link href='/' className='text-5xl font-bold font-unbounded text-white logo'>
                         Mv
                         <span className='text-[var(--primary-color)] font-unbounded'>Dev</span>
@@ -35,7 +35,9 @@ export default function Nav() {
                                 </Link>
                             ))}
                         </div>
-                        <Link href={}></Link>
+                        <Link href='/Contact' className='bg-[var(--primary-color)] px-5 py-2 text-xl text-white font-semibold cursor-pointer rounded-full transition-all duration-300 hover:bg-transparent shadow-md hover:custom-shadow border border-[var(--primary-color)]'>
+                            Hire
+                        </Link>
                     </div>
                 </div>
 
