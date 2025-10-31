@@ -1,4 +1,47 @@
 
 @import "tailwindcss";
 
-/* body {} */
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'remixicon/fonts/remixicon.css';
+
+:root {
+    --primary-color: #0E6BA8 !important;
+    --secondary-color: #071108 !important;
+    /* --primary-light-01: #fc410010;
+    --primary-light-02: #fc410010;
+    --hero-image-from: #f8b4741a;
+    --hero-image-to: #ff4c1f0c; */
+    --primary-light-01: #0077ff10;
+    --primary-light-02: #0077ff10; 
+    --hero-image-from: #74b9ff1a;  
+    --hero-image-to: #1f8eff0c;    
+    --black-color: #000;
+    --white-color: #fff;
+    --text-color: #32455e;
+
+    --transition-regular: 0.3s;
+    --transition-slow: 0.6s;
+}
+
+/* Font Family */
+
+@layer utilities {
+    .font-sora {
+        font-family: var(--font-sora), sans-serif;
+    }
+
+    .font-unbounded {
+        font-family: var(--font-unbounded), cursive;
+    }
+}
+
+body {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    overflow: hidden !important;
+}
+
+
