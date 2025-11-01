@@ -80,3 +80,16 @@ body {
 .active-links:after {
     opacity: 1 !important;
 }
+
+
+
+
+
+/* Media Queries Mobile menu */
+
+@media (max-width: 991px) {
+    body {
+        overflow-x: hidden !important;
+        overflow-y: scroll !important;
+    }
+}
