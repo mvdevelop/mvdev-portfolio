@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -17,7 +18,7 @@ export default function Header() {
                 {/* Left Content */}
                 <div className='lg:w-1/2 text-start md:text-left'>
                     <p className='text-lg mb-2 text-gray-400'>Full Stack Developer</p>
-                    <h1 className='text-6xl text-start lg:text-7xl font-unbounded font-normal mb-2'>Hello I&apos;m <span className='text-[color:var(--primary-color)]'>Vinicius Dilly</span></h1>
+                    <h1 className='text-5xl text-start lg:text-6xl font-unbounded font-normal mb-2'>Hello I&apos;m <span className='text-[color:var(--primary-color)]'>Vinicius Dilly</span></h1>
                     <p className='text-gray-400 text-md lg:text-xl font-normal font-sora my-8'>
                         Developing <span className='text-[color:var(--primary-color)]'>solutions</span> for each type of problem for <span className='text-[color:var(--primary-color)]'>all people</span>.
                     </p>
@@ -25,14 +26,25 @@ export default function Header() {
                     {/* Buttons */}
                     <div className='flex flex-wrap gap-8 items-center'>
                         <Link href='#' className='border border-[var(--primary-color)] font-bold text-[var(--primary-color)] px-6 py-3 rounded hover:bg-[var(--primary-color)] hover:text-white transition-all duration-500'>
-                            <i className="bi bi-download"></i>
+                            <i className="bi bi-download me-2"></i> Download CV
                         </Link>
+
+                        <div className='flex hero-social gap-2 text-3xl'>
+                            <Link href='https://github.com/mvdevelop' target='_blank'><i className="bi bi-github cursor-pointer"></i></Link>
+                            <Link href='https://www.linkedin.com/in/mvdevelop/' target='_blank'><i className="bi bi-linkedin cursor-pointer"></i></Link>
+                            <Link href='#' target='_blank'><i className="bi bi-facebook cursor-pointer"></i></Link>
+                            <Link href='#' target='_blank'><i className="bi bi-instagram cursor-pointer"></i></Link>
+                        </div>
                     </div>
                 </div>
 
-                {/* Right Content */}
-                <div className=''>
-
+                {/* Right Image */}
+                <div className='lg:w-1/2 w-full mt-10 lg:mt-0 flex justify-center relative'>
+                    <div className='relative rounded-full flex items-center justify-center'>
+                        <div className='relative hero-image w-full h-full rounded-full overflow-hidden bg-linear-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]'>
+                            <Image src='/images/mvdev-photo-00.jpeg' alt='Portfolio Picture' width={320} height={320} className='w-80 h-80 object-cover rounded' />
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
