@@ -27,6 +27,11 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   title: "mvdev-portfolio",
   description: "MVDeveloper's personal portfolio",
+  icons: {
+    icon: "/images/icon.ico",
+    shortcut: "/images/icon.ico",
+    apple: "/images/icon.ico",
+  },
 };
 
 export default function RootLayout({
