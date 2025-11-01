@@ -1,12 +1,13 @@
 
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Nav() {
 
+    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
     const pathname = usePathname();
 
     const navLinks = [
@@ -39,8 +40,17 @@ export default function Nav() {
                             Hire
                         </Link>
                     </div>
+
+                    {/* Mobile menu Button */}
+                    <button className='lg:hidden text-2xl cursor-pointer' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <i className='ri-menu-2-fill text-white'></i>
+                    </button>
                 </div>
 
+                {/* Side Menu with Smooth Transition */}
+                <div className={`lg:hidden bg-[#1c1b21] text-white border-y border-[--primary-color] px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-96 py-5 opacity-100' : 'max-h-0 py-0 opacity-0'}`}>
+                    <ul className='space-y-4 menu'></ul>
+                </div>
             </nav>
         </>
     )
