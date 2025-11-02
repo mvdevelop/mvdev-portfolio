@@ -12,7 +12,7 @@ export default function Header() {
         { value: 3, label: `Years of\nExperience` },
         { value: 25, label: `Completed\nProjects` },
         { value: 12, label: `Technologies\nMastered` },
-        { value: 365, label: `Code\nCommits` }
+        { value: 371, label: `Code\nCommits` }
     ];
     
     const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
