@@ -35,7 +35,7 @@ export default function Header() {
 
     return (
         <>
-            <header className='h-screen text-white py-0 relative'>
+            <header className='h-[100vh] text-white py-0 relative'>
                 {/* Bg Elements */}
                 <div className='absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-linear-to-r from-[var(--primary-light-1)] to-[var(--primary-light-2)] blur-[100px] -z-10'></div>
                 <div className='absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-linear-to-r from-[var(--primary-light-1)] to-[var(--primary-light-2)] blur-[100px] -z-10'></div>
