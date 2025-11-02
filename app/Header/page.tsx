@@ -9,13 +9,13 @@ import Image from 'next/image';
 export default function Header() {
 
     const statsData = [
-        { value: 3, label: 'Years of\nExperience' },
-        { value: 25, label: 'Completed\nProjects' },
-        { value: 12, label: 'Technologies\nMastered' },
-        { value: 365, label: 'Code\nCommits' }
+        { value: 3, label: `Years of\nExperience` },
+        { value: 25, label: `Completed\nProjects` },
+        { value: 12, label: `Technologies\nMastered` },
+        { value: 365, label: `Code\nCommits` }
     ];
     
-    const countRefs = useRef([]);
+    const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
 
     useEffect(() => {
         countRefs.current.forEach((el, index) => {
@@ -52,7 +52,7 @@ export default function Header() {
 
                         {/* Buttons */}
                         <div className='flex flex-wrap gap-8 items-center'>
-                            <Link href='#' className='border border-[var(--primary-color)] font-bold text-[var(--primary-color)] px-6 py-3 rounded hover:bg-[var(--primary-color)] hover:text-white transition-all duration-500'>
+                            <Link href='/pdf/mvmd-en-resume.pdf' download className='border border-[var(--primary-color)] font-bold text-[var(--primary-color)] px-6 py-3 rounded hover:bg-[var(--primary-color)] hover:text-white transition-all duration-500'>
                                 <i className="bi bi-download me-2"></i> Download CV
                             </Link>
 
@@ -79,7 +79,8 @@ export default function Header() {
                 <div className='stats px-[8%] lg:px-[16%] mt-20 hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                     {statsData.map((stat, index) => (
                         <div key={index} className='flex gap-2 items-center'>
-                            <h1 ref={(el) => (countRefs.current[index] = el)} className='text-5xl font-unbounded font-bold'>0</h1>
+                            <h1 ref={(el) => { if (el) countRefs.current[index] = el; }} className='text-5xl font-unbounded font-bold'>0</h1>
+                            <p className='text-xl ps-4 text-gray-400 font-semibold whitespace-pre-line'>{stat.label}</p>
                         </div>
                     ))}
                 </div>

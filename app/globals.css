@@ -37,7 +37,7 @@
 body {
     background: var(--secondary-color);
     color: var(--white-color);
-    overflow: scroll !important;
+    overflow: inherit !important;
 }
 
 .custom-shadow {
