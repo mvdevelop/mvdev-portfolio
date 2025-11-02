@@ -48,7 +48,7 @@ export default function Nav() {
                 </div>
 
                 {/* Side Menu with Smooth Transition */}
-                <div className={`lg:hidden bg-[#050205] text-white border-y border-[--primary-color] px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-96 py-5 opacity-100' : 'max-h-0 py-0 opacity-0'}`}>
+                <div className={`lg:hidden bg-[#020317] text-white border-y border-[--primary-color] px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-96 py-5 opacity-100' : 'max-h-0 py-0 opacity-0'}`}>
                     <ul className='space-y-4 menu'>
                         {navLinks.map((link) => (
                             <li key={link.name}>
