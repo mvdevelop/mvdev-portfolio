@@ -20,8 +20,8 @@ export default function Nav() {
 
     return (
         <>
-            <nav className='w-full z-[99999] transition-all duration-300'>
-                <div className='flex justify-between items-center px-[8%] lg:px-[16%] py-6'>
+            <nav className='w-full z-99999 transition-all duration-300'>
+                <div className='flex justify-between items-center px-[8%] lg:px-[16%] py-5'>
                     <Link href='/' className='text-5xl font-bold font-unbounded text-white logo'>
                         Mv
                         <span className='text-[var(--primary-color)] font-unbounded'>Dev</span>

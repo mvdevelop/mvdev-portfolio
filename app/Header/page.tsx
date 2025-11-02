@@ -21,15 +21,21 @@ export default function Header() {
         countRefs.current.forEach((el, index) => {
             if (el) {
                 const countUP = new CountUp(el, statsData[index].value, {
-                    duration: 2,
+                    duration: 3,
+                    separator: ',',
                 });
+                if (!countUP.error) {
+                    countUP.start();
+                } else {
+                    console.error(countUP.error);
+                }
             }
         })
-    });
+    }, []);
 
     return (
         <>
-            <header className='h-screen text-white py-12 relative'>
+            <header className='h-screen text-white py-0 relative'>
                 {/* Bg Elements */}
                 <div className='absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-linear-to-r from-[var(--primary-light-1)] to-[var(--primary-light-2)] blur-[100px] -z-10'></div>
                 <div className='absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-linear-to-r from-[var(--primary-light-1)] to-[var(--primary-light-2)] blur-[100px] -z-10'></div>
@@ -70,8 +76,12 @@ export default function Header() {
                 </div>
 
                 {/* Stats */}
-                <div className='stats px-[8%] lg:px-[16%] mt-30 hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
-                    
+                <div className='stats px-[8%] lg:px-[16%] mt-20 hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                    {statsData.map((stat, index) => (
+                        <div key={index} className='flex gap-2 items-center'>
+                            <h1 ref={(el) => (countRefs.current[index] = el)} className='text-5xl font-unbounded font-bold'>0</h1>
+                        </div>
+                    ))}
                 </div>
             </header>
         </>
