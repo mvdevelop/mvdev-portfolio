@@ -115,7 +115,7 @@ body {
 
 @media (max-width: 991px) {
     body {
-        overflow-x: hidden !important;
+        /* overflow-x: hidden !important; */
         overflow-y: scroll !important;
     }
 }
