@@ -1,7 +1,8 @@
 
 "use client";
 import React, { useState } from 'react';
-import { SiDocker, SiJavascript, SiLinux, SiMysql, SiNodedotjs, SiReact, SiSpringboot, SiTypescript } from 'react-icons/si';
+import { FaCloud, FaJava } from 'react-icons/fa';
+import { SiDocker, SiJavascript, SiLinux, SiMongodb, SiNodedotjs, SiPostgresql, SiReact, SiSpringboot, SiTailwindcss, SiTypescript } from 'react-icons/si';
 
 export default function Resume() {
 
@@ -26,7 +27,7 @@ export default function Resume() {
 
     const educations = [
         {
-            year: '2022 - 2026', degree: 'Computer Science', institute: 'Unifeso'
+            year: '2022 - 2026', degree: 'Computer Science', institute: 'Unif'
         },
         {
             year: '2024 - 2025', degree: 'DevOps Engineering', institute: 'Fiap'
@@ -35,7 +36,7 @@ export default function Resume() {
             year: '2021 - 2023', degree: 'English Proficiency C1', institute: 'IBL'
         },
         {
-            year: '2020 - 2022', degree: 'CS50`s Introduction to Computer Science', institute: 'H.'
+            year: '2021 - 2022', degree: 'CS50`s Int. to Computer Sci.', institute: 'HUIT'
         },
     ];
 
@@ -48,21 +49,33 @@ export default function Resume() {
         }, 
         {
             name: 'React', icon: <SiReact />
+        },
+        {
+            name: 'Tailwindcss', icon: <SiTailwindcss />
         }, 
         {
             name: 'Node.js', icon: <SiNodedotjs />
         },
         {
+            name: 'Java', icon: <FaJava />
+        },
+        {
             name: 'Springboot', icon: <SiSpringboot />
         },
         {
-            name: 'SQL', icon: <SiMysql />
+            name: 'PostgreSQL', icon: <SiPostgresql />
+        },
+        {
+            name: 'MongoDB', icon: <SiMongodb />
+        },
+        {
+            name: 'Docker', icon: <SiDocker />
         }, 
         {
             name: 'Linux', icon: <SiLinux />
         }, 
         {
-            name: 'Docker', icon: <SiDocker />
+            name: 'Cloud', icon: <FaCloud />
         },
     ];
 
@@ -120,19 +133,50 @@ export default function Resume() {
                         {/* Education */}
                         {activeTab === 'Education' && (
                             <div className='h-[500px] overflow-y-scroll pr-2 custom-scrollbar'>
-                                
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                                    {educations.map((edu, index) => (
+                                        <div key={index} className='bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-5 py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer'>
+                                            <h3 className='text-[color:var(--primary-color)] font-semibold my-2'>
+                                                {edu.year}
+                                            </h3>
+                                            <h4 className='text-2xl font-normal font-unbounded mb-1'>
+                                                {edu.degree}
+                                            </h4>
+                                            <p className='text-gray-400 flex items-center text-sm mt-2'>
+                                                <span className='text-[color:var(--primary-color)] text-2xl pe-2'>
+                                                    &bull;
+                                                </span> {edu.institute}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
-                        {/* Education */}
+                        {/* Skills */}
                         {activeTab === 'Skills' && (
-                            <div className='h-[500px] overflow-y-scroll pr-2 custom-scrollbar'>
-                                
-                            </div>
+                            <ul className='grid grid-cols-2 lg:grid-cols-4 gap-6 text-gray-200 mt-4'>
+                                {skills.map((skill, index) => (
+                                    <li key={index} className='relative cursor-pointer bg-gray-500/5 rounded py-10 pt-7 flex flex-col items-center group'>
+                                        <i className='text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500'>
+                                            {skill.icon}
+                                        </i>
+
+                                        {/* Tooltip */}
+                                        <span className='absolute bottom-[5px] scale-0 rounded px-2 py-1 font-semibold text-1x1 text-white transition-all duration-300 group-hover:scale-90 group-hover:text-[color:var(--primary-color)]'>
+                                            {skill.name}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
                         )}
 
                         {/* About me */}
-                        <div className=''></div>
+                        {activeTab === 'About me' && (
+                            <div className=''>
+
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
