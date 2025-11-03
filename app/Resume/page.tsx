@@ -157,7 +157,7 @@ export default function Resume() {
                         {activeTab === 'Skills' && (
                             <ul className='grid grid-cols-2 lg:grid-cols-4 gap-6 text-gray-200 mt-4'>
                                 {skills.map((skill, index) => (
-                                    <li key={index} className='relative cursor-pointer bg-gray-500/5 rounded py-10 pt-7 flex flex-col items-center group'>
+                                    <li key={index} className='relative cursor-pointer bg-gray-500/5 rounded py-9 flex flex-col items-center group'>
                                         <i className='text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500'>
                                             {skill.icon}
                                         </i>
@@ -173,8 +173,20 @@ export default function Resume() {
 
                         {/* About me */}
                         {activeTab === 'About me' && (
-                            <div className=''>
-
+                            <div className='text-gray-400 space-y-4'>
+                                <p className='text-sm'>
+                                    &nbsp;&nbsp;Hello, I`m a <span className='text-[color:var(--primary-color)] font-semibold'>Full Stack Developer</span> with experience in developing modern and scalable web applications, combining an intuitive and responsive frontend with a robust and efficient backend. <br />
+                                    &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>frontend</span>, I focus on creating high-performance, user-centered interfaces using frameworks like React and Tailwind CSS to deliver exceptional user experiences. <br />
+                                    &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>backend</span>, I develop and maintain RESTful APIs with Node.js and Spring Boot, emphasizing scalability, security, and clean architecture. I also have solid experience maintaining and evolving legacy Java systems, ensuring stability and reliability for critical business solutions. <br />
+                                    &nbsp;&nbsp;In <span className='text-[color:var(--primary-color)] font-semibold'>mobile development</span>, I work with React Native to create cross-platform applications that deliver consistent performance and design across devices. <br />
+                                    &nbsp;&nbsp;From a <span className='text-[color:var(--primary-color)] font-semibold'>DevOps</span> perspective, I apply agile methodologies, version control with Git, automated testing, and continuous integration/deployment (CI/CD) pipelines to ensure efficient and high-quality software delivery. 
+                                </p>
+                                <ul className='space-y-1'>
+                                    <li><strong>Nationality:</strong> Brazilian</li>
+                                    <li><strong>Phone:</strong> +55 21 99050-6596</li>
+                                    <li><strong>Email:</strong> marcosvmdilly@gmail.com</li>
+                                    <li><strong>Languages:</strong> English, Portuguese</li>
+                                </ul>
                             </div>
                         )}
                     </div>
