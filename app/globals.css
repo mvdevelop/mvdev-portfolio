@@ -107,6 +107,18 @@ body {
     transform: translateY(-10px);
 }
 
+/* Services */
+
+.stroke-text {
+    -webkit-text-stroke: 1px var(--white-color);
+    color: transparent;
+    transition: var(--transition-regular);
+}
+
+.service-card:hover .stroke-text {
+    -webkit-text-stroke: 1px var(--primary-color);
+}
+
 
 
 
