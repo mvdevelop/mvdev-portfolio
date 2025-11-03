@@ -69,7 +69,7 @@ export default function Header() {
                     <div className='lg:w-1/2 w-full mt-10 lg:mt-0 flex justify-center relative'>
                         <div className='relative rounded-full flex items-center justify-center'>
                             <div className='relative hero-image w-full h-full rounded-full overflow-hidden bg-linear-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]'>
-                                <Image src='/images/mvdev-photo-00.jpeg' alt='Portfolio Picture' width={320} height={320} className='w-80 h-80 object-cover rounded' />
+                                <Image src='/images/mvdev-photo.jpeg' alt='Portfolio Picture' width={320} height={320} className='w-80 h-80 object-cover rounded' />
                             </div>
                         </div>
                     </div>

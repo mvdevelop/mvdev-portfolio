@@ -153,9 +153,9 @@ body {
     }
 }
 
-@media (max-width: 500px) {
-    body {
-        overflow-x: hidden !important;
-        overflow-y: scroll !important;
-    }
+@media (max-width: 640px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
 }

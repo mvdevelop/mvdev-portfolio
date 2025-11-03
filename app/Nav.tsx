@@ -18,6 +18,10 @@ export default function Nav() {
         { name: 'Contact', href: '/Contact' },
     ];
 
+    const hireMeClick = () => {
+        alert("Phone: +55 21 99050-6596,\nE-mail: marcosvmdilly@gmail.com with information.\nThank You!");
+    };
+
     return (
         <>
             <nav className='w-full z-99999 transition-all duration-300'>
@@ -36,7 +40,7 @@ export default function Nav() {
                                 </Link>
                             ))}
                         </div>
-                        <Link href='/Contact' className='bg-[var(--primary-color)] px-5 py-2 text-xl text-white font-semibold cursor-pointer rounded-full transition-all duration-300 hover:bg-transparent shadow-md hover:custom-shadow border border-[var(--primary-color)]'>
+                        <Link href='/' className='bg-[var(--primary-color)] px-5 py-2 text-xl text-white font-semibold cursor-pointer rounded-full transition-all duration-300 hover:bg-transparent shadow-md hover:custom-shadow border border-[var(--primary-color)]' onClick={() => hireMeClick()}>
                             Hire
                         </Link>
                     </div>

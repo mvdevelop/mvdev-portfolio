@@ -15,13 +15,13 @@ export default function Resume() {
             date: '2025 - Present', role: 'Full Stack Developer', company: '19SL Inc.', 
         },
         {
-            date: '2024 - 2025', role: 'Full Stack Developer', company: 'Acioli Inc.', 
+            date: '2025 - 2025', role: 'Full Stack Developer', company: 'Acioli Inc.', 
         },
         {
-            date: '2023 - 2024', role: 'Frontend Developer', company: 'Shakers Inc.', 
+            date: '2024 - 2024', role: 'Frontend Developer', company: 'Shakers Inc.', 
         },
         {
-            date: '2022 - 2023', role: 'Frontend Developer', company: '19SL Inc.', 
+            date: '2023 - 2023', role: 'Frontend Developer', company: '19SL Inc.', 
         },
     ];
 
