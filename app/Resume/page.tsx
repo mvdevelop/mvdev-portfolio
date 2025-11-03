@@ -20,16 +20,16 @@ export default function Resume() {
             date: '2023 - 2024', role: 'Frontend Developer', company: 'Shakers Inc.', 
         },
         {
-            date: '2022 - 2023', role: 'Full Stack Developer', company: '19SL Inc.', 
+            date: '2022 - 2023', role: 'Frontend Developer', company: '19SL Inc.', 
         },
     ];
 
     const educations = [
         {
-            year: '2022 - 2026', degree: 'Computer Science', institute: 'Unif'
+            year: '2022 - 2026', degree: 'Computer Science', institute: 'Unifeso'
         },
         {
-            year: '2024 - 2025', degree: 'DevOps Engineering', institute: 'H.'
+            year: '2024 - 2025', degree: 'DevOps Engineering', institute: 'Fiap'
         },
         {
             year: '2021 - 2023', degree: 'English Proficiency C1', institute: 'IBL'
@@ -90,15 +90,49 @@ export default function Resume() {
                         <h2 className='text-3xl font-unbounded font-bold mb-4'>
                             {activeTab}
                         </h2>
-                        <p className='text-gray-400 mb-10'>
+                        {/* <p className='text-gray-400 mb-10'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, consectetur?
-                        </p>
+                        </p> */}
+
                         {/* Experience */}
                         {activeTab === 'Experience' && (
+                            <div className='h-[500px] overflow-y-scroll pr-2 custom-scrollbar'>
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                                    {experiences.map((exp, index) => (
+                                        <div key={index} className='bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-5 py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer'>
+                                            <h3 className='text-[color:var(--primary-color)] font-semibold my-2'>
+                                                {exp.date}
+                                            </h3>
+                                            <h4 className='text-2xl font-normal font-unbounded mb-1'>
+                                                {exp.role}
+                                            </h4>
+                                            <p className='text-gray-400 flex items-center text-sm mt-2'>
+                                                <span className='text-[color:var(--primary-color)] text-2xl pe-2'>
+                                                    &bull;
+                                                </span> {exp.company}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Education */}
+                        {activeTab === 'Education' && (
                             <div className='h-[500px] overflow-y-scroll pr-2 custom-scrollbar'>
                                 
                             </div>
                         )}
+
+                        {/* Education */}
+                        {activeTab === 'Skills' && (
+                            <div className='h-[500px] overflow-y-scroll pr-2 custom-scrollbar'>
+                                
+                            </div>
+                        )}
+
+                        {/* About me */}
+                        <div className=''></div>
                     </div>
                 </div>
             </section>
