@@ -15,9 +15,6 @@ export default function Contact() {
                 {/* Contact Form */}
                 <div className='bg-gray-500/5 p-5 rounded-xl shadow-lg'>
                     <h2 className='text-3xl font-unbounded font-normal text-[color:var(--primary-color)] mb-3'>Let`s Work Together</h2>
-                    {/* <p className='text-sm text-gray-400 my-7'>
-                        Collaboration is where the best ideas come to life!
-                    </p> */}
 
                     <form className='space-y-7'>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -42,25 +39,52 @@ export default function Contact() {
                 </div>
 
                 {/* Contact Info */}
-                <div className='flex flex-col space-y-6 justify-center'>
-                    
-                    <div className='flex items-center space-x-4 border-b border-gray-600 pb-5'>
-                        <span className='bg-[#1a1b1f] p-4 rounded-lg text-[color:var(--primary-color)]'><BiPhone size={24}/></span>
+                <div className='flex flex-col space-y-2 justify-center'>
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiPhone size={20}/></span>
                         <div>
                             <p className='text-sm text-gray-400'>Phone</p>
                             <p className='font-medium'>(+55) 21 99050-6596</p>
                         </div>
                     </div>
-                    <div className='flex items-center space-x-4 border-b border-gray-600 pb-5'>
-                        <span className='bg-[#1a1b1f] p-4 rounded-lg text-[color:var(--primary-color)]'><BiEnvelope size={24}/></span>
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiEnvelope size={20}/></span>
                         <div>
                             <p className='text-sm text-gray-400'>E-mail</p>
                             <p className='font-medium'>marcosvmdilly@gmail.com</p>
                         </div>
                     </div>
-
-                    
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiMap size={20}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>Address</p>
+                            <p className='font-medium'>Rio de Janeiro, RJ - Brazil</p>
+                        </div>
+                    </div>
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiTime size={20}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>Working Hours</p>
+                            <p className='font-medium'>Mon - Fri: 08:00 - 18:00 / Sat - Sun: 08:00 - 14:00</p>
+                            <p className='font-medium'></p>
+                        </div>
+                    </div>
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiMessageDetail size={20}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>WhatsApp</p>
+                            <p className='font-medium'>(+55) 21 99050-6596</p>
+                        </div>
+                    </div>
+                    <div className='contact-col flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]'><BiGlobe size={20}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>Website</p>
+                            <p className='font-medium'>www.mvdevelop.com.br</p>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </section>
     </>

@@ -218,9 +218,22 @@ body {
     animation:Anim-bottom var(--transition-regular) 0.3s forwards linear;
 }
 
+/* Contact */
 
+.contact-col {
+    cursor: pointer;
+}
 
+.contact-col span {
+    transition: var(--transition-regular);
+}
 
+.contact-col:hover span {
+    border-color: var(--white-color);
+    color: var(--white-color);
+}
+
+/* Extra */
 
 /* Img Size Fixing */
 .project-img {
