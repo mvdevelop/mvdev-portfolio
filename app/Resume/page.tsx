@@ -15,10 +15,10 @@ export default function Resume() {
             date: '2025 - Present', role: 'Full Stack Developer', company: '19SL Inc.', 
         },
         {
-            date: '2025 - 2025', role: 'Full Stack Developer', company: 'Acioli Inc.', 
+            date: '2025 - 2025', role: 'Full Stack Developer', company: 'Baires Inc.', 
         },
         {
-            date: '2024 - 2024', role: 'Frontend Developer', company: 'Shakers Inc.', 
+            date: '2024 - 2024', role: 'Frontend Developer', company: 'Baires Inc.', 
         },
         {
             date: '2023 - 2023', role: 'Frontend Developer', company: '19SL Inc.', 
@@ -103,9 +103,6 @@ export default function Resume() {
                         <h2 className='text-3xl font-unbounded font-bold mb-4'>
                             {activeTab}
                         </h2>
-                        {/* <p className='text-gray-400 mb-10'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, consectetur?
-                        </p> */}
 
                         {/* Experience */}
                         {activeTab === 'Experience' && (
@@ -174,19 +171,19 @@ export default function Resume() {
                         {/* About me */}
                         {activeTab === 'About me' && (
                             <div className='text-gray-400 space-y-4'>
-                                <p className='text-sm'>
+                                <p className='text-normal'>
                                     &nbsp;&nbsp;Hello, I`m a <span className='text-[color:var(--primary-color)] font-semibold'>Full Stack Developer</span> with experience in developing modern and scalable web applications, combining an intuitive and responsive frontend with a robust and efficient backend. <br />
                                     &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>frontend</span>, I focus on creating high-performance, user-centered interfaces using frameworks like React and Tailwind CSS to deliver exceptional user experiences. <br />
                                     &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>backend</span>, I develop and maintain RESTful APIs with Node.js and Spring Boot, emphasizing scalability, security, and clean architecture. I also have solid experience maintaining and evolving legacy Java systems, ensuring stability and reliability for critical business solutions. <br />
                                     &nbsp;&nbsp;In <span className='text-[color:var(--primary-color)] font-semibold'>mobile development</span>, I work with React Native to create cross-platform applications that deliver consistent performance and design across devices. <br />
                                     &nbsp;&nbsp;From a <span className='text-[color:var(--primary-color)] font-semibold'>DevOps</span> perspective, I apply agile methodologies, version control with Git, automated testing, and continuous integration/deployment (CI/CD) pipelines to ensure efficient and high-quality software delivery. 
                                 </p>
-                                <ul className='space-y-1'>
+                                {/* <ul className='space-y-1 flex gap-5'>
                                     <li><strong>Nationality:</strong> Brazilian</li>
                                     <li><strong>Phone:</strong> +55 21 99050-6596</li>
                                     <li><strong>Email:</strong> marcosvmdilly@gmail.com</li>
                                     <li><strong>Languages:</strong> English, Portuguese</li>
-                                </ul>
+                                </ul> */}
                             </div>
                         )}
                     </div>

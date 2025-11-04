@@ -30,7 +30,7 @@ export default function ProjectSlider() {
 
     return (
         <>
-            <section className='px-[8%] lg:px-[16%] py-10 text-white'>
+            <section className='px-[8%] lg:px-[16%] py-20 text-white'>
                 <Swiper modules={[Navigation]} loop={true} navigation={{
                     prevEl: '.custom-prev', nextEl: '.custom-next'
                 }} spaceBetween={40} slidesPerView={1}>
@@ -40,7 +40,7 @@ export default function ProjectSlider() {
                                 {/* Left Side */}
                                 <div className='work-content'>
                                     <h2 className='text-7xl font-bold stroke-text'>{project.id}</h2>
-                                    <h3 className='text-4xl font-semibold font-unbounded mt-4'>{project.title}</h3>
+                                    <h3 className='text-5xl font-semibold font-unbounded mt-4'>{project.title}</h3>
                                     <p className='text-gray-400 mt-3 text-lg leading-relaxed'>{project.description}</p>
 
 
@@ -85,11 +85,21 @@ export default function ProjectSlider() {
                                 </div>
 
                                 <div className='relative work-image'>
-                                    <Image src={project.img} alt={project.title} width={650} height={300} className='rounded-lg '/>
+                                    <Image src={project.img} alt={project.title} width={650} height={300} className='project-img rounded-lg shadow-lg'/>
                                 </div>
                             </div>
                         </SwiperSlide>
                     ))}
+
+                    {/* Custom Navigation Button */}
+                    <div className='flex gap-3 justify-end mt-6'>
+                        <button className='custom-prev w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded shadow hover:bg-white hover:text-black cursor-pointer transition-all duration-500'>
+                            <i className='bi bi-arrow-left text-2xl'></i>
+                        </button>
+                        <button className='custom-next w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded shadow hover:bg-white hover:text-black cursor-pointer transition-all duration-500'>
+                            <i className='bi bi-arrow-right text-2xl'></i>
+                        </button>
+                    </div>
                 </Swiper>
             </section>
         </>
