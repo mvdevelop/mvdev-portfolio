@@ -45,8 +45,21 @@ export default function Contact() {
                 <div className='flex flex-col space-y-6 justify-center'>
                     
                     <div className='flex items-center space-x-4 border-b border-gray-600 pb-5'>
-                        <span className='bg-[#1a1b1f] p-4 rounded-lg text-[color:var(--primary-color)]'><BiPhone/></span>
+                        <span className='bg-[#1a1b1f] p-4 rounded-lg text-[color:var(--primary-color)]'><BiPhone size={24}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>Phone</p>
+                            <p className='font-medium'>(+55) 21 99050-6596</p>
+                        </div>
                     </div>
+                    <div className='flex items-center space-x-4 border-b border-gray-600 pb-5'>
+                        <span className='bg-[#1a1b1f] p-4 rounded-lg text-[color:var(--primary-color)]'><BiEnvelope size={24}/></span>
+                        <div>
+                            <p className='text-sm text-gray-400'>E-mail</p>
+                            <p className='font-medium'>marcosvmdilly@gmail.com</p>
+                        </div>
+                    </div>
+
+                    
                 </div>
             </div>
         </section>

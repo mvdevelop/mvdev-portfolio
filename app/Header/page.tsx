@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function Header() {
 
     const statsData = [
-        { value: 3, label: `Years of\nExperience` },
+        { value: 2, label: `+ Years of\nExperience` },
         { value: 25, label: `Completed\nProjects` },
         { value: 12, label: `Technologies\nMastered` },
         { value: 381, label: `Code\nCommits` }
