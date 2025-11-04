@@ -155,16 +155,22 @@ export default function Nav() {
     );
 }
 
-function ContactItem({ icon, label, value }) {
-    return (
-        <div className="flex items-center space-x-4 border-b border-gray-700 pb-3">
-            <span className="bg-[#0f1012] p-3 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]">
-                {icon}
-            </span>
-            <div>
-                <p className="text-sm text-gray-400">{label}</p>
-                <p className="font-medium">{value}</p>
-            </div>
-        </div>
-    );
+type ContactItemProps = {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+};
+
+function ContactItem({ icon, label, value }: ContactItemProps) {
+  return (
+    <div className="flex items-center space-x-4 border-b border-gray-700 pb-3">
+      <span className="bg-[#0f1012] p-3 border border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)]">
+        {icon}
+      </span>
+      <div>
+        <p className="text-sm text-gray-400">{label}</p>
+        <p className="font-medium">{value}</p>
+      </div>
+    </div>
+  );
 }
