@@ -10,7 +10,7 @@ export default function Header() {
 
     const statsData = [
         { value: 3, label: `+ Years of\nExperience` },
-        { value: 30, label: `+ Completed\nProjects` },
+        { value: 30, label: `Completed\nProjects` },
         { value: 12, label: `Technologies\nMastered` },
         { value: 797, label: `Code\nCommits` }
     ];
