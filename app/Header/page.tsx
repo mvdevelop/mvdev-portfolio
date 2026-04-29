@@ -9,10 +9,10 @@ import Image from 'next/image';
 export default function Header() {
 
     const statsData = [
-        { value: 2, label: `+ Years of\nExperience` },
-        { value: 25, label: `Completed\nProjects` },
+        { value: 3, label: `+ Years of\nExperience` },
+        { value: 30, label: `+ Completed\nProjects` },
         { value: 12, label: `Technologies\nMastered` },
-        { value: 411, label: `Code\nCommits` }
+        { value: 797, label: `Code\nCommits` }
     ];
     
     const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
