@@ -1,23 +1,49 @@
 
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CountUp } from 'countup.js';
 
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Header() {
+    // Estados dinâmicos iniciando com seus valores padrão
+    const [totalCommits, setTotalCommits] = useState(797);
+    const [completedProjects, setCompletedProjects] = useState(30);
+    const [loading, setLoading] = useState(true);
 
     const statsData = [
         { value: 3, label: `+ Years of\nExperience` },
-        { value: 30, label: `Completed\nProjects` },
+        { value: completedProjects, label: `Completed\nProjects` }, // Total de Repositórios Dinâmico
         { value: 12, label: `Technologies\nMastered` },
-        { value: 797, label: `Code\nCommits` }
+        { value: totalCommits, label: `Code\nCommits` }         // Total de Commits Dinâmico
     ];
     
     const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
 
+    // 1. Consome a sua rota interna customizada /data
     useEffect(() => {
+        async function getGitHubData() {
+            try {
+                const response = await fetch('/data');
+                if (response.ok) {
+                    const data = await response.json();
+                    setTotalCommits(data.totalCommits);
+                    setCompletedProjects(data.publicRepos);
+                }
+            } catch (err) {
+                console.error("Não foi possível buscar dados em tempo real:", err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        getGitHubData();
+    }, []);
+
+    // 2. Aciona a animação do CountUp após o retorno do servidor
+    useEffect(() => {
+        if (loading) return; 
+
         countRefs.current.forEach((el, index) => {
             if (el) {
                 const countUP = new CountUp(el, statsData[index].value, {
@@ -30,8 +56,8 @@ export default function Header() {
                     console.error(countUP.error);
                 }
             }
-        })
-    }, []);
+        });
+    }, [loading, totalCommits, completedProjects]); 
 
     return (
         <>
@@ -57,8 +83,8 @@ export default function Header() {
                             </Link>
 
                             <div className='flex hero-social gap-2 text-3xl'>
-                                <Link href='https://github.com/mvdevelop' target='_blank'><i className="bi bi-github cursor-pointer"></i></Link>
-                                <Link href='https://www.linkedin.com/in/mvdevelop/' target='_blank'><i className="bi bi-linkedin cursor-pointer"></i></Link>
+                                <Link href='https://github.com' target='_blank'><i className="bi bi-github cursor-pointer"></i></Link>
+                                <Link href='https://linkedin.com' target='_blank'><i className="bi bi-linkedin cursor-pointer"></i></Link>
                                 <Link href='#' target='_blank'><i className="bi bi-facebook cursor-pointer"></i></Link>
                                 <Link href='#' target='_blank'><i className="bi bi-instagram cursor-pointer"></i></Link>
                             </div>

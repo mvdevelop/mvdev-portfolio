@@ -2,26 +2,28 @@
 "use client";
 import React, { useState } from 'react';
 import { FaCloud, FaJava } from 'react-icons/fa';
-import { SiDocker, SiJavascript, SiLinux, SiMongodb, SiNodedotjs, SiPostgresql, SiReact, SiSpringboot, SiTailwindcss, SiTypescript } from 'react-icons/si';
+import { SiDocker, SiJavascript, SiLinux, SiMongodb, SiNodedotjs, SiPostgresql, SiReact, SiSpringboot, SiTailwindcss, SiTypescript, SiDotnet, SiBlazor } from 'react-icons/si';
+import { BsDatabaseFill } from "react-icons/bs";
+import { TbBrandCSharp } from "react-icons/tb";
 
 export default function Resume() {
 
-    const [ activeTab, setActiveTab ] = useState('Experience');
-    
+    const [activeTab, setActiveTab] = useState('Experience');
+
     const tabs = ['Experience', 'Education', 'Skills', 'About me'];
 
     const experiences = [
         {
-            date: '2025 - Present', role: 'Full Stack Developer', company: '19SL Inc.', 
+            date: '2025 - Present', role: 'Full Stack Developer', company: '19SL Inc.',
         },
         {
-            date: '2025 - 2025', role: 'Full Stack Developer', company: 'Brs Inc.', 
+            date: '2025 - 2025', role: 'Full Stack Developer', company: 'Brs Inc.',
         },
         {
-            date: '2024 - 2024', role: 'Frontend Developer', company: 'Brs Inc.', 
+            date: '2024 - 2024', role: 'Frontend Developer', company: 'Brs Inc.',
         },
         {
-            date: '2023 - 2023', role: 'Frontend Developer', company: '19SL Inc.', 
+            date: '2023 - 2023', role: 'Frontend Developer', company: '19SL Inc.',
         },
     ];
 
@@ -42,38 +44,38 @@ export default function Resume() {
 
     const skills = [
         {
-            name: 'Javascript', icon: <SiJavascript />
-        }, 
-        {
             name: 'Typescript', icon: <SiTypescript />
-        }, 
+        },
         {
             name: 'React', icon: <SiReact />
         },
         {
             name: 'Tailwindcss', icon: <SiTailwindcss />
-        }, 
+        },
         {
             name: 'Node.js', icon: <SiNodedotjs />
         },
         {
-            name: 'Java', icon: <FaJava />
+            name: 'CSharp', icon: <TbBrandCSharp />
         },
         {
-            name: 'Springboot', icon: <SiSpringboot />
+            name: 'DotNet', icon: <SiDotnet />
         },
         {
-            name: 'PostgreSQL', icon: <SiPostgresql />
+            name: 'Blazor', icon: <SiBlazor />
+        },
+        {
+            name: 'SQL', icon: <BsDatabaseFill />
         },
         {
             name: 'MongoDB', icon: <SiMongodb />
         },
         {
             name: 'Docker', icon: <SiDocker />
-        }, 
+        },
         {
             name: 'Linux', icon: <SiLinux />
-        }, 
+        },
         {
             name: 'Cloud', icon: <FaCloud />
         },
@@ -172,18 +174,12 @@ export default function Resume() {
                         {activeTab === 'About me' && (
                             <div className='text-gray-400 space-y-4'>
                                 <p className='text-normal'>
-                                    &nbsp;&nbsp;Hello, I`m a <span className='text-[color:var(--primary-color)] font-semibold'>Full Stack Developer</span> with experience in developing modern and scalable web applications, combining an intuitive and responsive frontend with a robust and efficient backend. <br />
+                                    &nbsp;&nbsp;Hello, I&apos;m a <span className='text-[color:var(--primary-color)] font-semibold'>Full Stack Developer</span> with experience in developing modern and scalable web applications, combining an intuitive and responsive frontend with a robust and efficient backend. <br />
                                     &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>frontend</span>, I focus on creating high-performance, user-centered interfaces using frameworks like React and Tailwind CSS to deliver exceptional user experiences. <br />
-                                    &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>backend</span>, I develop and maintain RESTful APIs with Node.js and Spring Boot, emphasizing scalability, security, and clean architecture. I also have solid experience maintaining and evolving legacy Java systems, ensuring stability and reliability for critical business solutions. <br />
+                                    &nbsp;&nbsp;On the <span className='text-[color:var(--primary-color)] font-semibold'>backend</span>, I develop and maintain RESTful APIs with Node.js and <span className='text-[color:var(--primary-color)] font-semibold'>.NET Core</span>, emphasizing scalability, security, and clean architecture. I also have solid experience maintaining and evolving legacy <span className='text-[color:var(--primary-color)] font-semibold'>C#</span> systems, ensuring stability and reliability for critical business solutions. <br />
                                     &nbsp;&nbsp;In <span className='text-[color:var(--primary-color)] font-semibold'>mobile development</span>, I work with React Native to create cross-platform applications that deliver consistent performance and design across devices. <br />
-                                    &nbsp;&nbsp;From a <span className='text-[color:var(--primary-color)] font-semibold'>DevOps</span> perspective, I apply agile methodologies, version control with Git, automated testing, and continuous integration/deployment (CI/CD) pipelines to ensure efficient and high-quality software delivery. 
+                                    &nbsp;&nbsp;From a <span className='text-[color:var(--primary-color)] font-semibold'>DevOps</span> perspective, I apply agile methodologies, version control with Git, automated testing, and continuous integration/deployment (CI/CD) pipelines to ensure efficient and high-quality software delivery.
                                 </p>
-                                {/* <ul className='space-y-1 flex gap-5'>
-                                    <li><strong>Nationality:</strong> Brazilian</li>
-                                    <li><strong>Phone:</strong> +55 21 99050-6596</li>
-                                    <li><strong>Email:</strong> marcosvmdilly@gmail.com</li>
-                                    <li><strong>Languages:</strong> English, Portuguese</li>
-                                </ul> */}
                             </div>
                         )}
                     </div>
