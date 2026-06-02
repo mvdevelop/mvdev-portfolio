@@ -27,18 +27,18 @@ export default function ResumeSection() {
     ];
 
     const skills = [
-        { name: 'Typescript', icon: <SiTypescript /> },
-        { name: 'React', icon: <SiReact /> },
-        { name: 'Tailwindcss', icon: <SiTailwindcss /> },
-        { name: 'Node.js', icon: <SiNodedotjs /> },
-        { name: 'CSharp', icon: <TbBrandCSharp /> },
-        { name: 'DotNet', icon: <SiDotnet /> },
-        { name: 'Blazor', icon: <SiBlazor /> },
-        { name: 'SQL', icon: <BsDatabaseFill /> },
-        { name: 'MongoDB', icon: <SiMongodb /> },
-        { name: 'Docker', icon: <SiDocker /> },
-        { name: 'Linux', icon: <SiLinux /> },
-        { name: 'Cloud', icon: <FaCloud /> },
+        { name: '', icon: <SiTypescript /> },
+        { name: '', icon: <SiReact /> },
+        { name: '', icon: <SiTailwindcss /> },
+        { name: '', icon: <SiNodedotjs /> },
+        { name: '', icon: <TbBrandCSharp /> },
+        { name: '', icon: <SiDotnet /> },
+        { name: '', icon: <SiBlazor /> },
+        { name: '', icon: <BsDatabaseFill /> },
+        { name: '', icon: <SiMongodb /> },
+        { name: '', icon: <SiDocker /> },
+        { name: '', icon: <SiLinux /> },
+        { name: '', icon: <FaCloud /> },
     ];
 
     return (

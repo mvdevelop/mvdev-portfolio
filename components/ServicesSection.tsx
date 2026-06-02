@@ -8,7 +8,7 @@ const servicesData = [
         id: '01', title: 'Frontend', description: 'Creating responsive user interfaces using modern frameworks like React and Next.js.'
     },
     {
-        id: '02', title: 'Backend', description: 'Building robust Restful APIs with Node.js, Springboot, and databases like SQL and NoSQL.'
+        id: '02', title: 'Backend', description: 'Building robust Restful APIs with Node.js, .Net, and databases like SQL and NoSQL.'
     },
     {
         id: '03', title: 'Mobile', description: 'Creating intuitive mobile interfaces using React Native, with emphasis on user experience.'
