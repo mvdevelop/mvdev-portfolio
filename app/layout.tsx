@@ -1,8 +1,8 @@
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sora, Unbounded } from "next/font/google";
 import "./globals.css";
-import Nav from "./Nav";
+import Nav from "@/components/Nav";
+import LenisScroll from "@/components/Lenis";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +25,8 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "mvdev-portfolio",
-  description: "MVDeveloper's personal portfolio",
+  title: "MvDev | Full Stack Developer Portfolio",
+  description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET. Building modern and scalable web applications.",
   icons: {
     icon: "/images/icon.ico",
     shortcut: "/images/icon.ico",
@@ -44,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${unbounded.variable}`}
       >
+        <LenisScroll />
         <Nav />
         {children}
       </body>
