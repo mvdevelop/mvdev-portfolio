@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import Link from 'next/link';
@@ -6,7 +7,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import { SiJavascript, SiNodedotjs, SiReact, SiTailwindcss } from 'react-icons/si';
+import { 
+    SiJavascript, 
+    SiReact, 
+    SiTailwindcss, 
+    SiDotnet, 
+    SiTypescript, 
+    SiNextdotjs, 
+    SiSupabase, 
+    SiVite 
+} from 'react-icons/si';
 import SectionTitle from './SectionTitle';
 import { useAnimateIn } from '@/lib/useScrollReveal';
 
@@ -15,24 +25,24 @@ export default function WorkSection() {
 
     const projects = [
         {
-            id: '01', title: 'Macaw English School', description: 'English School Landing Page & Platform',
-            tech: ['React', 'Tailwindcss', 'Node.js'], img: '/images/macaw-landing.png',
+            id: '01', title: 'Macaw English School', description: 'English School Platform',
+            tech: ['TS', 'React Vite', '.Net'], img: '/images/macaw-landing.png',
             href: 'https://macaw-english-course.vercel.app/', repo: 'https://github.com/mvdevelop/macaw-english-school'
         },
         {
-            id: '02', title: 'Blushify', description: 'Cosmetics E-Commerce Store',
+            id: '02', title: 'Macaw', description: 'Social Media',
+            tech: ['TS', 'NextJs', 'Supabase'], img: '/images/macaw-social-media-banner.png',
+            href: 'https://macaw-social-media.vercel.app/', repo: 'https://github.com/mvdevelop/macaw-social-media'
+        },
+        {
+            id: '03', title: 'Snake´s', description: 'Snake Mini-Game',
+            tech: ['JS', 'React', 'Tailwindcss'], img: '/images/snake-game-banner.png',
+            href: 'https://snake-game-inky-pi.vercel.app/', repo: 'https://github.com/mvdevelop/snake-game'
+        },
+        {
+            id: '04', title: 'Blushify', description: 'Cosmetics E-Commerce Store',
             tech: ['JS', 'React', 'Tailwindcss'], img: '/images/blushify.gif',
             href: 'https://ecommerce-beauty-ashy.vercel.app/', repo: 'https://github.com/mvdevelop/ecommerce-beauty'
-        },
-        {
-            id: '03', title: 'Skyfare', description: 'Traveling Website',
-            tech: ['JS', 'React', 'Tailwindcss'], img: '/images/skyfare.gif',
-            href: 'https://skyfare-19sl.vercel.app/', repo: 'https://github.com/mvdevelop/skyfare-19sl'
-        },
-        {
-            id: '04', title: 'Snake´s', description: 'Snake Mini-Game',
-            tech: ['JS', 'React', 'Tailwindcss'], img: '/images/snake-game.gif',
-            href: 'https://snake-game-inky-pi.vercel.app/', repo: 'https://github.com/mvdevelop/snake-game'
         },
     ];
 
@@ -66,23 +76,43 @@ export default function WorkSection() {
                                     <h3 className='text-5xl font-semibold font-unbounded mt-4'>{project.title}</h3>
                                     <p className='text-gray-400 mt-3 text-lg leading-relaxed'>{project.description}</p>
 
-                                    <div className='flex gap-4 mt-4'>
+                                    <div className='flex gap-4 mt-4 flex-wrap'>
                                         {project.tech.map((tech, index) => {
                                             let IconComponent: React.ElementType | null = null;
-                                            switch (tech.toLocaleLowerCase()) {
+                                            
+                                            // Normalizando a string para o switch case não falhar por maiúsculas/minúsculas
+                                            switch (tech.toLowerCase().trim()) {
+                                                case 'js':
+                                                case 'javascript':
+                                                    IconComponent = SiJavascript;
+                                                    break;
+                                                case 'ts':
+                                                case 'typescript':
+                                                    IconComponent = SiTypescript;
+                                                    break;
                                                 case 'react':
                                                     IconComponent = SiReact;
+                                                    break;
+                                                case 'react vite':
+                                                case 'vite':
+                                                    IconComponent = SiVite;
+                                                    break;
+                                                case 'nextjs':
+                                                case 'next.js':
+                                                    IconComponent = SiNextdotjs;
                                                     break;
                                                 case 'tailwindcss':
                                                     IconComponent = SiTailwindcss;
                                                     break;
-                                                case 'js':
-                                                    IconComponent = SiJavascript;
+                                                case '.net':
+                                                case 'dotnet':
+                                                    IconComponent = SiDotnet;
                                                     break;
-                                                case 'node.js':
-                                                    IconComponent = SiNodedotjs;
+                                                case 'supabase':
+                                                    IconComponent = SiSupabase;
                                                     break;
                                             }
+                                            
                                             return IconComponent ? (
                                                 <div key={index} className='work-icons text-3xl text-[color:var(--primary-color)] cursor-pointer hover:text-white transition-all duration-300' title={tech}>
                                                     <IconComponent />
