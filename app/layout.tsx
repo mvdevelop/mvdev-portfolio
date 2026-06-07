@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Sora, Unbounded } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import LenisScroll from "@/components/Lenis";
+import { LanguageProvider } from "@/lib/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,9 +45,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${unbounded.variable}`}
       >
-        <LenisScroll />
-        <Nav />
-        {children}
+        <LanguageProvider>
+          <LenisScroll />
+          <Nav />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

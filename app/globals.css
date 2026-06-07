@@ -237,8 +237,8 @@ body {
 
 /* Img Size Fixing */
 .project-img {
-    width: 650 !important;
-    height: 300 !important;
+    width: 650px !important;
+    height: 300px !important;
 }
 
 /* Media Queries Mobile menu */

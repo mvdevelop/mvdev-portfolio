@@ -11,10 +11,10 @@ export async function GET() {
             'Accept': 'application/vnd.github+json'
         };
 
-        // CORREÇÃO: Verifique o uso correto das crases (`) e o formato correto das URLs abaixo
+        // Busca dados da API pública do GitHub
         const [commitsResponse, profileResponse] = await Promise.all([
-            fetch(`https://github.com{username}`, { headers, next: { revalidate: 3600 } }),
-            fetch(`https://github.com{username}`, { headers, next: { revalidate: 3600 } })
+            fetch(`https://api.github.com/search/commits?q=author:${username}`, { headers, next: { revalidate: 3600 } }),
+            fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } })
         ]);
 
         let totalCommits = 845; 
