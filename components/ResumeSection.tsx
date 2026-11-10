@@ -15,6 +15,7 @@ import { BsDatabaseFill } from "react-icons/bs";
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaCloud } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
+import { skills } from "@/lib/content";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -27,20 +28,20 @@ export default function ResumeSection() {
   const tabIds: ResumeTabId[] = ["experience", "education", "skills", "about"];
   const { ref, isVisible } = useAnimateIn("up");
 
-  const skills = [
-    { name: "TypeScript", icon: <SiTypescript /> },
-    { name: "React", icon: <SiReact /> },
-    { name: "Tailwind", icon: <SiTailwindcss /> },
-    { name: "Node.js", icon: <SiNodedotjs /> },
-    { name: "C#", icon: <TbBrandCSharp /> },
-    { name: ".NET", icon: <SiDotnet /> },
-    { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "SQL", icon: <BsDatabaseFill /> },
-    { name: "Docker", icon: <SiDocker /> },
-    { name: "Linux", icon: <SiLinux /> },
-    { name: "Cloud", icon: <FaCloud /> },
-    { name: "Blazor", icon: <SiBlazor /> },
-  ];
+  const skillIcons = {
+    typescript: <SiTypescript />,
+    react: <SiReact />,
+    tailwind: <SiTailwindcss />,
+    nodejs: <SiNodedotjs />,
+    csharp: <TbBrandCSharp />,
+    dotnet: <SiDotnet />,
+    mongodb: <SiMongodb />,
+    sql: <BsDatabaseFill />,
+    docker: <SiDocker />,
+    linux: <SiLinux />,
+    cloud: <FaCloud />,
+    blazor: <SiBlazor />,
+  } as const;
 
   const aboutHighlights = [1, 3, 5, 7, 9, 11, 13, 15, 17];
 
@@ -98,7 +99,7 @@ export default function ResumeSection() {
           </h2>
 
           {activeTab === "experience" && (
-            <div className="h-[500px] overflow-y-scroll pr-2 custom-scrollbar">
+            <div className="md:h-[500px] md:overflow-y-scroll md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.experiences.map((exp, index) => (
                   <div
@@ -125,7 +126,7 @@ export default function ResumeSection() {
           )}
 
           {activeTab === "education" && (
-            <div className="h-[500px] overflow-y-scroll pr-2 custom-scrollbar">
+            <div className="md:h-[500px] md:overflow-y-scroll md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.educations.map((edu, index) => (
                   <div
@@ -161,7 +162,7 @@ export default function ResumeSection() {
                     aria-hidden="true"
                     className="text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500 group-hover:scale-110"
                   >
-                    {skill.icon}
+                    {skillIcons[skill.id]}
                   </i>
                   <span className="mt-3 text-sm text-gray-300 text-center">
                     {skill.name}

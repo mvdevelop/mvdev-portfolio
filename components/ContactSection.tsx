@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   BiPhone,
   BiEnvelope,
@@ -24,7 +24,29 @@ const iconMap = {
 export default function ContactSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
+  const [formError, setFormError] = useState("");
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFormError("");
+
+    const formData = new FormData(event.currentTarget);
+    const firstName = String(formData.get("firstName") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (!firstName || !email || !message) {
+      setFormError("Please fill in your name, email, and message.");
+      return;
+    }
+
+    const subject = encodeURIComponent(`Portfolio contact from ${firstName}`);
+    const body = encodeURIComponent(
+      `${message}\n\nReply to: ${email}`
+    );
+
+    window.location.href = `mailto:marcosvmdilly@gmail.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <section
@@ -50,7 +72,7 @@ export default function ContactSection() {
             {t.contact.formTitle}
           </h2>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="sr-only">
@@ -140,6 +162,12 @@ export default function ContactSection() {
                 className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 resize-none"
               ></textarea>
             </div>
+
+            {formError && (
+              <p role="alert" className="text-sm text-red-400">
+                {formError}
+              </p>
+            )}
 
             <button
               type="submit"
