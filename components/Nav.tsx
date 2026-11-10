@@ -1,12 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const sectionIds = ["hero", "services", "resume", "work", "contact"];
 
 export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
+  const pathname = usePathname();
+  const isProjectsRoute = pathname.startsWith("/projects");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
@@ -63,7 +66,7 @@ export default function Nav() {
     >
       <div className="flex justify-between items-center px-[8%] lg:px-[16%] py-5">
         <Link
-          href="#hero"
+          href="/#hero"
           onClick={(e) => handleNavClick(e, "#hero")}
           className="text-5xl font-bold font-unbounded text-white logo"
         >
@@ -77,7 +80,9 @@ export default function Nav() {
         <div className="hidden lg:flex items-center gap-2">
           <div className="flex nav-menu items-center">
             {t.nav.links.map((link) => {
-              const isActive = activeSection === link.href.replace("#", "");
+              const isActive = link.href === "/projects"
+                ? isProjectsRoute
+                : !isProjectsRoute && activeSection === link.href.replace("#", "");
               return (
                 <a
                   key={link.name}
