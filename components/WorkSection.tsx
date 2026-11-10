@@ -118,17 +118,19 @@ export default function WorkSection() {
                       href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${project.title} live demo`}
                       className="w-15 h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
-                      <i className="bi bi-arrow-up-right text-3xl"></i>
+                      <i aria-hidden="true" className="bi bi-arrow-up-right text-3xl"></i>
                     </Link>
                     <Link
                       href={project.repo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${project.title} source code`}
                       className="w-15 h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
-                      <i className="bi bi-github text-3xl"></i>
+                      <i aria-hidden="true" className="bi bi-github text-3xl"></i>
                     </Link>
                   </div>
                 </div>
@@ -147,11 +149,19 @@ export default function WorkSection() {
           ))}
 
           <div className="flex gap-3 justify-end mt-6">
-            <button className="custom-prev w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500">
-              <i className="bi bi-arrow-left text-2xl"></i>
+            <button
+              type="button"
+              aria-label="Previous project"
+              className="custom-prev w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
+            >
+              <i aria-hidden="true" className="bi bi-arrow-left text-2xl"></i>
             </button>
-            <button className="custom-next w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500">
-              <i className="bi bi-arrow-right text-2xl"></i>
+            <button
+              type="button"
+              aria-label="Next project"
+              className="custom-next w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
+            >
+              <i aria-hidden="true" className="bi bi-arrow-right text-2xl"></i>
             </button>
           </div>
         </Swiper>

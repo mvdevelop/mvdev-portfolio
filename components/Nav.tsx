@@ -148,7 +148,9 @@ export default function Nav() {
           <button
             className="text-2xl cursor-pointer text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <i className={isMenuOpen ? "ri-close-line" : "ri-menu-2-fill"}></i>
           </button>
@@ -157,6 +159,7 @@ export default function Nav() {
 
       {/* Mobile Side Menu */}
       <div
+        id="mobile-navigation"
         className={`lg:hidden bg-[#071108]/95 backdrop-blur-md text-white border-t border-[var(--primary-color)]/20 px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${
           isMenuOpen ? "max-h-96 py-5 opacity-100" : "max-h-0 py-0 opacity-0"
         }`}

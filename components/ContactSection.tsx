@@ -79,29 +79,66 @@ export default function ContactSection() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="email"
-                placeholder={t.contact.email}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
-              />
-              <input
-                type="tel"
-                placeholder={t.contact.phone}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
-              />
+              <div>
+                <label htmlFor="email" className="sr-only">
+                  {t.contact.email}
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder={t.contact.email}
+                  autoComplete="email"
+                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="sr-only">
+                  {t.contact.phone}
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder={t.contact.phone}
+                  autoComplete="tel"
+                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                />
+              </div>
             </div>
-            <select className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 appearance-none">
-              <option>{t.contact.selectService}</option>
-              {t.contact.serviceOptions.map((opt, i) => (
-                <option key={i}>{opt}</option>
-              ))}
-            </select>
+            <div>
+              <label htmlFor="service" className="sr-only">
+                {t.contact.selectService}
+              </label>
+              <select
+                id="service"
+                name="service"
+                defaultValue=""
+                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 appearance-none"
+              >
+                <option value="" disabled>
+                  {t.contact.selectService}
+                </option>
+                {t.contact.serviceOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-            <textarea
-              rows={4}
-              placeholder={t.contact.message}
-              className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 resize-none"
-            ></textarea>
+            <div>
+              <label htmlFor="message" className="sr-only">
+                {t.contact.message}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                placeholder={t.contact.message}
+                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 resize-none"
+              ></textarea>
+            </div>
 
             <button
               type="submit"

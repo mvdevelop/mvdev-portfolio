@@ -113,21 +113,24 @@ export default function HeroSection() {
                 target="_blank"
                 className="group"
               >
-                <i className="bi bi-github cursor-pointer"></i>
+                <i aria-hidden="true" className="bi bi-github cursor-pointer"></i>
+                <span className="sr-only">GitHub</span>
               </Link>
               <Link
                 href="https://linkedin.com/in/mvdevelop"
                 target="_blank"
                 className="group"
               >
-                <i className="bi bi-linkedin cursor-pointer"></i>
+                <i aria-hidden="true" className="bi bi-linkedin cursor-pointer"></i>
+                <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
                 href="https://instagram.com/mvdevelop"
                 target="_blank"
                 className="group"
               >
-                <i className="bi bi-instagram cursor-pointer"></i>
+                <i aria-hidden="true" className="bi bi-instagram cursor-pointer"></i>
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>
