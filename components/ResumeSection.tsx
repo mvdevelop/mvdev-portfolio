@@ -157,9 +157,15 @@ export default function ResumeSection() {
                   key={index}
                   className="relative cursor-pointer bg-gray-500/5 rounded-lg py-9 flex flex-col items-center group border border-transparent hover:border-[var(--primary-color)]/30 transition-all duration-500 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
                 >
-                  <i className="text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500 group-hover:scale-110">
+                  <i
+                    aria-hidden="true"
+                    className="text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500 group-hover:scale-110"
+                  >
                     {skill.icon}
                   </i>
+                  <span className="mt-3 text-sm text-gray-300 text-center">
+                    {skill.name}
+                  </span>
                 </li>
               ))}
             </ul>

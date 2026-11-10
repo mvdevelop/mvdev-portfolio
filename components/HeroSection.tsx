@@ -158,7 +158,7 @@ export default function HeroSection() {
       {/* Stats */}
       <div
         ref={statsRef as React.RefObject<HTMLDivElement>}
-        className={`stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 transition-all duration-700 ease-out delay-300 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6 transition-all duration-700 ease-out delay-300 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         {statsData.map((stat, index) => (
           <div key={index} className="flex gap-2 items-center">

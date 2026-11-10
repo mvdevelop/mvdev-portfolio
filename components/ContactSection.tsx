@@ -25,6 +25,7 @@ export default function ContactSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
 
+
   return (
     <section
       id="contact"
@@ -162,7 +163,38 @@ export default function ContactSection() {
               </span>
               <div>
                 <p className="text-sm text-gray-400">{item.label}</p>
-                <p className="font-medium text-white">{item.value}</p>
+                {item.icon === "email" ? (
+                  <a
+                    href={`mailto:${item.value}`}
+                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors"
+                  >
+                    {item.value}
+                  </a>
+                ) : item.icon === "phone" || item.icon === "message" ? (
+                  <a
+                    href={
+                      item.icon === "message"
+                        ? "https://wa.me/5521990506596"
+                        : `tel:${item.value.replace(/[^\d+]/g, "")}`
+                    }
+                    target={item.icon === "message" ? "_blank" : undefined}
+                    rel={item.icon === "message" ? "noopener noreferrer" : undefined}
+                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors"
+                  >
+                    {item.value}
+                  </a>
+                ) : item.icon === "globe" ? (
+                  <a
+                    href="https://www.mvdevelop.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="font-medium text-white">{item.value}</p>
+                )}
               </div>
             </div>
           ))}

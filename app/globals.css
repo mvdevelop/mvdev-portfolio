@@ -235,10 +235,12 @@ body {
 
 /* Extra */
 
-/* Img Size Fixing */
+/* Project images remain responsive inside their grid column. */
 .project-img {
-    width: 650px !important;
-    height: 300px !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 13 / 6;
+    object-fit: cover;
 }
 
 /* Media Queries Mobile menu */

@@ -40,6 +40,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    aria-label={`Navigate to ${link.name}`}
                     className="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300 text-sm"
                   >
                     {link.name}
