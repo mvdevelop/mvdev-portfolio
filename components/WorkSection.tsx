@@ -19,12 +19,23 @@ import {
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
+import { projects as projectContent } from "@/lib/content";
 
 export default function WorkSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
 
-  const projects = t.work.projects;
+  const projects = t.work.projects.map((localizedProject, index) => {
+    const contentProject = projectContent[index];
+
+    return {
+      ...localizedProject,
+      img: contentProject?.img ?? localizedProject.img,
+      href: contentProject?.href ?? localizedProject.href,
+      repo: contentProject?.repo ?? localizedProject.repo,
+      tech: contentProject?.tech ?? localizedProject.tech,
+    };
+  });
 
   return (
     <section
@@ -51,7 +62,7 @@ export default function WorkSection() {
           spaceBetween={40}
           slidesPerView={1}
         >
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <SwiperSlide key={project.id}>
               <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="work-content">
@@ -114,6 +125,13 @@ export default function WorkSection() {
                   </div>
 
                   <div className="work-share flex gap-4 mt-6 border-t border-gray-500 pt-5">
+                    <Link
+                      href={`/projects/${projectContent[index]?.slug ?? ""}`}
+                      aria-label={`${project.title} project details`}
+                      className="flex items-center rounded-full bg-gray-500/5 px-5 py-3 text-sm font-semibold transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:text-black"
+                    >
+                      Details
+                    </Link>
                     <Link
                       href={project.href}
                       target="_blank"

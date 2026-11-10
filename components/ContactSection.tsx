@@ -11,6 +11,7 @@ import {
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
+import { siteConfig } from "@/lib/site-config";
 
 const iconMap = {
   phone: <BiPhone size={20} />,
@@ -45,7 +46,7 @@ export default function ContactSection() {
       `${message}\n\nReply to: ${email}`
     );
 
-    window.location.href = `mailto:marcosvmdilly@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -202,7 +203,7 @@ export default function ContactSection() {
                   <a
                     href={
                       item.icon === "message"
-                        ? "https://wa.me/5521990506596"
+                        ? siteConfig.whatsappUrl
                         : `tel:${item.value.replace(/[^\d+]/g, "")}`
                     }
                     target={item.icon === "message" ? "_blank" : undefined}
@@ -213,7 +214,7 @@ export default function ContactSection() {
                   </a>
                 ) : item.icon === "globe" ? (
                   <a
-                    href="https://www.mvdevelop.com.br"
+                    href={siteConfig.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-white hover:text-[var(--primary-color)] transition-colors"

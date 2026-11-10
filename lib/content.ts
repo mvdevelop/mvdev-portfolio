@@ -21,6 +21,7 @@ export type Skill = {
 };
 
 export type Project = {
+  slug: string;
   id: string;
   title: string;
   description: string;
@@ -36,6 +37,7 @@ export type Project = {
  */
 export const projects: Project[] = [
   {
+    slug: "macaw-english-school",
     id: "01",
     title: "Macaw English School",
     description: "English School Platform",
@@ -45,6 +47,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mvdevelop/macaw-english-school",
   },
   {
+    slug: "macaw-social-media",
     id: "02",
     title: "Macaw",
     description: "Social Media",
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mvdevelop/macaw-social-media",
   },
   {
+    slug: "snake-game",
     id: "03",
     title: "Snake's",
     description: "Snake Mini-Game",
@@ -63,6 +67,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mvdevelop/snake-game",
   },
   {
+    slug: "blushify",
     id: "04",
     title: "Blushify",
     description: "Cosmetics E-Commerce Store",

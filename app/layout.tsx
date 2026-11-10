@@ -26,8 +26,33 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mvdevelop.com.br"),
   title: "MvDev | Full Stack Developer Portfolio",
   description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET. Building modern and scalable web applications.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "MvDev | Full Stack Developer Portfolio",
+    description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET.",
+    siteName: "MvDev",
+    images: [
+      {
+        url: "/images/mvdevelop.jpeg",
+        width: 320,
+        height: 320,
+        alt: "MvDev portfolio profile image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MvDev | Full Stack Developer Portfolio",
+    description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET.",
+    images: ["/images/mvdevelop.jpeg"],
+  },
   icons: {
     icon: "/images/icon.ico",
     shortcut: "/images/icon.ico",

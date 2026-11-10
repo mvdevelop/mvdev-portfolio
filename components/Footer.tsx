@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { BiCopyright } from "react-icons/bi";
 import { useLanguage } from "@/lib/LanguageContext";
+import { siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -57,7 +58,7 @@ export default function Footer() {
             </h3>
             <div className="flex gap-3">
               <a
-                href="https://github.com/mvdevelop"
+                href={siteConfig.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
@@ -65,7 +66,7 @@ export default function Footer() {
                 <i className="bi bi-github text-lg"></i>
               </a>
               <a
-                href="https://linkedin.com/in/mvdevelop"
+                href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
@@ -73,7 +74,7 @@ export default function Footer() {
                 <i className="bi bi-linkedin text-lg"></i>
               </a>
               <a
-                href="https://instagram.com/mvdevelop"
+                href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
@@ -81,7 +82,7 @@ export default function Footer() {
                 <i className="bi bi-instagram text-lg"></i>
               </a>
               <a
-                href="mailto:marcosvmdilly@gmail.com"
+                href={`mailto:${siteConfig.email}`}
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
               >
                 <i className="bi bi-envelope text-lg"></i>

@@ -7,6 +7,7 @@ export const translations = {
         { name: "Resume", href: "#resume" },
         { name: "Work", href: "#work" },
         { name: "Contact", href: "#contact" },
+        { name: "Projects", href: "/projects" },
       ],
     },
     hero: {
@@ -200,6 +201,7 @@ export const translations = {
         { name: "Currículo", href: "#resume" },
         { name: "Projetos", href: "#work" },
         { name: "Contato", href: "#contact" },
+        { name: "Projetos", href: "/projects" },
       ],
     },
     hero: {

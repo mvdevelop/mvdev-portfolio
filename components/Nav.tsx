@@ -39,6 +39,11 @@ export default function Nav() {
 
   // Handle anchor click with smooth scroll
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      setIsMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
     const id = href.replace("#", "");
     const el = document.getElementById(id);

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
+import { siteConfig } from "@/lib/site-config";
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -98,7 +99,7 @@ export default function HeroSection() {
           {/* Buttons */}
           <div className="flex flex-wrap gap-8 items-center">
             <Link
-              href="/pdf/mvmd-en-resume.pdf"
+              href={siteConfig.resume.en}
               download
               className="group relative overflow-hidden border border-[var(--primary-color)] font-bold text-[var(--primary-color)] px-6 py-3 rounded-lg transition-all duration-500 hover:bg-[var(--primary-color)] hover:text-white"
             >
@@ -109,7 +110,7 @@ export default function HeroSection() {
 
             <div className="flex hero-social gap-2 text-3xl">
               <Link
-                href="https://github.com/mvdevelop"
+                href={siteConfig.socialLinks.github}
                 target="_blank"
                 className="group"
               >
@@ -117,7 +118,7 @@ export default function HeroSection() {
                 <span className="sr-only">GitHub</span>
               </Link>
               <Link
-                href="https://linkedin.com/in/mvdevelop"
+                href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 className="group"
               >
@@ -125,7 +126,7 @@ export default function HeroSection() {
                 <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
-                href="https://instagram.com/mvdevelop"
+                href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 className="group"
               >
