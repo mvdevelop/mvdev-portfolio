@@ -51,16 +51,32 @@ export default function ContactSection() {
 
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                placeholder={t.contact.firstName}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
-              />
-              <input
-                type="text"
-                placeholder={t.contact.lastName}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
-              />
+              <div>
+                <label htmlFor="firstName" className="sr-only">
+                  {t.contact.firstName}
+                </label>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  placeholder={t.contact.firstName}
+                  autoComplete="given-name"
+                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="sr-only">
+                  {t.contact.lastName}
+                </label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  placeholder={t.contact.lastName}
+                  autoComplete="family-name"
+                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                />
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input

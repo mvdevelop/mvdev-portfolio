@@ -117,6 +117,7 @@ export default function WorkSection() {
                     <Link
                       href={project.href}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="w-15 h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
                       <i className="bi bi-arrow-up-right text-3xl"></i>
@@ -124,6 +125,7 @@ export default function WorkSection() {
                     <Link
                       href={project.repo}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="w-15 h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
                       <i className="bi bi-github text-3xl"></i>

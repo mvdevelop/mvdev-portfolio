@@ -6,10 +6,13 @@ export async function GET() {
         const username = 'mvdevelop';
         const token = process.env.GITHUB_TOKEN;
 
-        const headers = {
-            'Authorization': `Bearer ${token}`,
+        const headers: HeadersInit = {
             'Accept': 'application/vnd.github+json'
         };
+
+        if (token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
 
         // Busca dados da API pública do GitHub
         const [commitsResponse, profileResponse] = await Promise.all([

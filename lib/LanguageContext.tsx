@@ -23,9 +23,13 @@ export function LanguageProvider({
 
   useEffect(() => {
     const saved = localStorage.getItem("language") as Language | null;
-    if (saved && (saved === "en" || saved === "pt")) {
+
+    if (saved === "en" || saved === "pt") {
+      // The state update synchronizes React with the browser's persisted preference.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLanguage(saved);
     }
+
     setMounted(true);
   }, []);
 

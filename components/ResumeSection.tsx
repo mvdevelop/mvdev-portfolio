@@ -18,10 +18,13 @@ import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
+type ResumeTabId = "experience" | "education" | "skills" | "about";
+
 export default function ResumeSection() {
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<string>(t.resume.tabs[0]);
+  const [activeTab, setActiveTab] = useState<ResumeTabId>("experience");
   const tabs = t.resume.tabs;
+  const tabIds: ResumeTabId[] = ["experience", "education", "skills", "about"];
   const { ref, isVisible } = useAnimateIn("up");
 
   const skills = [
@@ -66,29 +69,35 @@ export default function ResumeSection() {
           </h2>
           <p className="text-gray-400 mt-6 mb-10">{t.resume.whyHireDesc}</p>
           <div className="flex flex-col gap-5">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-4 text-left rounded-md font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
-                    ? "bg-[var(--primary-color)] text-white shadow-lg shadow-[var(--primary-color)]/20"
-                    : "bg-gray-500/5 text-gray-400 hover:bg-gray-500/20 hover:text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+            {tabs.map((tab, index) => {
+              const tabId = tabIds[index];
+
+              return (
+                <button
+                  key={tabId}
+                  type="button"
+                  onClick={() => setActiveTab(tabId)}
+                  aria-pressed={activeTab === tabId}
+                  className={`px-6 py-4 text-left rounded-md font-semibold transition-all duration-300 cursor-pointer ${
+                    activeTab === tabId
+                      ? "bg-[var(--primary-color)] text-white shadow-lg shadow-[var(--primary-color)]/20"
+                      : "bg-gray-500/5 text-gray-400 hover:bg-gray-500/20 hover:text-white"
+                  }`}
+                >
+                  {tab}
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Right Content */}
         <div className="md:col-span-2">
           <h2 className="text-3xl font-unbounded font-bold mb-4 text-[var(--primary-color)]">
-            {activeTab}
+            {tabs[tabIds.indexOf(activeTab)]}
           </h2>
 
-          {activeTab === tabs[0] && (
+          {activeTab === "experience" && (
             <div className="h-[500px] overflow-y-scroll pr-2 custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.experiences.map((exp, index) => (
@@ -115,7 +124,7 @@ export default function ResumeSection() {
             </div>
           )}
 
-          {activeTab === tabs[1] && (
+          {activeTab === "education" && (
             <div className="h-[500px] overflow-y-scroll pr-2 custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.educations.map((edu, index) => (
@@ -141,7 +150,7 @@ export default function ResumeSection() {
             </div>
           )}
 
-          {activeTab === tabs[2] && (
+          {activeTab === "skills" && (
             <ul className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-gray-200 mt-4">
               {skills.map((skill, index) => (
                 <li
@@ -156,7 +165,7 @@ export default function ResumeSection() {
             </ul>
           )}
 
-          {activeTab === tabs[3] && (
+          {activeTab === "about" && (
             <div className="text-gray-400 space-y-4 animate-fade-in">
               <p className="text-normal leading-relaxed whitespace-pre-line">
                 {t.resume.aboutParts.map((part, index) =>
