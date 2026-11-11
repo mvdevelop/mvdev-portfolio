@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 import { siteConfig } from "@/lib/site-config";
+import { ButtonLink } from "@/components/ui/Button";
 
 type GitHubStatsResponse = {
   totalCommits: number;
@@ -114,19 +115,13 @@ export default function HeroSection() {
 
           {/* Primary actions */}
           <div className="flex flex-wrap gap-4 items-center">
-            <Link
-              href="#contact"
-              className="group inline-flex items-center rounded-lg bg-[var(--primary-color)] px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
-            >
+            <ButtonLink href="#contact">
               {t.hero.contactCta}
               <i aria-hidden="true" className="bi bi-arrow-up-right ms-2"></i>
-            </Link>
-            <Link
-              href="#work"
-              className="inline-flex items-center rounded-lg border border-gray-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
-            >
+            </ButtonLink>
+            <ButtonLink href="#work" variant="secondary">
               {t.hero.viewProjects}
-            </Link>
+            </ButtonLink>
             <Link
               href={siteConfig.resume.en}
               download

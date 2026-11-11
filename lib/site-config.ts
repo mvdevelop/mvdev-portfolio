@@ -7,7 +7,7 @@ export const siteConfig = {
   websiteUrl: "https://www.mvdevelop.com.br",
   socialLinks: {
     github: "https://github.com/mvdevelop",
-    linkedin: "https://linkedin.com/in/mvdevelop",
+    linkedin: "https://www.linkedin.com/in/vinicius-dilly",
     instagram: "https://instagram.com/mvdevelop",
   },
   resume: {

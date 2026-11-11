@@ -11,12 +11,18 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --primary-color: #4d8be9 !important;
-    --secondary-color: #071108 !important;
-    --primary-light-1: #0077ff10;
-    --primary-light-2: #0077ff10; 
-    --hero-image-from: #74b9ff1a;  
-    --hero-image-to: #1f8eff0c;    
+    /* Portfolio design tokens */
+    --primary-color: #4d8be9;
+    --secondary-color: #071108;
+    --surface-color: #0e1510;
+    --surface-muted: rgba(255, 255, 255, 0.04);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --text-muted: #a5adb8;
+    --focus-ring: #8db8ff;
+    --primary-light-1: rgba(77, 139, 233, 0.08);
+    --primary-light-2: rgba(77, 139, 233, 0.14);
+    --hero-image-from: rgba(116, 185, 255, 0.1);
+    --hero-image-to: rgba(31, 142, 255, 0.05);
     --black-color: #000;
     --white-color: #fff;
     --text-color: #32455e;
@@ -24,6 +30,9 @@
     --transition-regular: 0.3s;
     --transition-slow: 0.6s;
     --radius: 0.625rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.2);
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
