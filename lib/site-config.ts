@@ -13,4 +13,12 @@ export const siteConfig = {
   resume: {
     en: "/pdf/mvmd-en-resume.pdf",
   },
+  stats: {
+    experienceYears: 3,
+    technologies: 12,
+    githubFallback: {
+      totalCommits: 845,
+      publicRepos: 55,
+    },
+  },
 } as const;

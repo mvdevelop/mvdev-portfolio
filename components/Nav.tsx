@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/LanguageContext";
+import { scrollToWithLenis } from "./Lenis";
 
 const sectionIds = ["hero", "services", "resume", "work", "contact"];
 
@@ -98,10 +99,7 @@ export default function Nav() {
 
     e.preventDefault();
     const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToWithLenis(`#${id}`);
     setIsMenuOpen(false);
   };
 

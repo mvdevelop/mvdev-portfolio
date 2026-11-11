@@ -1,5 +1,6 @@
 
 import { NextResponse } from 'next/server';
+import { siteConfig } from '@/lib/site-config';
 
 export async function GET() {
     try {
@@ -20,8 +21,8 @@ export async function GET() {
             fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } })
         ]);
 
-        let totalCommits = 845; 
-        let publicRepos = 55;   
+        let totalCommits = siteConfig.stats.githubFallback.totalCommits;
+        let publicRepos = siteConfig.stats.githubFallback.publicRepos;
 
         if (commitsResponse.ok) {
             const commitsData = await commitsResponse.json();
@@ -41,10 +42,17 @@ export async function GET() {
             console.error(`Erro profile GitHub Status: ${profileResponse.status}`);
         }
 
-        return NextResponse.json({ totalCommits, publicRepos });
-        
+        return NextResponse.json({ totalCommits, publicRepos, source: "github" });
+
     } catch (error) {
         console.error("Erro interno no servidor ao buscar dados do GitHub:", error);
-        return NextResponse.json({ totalCommits: 845, publicRepos: 55 }, { status: 500 });
+        return NextResponse.json(
+            {
+                totalCommits: siteConfig.stats.githubFallback.totalCommits,
+                publicRepos: siteConfig.stats.githubFallback.publicRepos,
+                source: "fallback",
+            },
+            { status: 200 },
+        );
     }
 }

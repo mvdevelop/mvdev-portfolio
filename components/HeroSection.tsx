@@ -7,11 +7,25 @@ import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 import { siteConfig } from "@/lib/site-config";
 
+type GitHubStatsResponse = {
+  totalCommits: number;
+  publicRepos: number;
+  source: "github" | "fallback";
+};
+
 export default function HeroSection() {
   const { t } = useLanguage();
-  const [totalCommits, setTotalCommits] = useState(797);
-  const [completedProjects, setCompletedProjects] = useState(30);
+  const [totalCommits, setTotalCommits] = useState<number>(
+    siteConfig.stats.githubFallback.totalCommits,
+  );
+  const [completedProjects, setCompletedProjects] = useState<number>(
+    siteConfig.stats.githubFallback.publicRepos,
+  );
   const [loading, setLoading] = useState(true);
+  const [statsSource, setStatsSource] = useState<"github" | "fallback">(
+    "fallback",
+  );
+  const [statsError, setStatsError] = useState(false);
 
   const statsData = [
     { value: 3, label: t.hero.stats.experience },
@@ -30,12 +44,14 @@ export default function HeroSection() {
       try {
         const response = await fetch("/data");
         if (response.ok) {
-          const data = await response.json();
+          const data = (await response.json()) as GitHubStatsResponse;
           setTotalCommits(data.totalCommits);
           setCompletedProjects(data.publicRepos);
+          setStatsSource(data.source);
         }
       } catch (err) {
         console.error("Não foi possível buscar dados em tempo real:", err);
+        setStatsError(true);
       } finally {
         setLoading(false);
       }
@@ -160,7 +176,18 @@ export default function HeroSection() {
       <div
         ref={statsRef as React.RefObject<HTMLDivElement>}
         className={`stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6 transition-all duration-700 ease-out delay-300 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        aria-busy={loading}
       >
+        {statsError && (
+          <p role="status" className="col-span-full text-sm text-gray-500">
+            Showing cached GitHub statistics.
+          </p>
+        )}
+        {statsSource === "fallback" && !statsError && (
+          <p role="status" className="col-span-full text-sm text-gray-500">
+            GitHub statistics may be approximate.
+          </p>
+        )}
         {statsData.map((stat, index) => (
           <div key={index} className="flex gap-2 items-center">
             <h1

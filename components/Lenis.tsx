@@ -2,6 +2,22 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
+export type LenisController = {
+    scrollTo: (target: string | number | HTMLElement) => void;
+};
+
+let controller: LenisController | null = null;
+
+export function scrollToWithLenis(target: string) {
+    if (controller) {
+        controller.scrollTo(target);
+        return true;
+    }
+
+    document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
+    return false;
+}
+
 export default function LenisScroll() {
     useEffect(() => {
         const prefersReducedMotion = window.matchMedia(
@@ -18,6 +34,10 @@ export default function LenisScroll() {
             syncTouch: true,
         });
 
+        controller = {
+            scrollTo: (target) => lenis.scrollTo(target),
+        };
+
         let animationFrameId: number;
 
         const raf = (time: number) => {
@@ -29,6 +49,7 @@ export default function LenisScroll() {
 
         return () => {
             cancelAnimationFrame(animationFrameId);
+            controller = null;
             lenis.destroy();
         };
     }, []);
