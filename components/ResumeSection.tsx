@@ -15,18 +15,20 @@ import { BsDatabaseFill } from "react-icons/bs";
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaCloud } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
-import { skills } from "@/lib/content";
+import { resumeTabIds, skills, type ResumeTabId } from "@/lib/content";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
-
-type ResumeTabId = "experience" | "education" | "skills" | "about";
 
 export default function ResumeSection() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<ResumeTabId>("experience");
   const tabs = t.resume.tabs;
-  const tabIds: ResumeTabId[] = ["experience", "education", "skills", "about"];
   const { ref, isVisible } = useAnimateIn("up");
+
+  const getTabLabel = (tabId: ResumeTabId) =>
+    tabs[resumeTabIds.indexOf(tabId)];
+
+  const tabLabel = getTabLabel(activeTab);
 
   const skillIcons = {
     typescript: <SiTypescript />,
@@ -69,16 +71,19 @@ export default function ResumeSection() {
             {t.resume.whyHire}
           </h2>
           <p className="text-gray-400 mt-6 mb-10">{t.resume.whyHireDesc}</p>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5" role="tablist" aria-label={t.resume.title}>
             {tabs.map((tab, index) => {
-              const tabId = tabIds[index];
+              const tabId = resumeTabIds[index];
 
               return (
                 <button
                   key={tabId}
                   type="button"
+                  id={`resume-tab-${tabId}`}
                   onClick={() => setActiveTab(tabId)}
-                  aria-pressed={activeTab === tabId}
+                  aria-selected={activeTab === tabId}
+                  role="tab"
+                  aria-controls={`resume-panel-${tabId}`}
                   className={`px-6 py-4 text-left rounded-md font-semibold transition-all duration-300 cursor-pointer ${
                     activeTab === tabId
                       ? "bg-[var(--primary-color)] text-white shadow-lg shadow-[var(--primary-color)]/20"
@@ -93,13 +98,18 @@ export default function ResumeSection() {
         </div>
 
         {/* Right Content */}
-        <div className="md:col-span-2">
+        <div
+          id={`resume-panel-${activeTab}`}
+          className="md:col-span-2"
+          role="tabpanel"
+          aria-labelledby={`resume-tab-${activeTab}`}
+        >
           <h2 className="text-3xl font-unbounded font-bold mb-4 text-[var(--primary-color)]">
-            {tabs[tabIds.indexOf(activeTab)]}
+            {tabLabel}
           </h2>
 
           {activeTab === "experience" && (
-            <div className="md:h-[500px] md:overflow-y-scroll md:pr-2 md:custom-scrollbar">
+            <div className="md:max-h-[500px] md:overflow-y-auto md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.experiences.map((exp, index) => (
                   <div
@@ -126,7 +136,7 @@ export default function ResumeSection() {
           )}
 
           {activeTab === "education" && (
-            <div className="md:h-[500px] md:overflow-y-scroll md:pr-2 md:custom-scrollbar">
+            <div className="md:max-h-[500px] md:overflow-y-auto md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {t.resume.educations.map((edu, index) => (
                   <div

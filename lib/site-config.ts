@@ -1,5 +1,6 @@
 export const siteConfig = {
   brand: "MvDev",
+  personName: "Vinicius Dilly",
   email: "marcosvmdilly@gmail.com",
   phone: "(+55) 21 99050-6596",
   whatsappUrl: "https://wa.me/5521990506596",

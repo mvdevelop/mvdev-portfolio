@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useId, useRef } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -24,17 +24,22 @@ import { projects as projectContent } from "@/lib/content";
 export default function WorkSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
+  const swiperId = useId().replace(/:/g, "");
+  const swiperRef = useRef<import("swiper").Swiper | null>(null);
 
-  const projects = t.work.projects.map((localizedProject, index) => {
-    const contentProject = projectContent[index];
+  const projects = t.work.projects.flatMap((localizedProject) => {
+    const contentProject = projectContent.find(
+      (project) => project.id === localizedProject.id,
+    );
 
-    return {
+    if (!contentProject) {
+      return [];
+    }
+
+    return [{
       ...localizedProject,
-      img: contentProject?.img ?? localizedProject.img,
-      href: contentProject?.href ?? localizedProject.href,
-      repo: contentProject?.repo ?? localizedProject.repo,
-      tech: contentProject?.tech ?? localizedProject.tech,
-    };
+      ...contentProject,
+    }];
   });
 
   return (
@@ -58,11 +63,18 @@ export default function WorkSection() {
         <Swiper
           modules={[Navigation]}
           loop={true}
-          navigation={{ prevEl: ".custom-prev", nextEl: ".custom-next" }}
+          navigation={{
+            prevEl: `#${swiperId}-previous`,
+            nextEl: `#${swiperId}-next`,
+          }}
           spaceBetween={40}
           slidesPerView={1}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          aria-label="Featured projects" aria-roledescription="carousel"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <SwiperSlide key={project.id}>
               <div className="grid md:grid-cols-2 gap-10 items-center">
                 <div className="work-content">
@@ -118,7 +130,8 @@ export default function WorkSection() {
                           className="work-icons text-3xl text-[color:var(--primary-color)] cursor-pointer hover:text-white transition-all duration-300"
                           title={tech}
                         >
-                          <IconComponent />
+                          <IconComponent aria-hidden="true" />
+                          <span className="sr-only">{tech}</span>
                         </div>
                       ) : null;
                     })}
@@ -126,7 +139,7 @@ export default function WorkSection() {
 
                   <div className="work-share flex gap-4 mt-6 border-t border-gray-500 pt-5">
                     <Link
-                      href={`/projects/${projectContent[index]?.slug ?? ""}`}
+                      href={`/projects/${project.slug}`}
                       aria-label={`${project.title} project details`}
                       className="flex items-center rounded-full bg-gray-500/5 px-5 py-3 text-sm font-semibold transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:text-black"
                     >
@@ -170,14 +183,18 @@ export default function WorkSection() {
             <button
               type="button"
               aria-label="Previous project"
-              className="custom-prev w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
+              id={`${swiperId}-previous`}
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
             >
               <i aria-hidden="true" className="bi bi-arrow-left text-2xl"></i>
             </button>
             <button
               type="button"
               aria-label="Next project"
-              className="custom-next w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
+              id={`${swiperId}-next`}
+              onClick={() => swiperRef.current?.slideNext()}
+              className="w-12 h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
             >
               <i aria-hidden="true" className="bi bi-arrow-right text-2xl"></i>
             </button>

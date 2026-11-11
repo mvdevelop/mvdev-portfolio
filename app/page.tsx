@@ -15,8 +15,12 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            name: siteConfig.brand,
+            name: siteConfig.personName,
             url: siteConfig.websiteUrl,
+            brand: {
+              "@type": "Brand",
+              name: siteConfig.brand,
+            },
             email: siteConfig.email,
             jobTitle: "Full Stack Developer",
             sameAs: Object.values(siteConfig.socialLinks),

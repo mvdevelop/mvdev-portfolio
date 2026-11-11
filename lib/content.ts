@@ -31,6 +31,15 @@ export type Project = {
   repo: string;
 };
 
+export type ResumeTabId = "experience" | "education" | "skills" | "about";
+
+export const resumeTabIds: ResumeTabId[] = [
+  "experience",
+  "education",
+  "skills",
+  "about",
+];
+
 /**
  * Projects currently published in the portfolio. Keep URLs and assets aligned
  * with the validated project entries in the translation content.
