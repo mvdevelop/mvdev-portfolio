@@ -1,49 +1,23 @@
 "use client";
 import React, { useState } from "react";
-import {
-  SiDocker,
-  SiMongodb,
-  SiNodedotjs,
-  SiReact,
-  SiTailwindcss,
-  SiTypescript,
-  SiDotnet,
-  SiLinux,
-  SiBlazor,
-} from "react-icons/si";
-import { BsDatabaseFill } from "react-icons/bs";
-import { TbBrandCSharp } from "react-icons/tb";
-import { FaCloud } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
-import { resumeTabIds, skills, type ResumeTabId } from "@/lib/content";
+import { resumeTabIds, type ResumeTabId } from "@/lib/content";
+import { resumeContent } from "@/lib/resume-content";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ResumeSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<ResumeTabId>("experience");
   const tabs = t.resume.tabs;
+  const content = resumeContent[language];
   const { ref, isVisible } = useAnimateIn("up");
+
 
   const getTabLabel = (tabId: ResumeTabId) =>
     tabs[resumeTabIds.indexOf(tabId)];
 
   const tabLabel = getTabLabel(activeTab);
-
-  const skillIcons = {
-    typescript: <SiTypescript />,
-    react: <SiReact />,
-    tailwind: <SiTailwindcss />,
-    nodejs: <SiNodedotjs />,
-    csharp: <TbBrandCSharp />,
-    dotnet: <SiDotnet />,
-    mongodb: <SiMongodb />,
-    sql: <BsDatabaseFill />,
-    docker: <SiDocker />,
-    linux: <SiLinux />,
-    cloud: <FaCloud />,
-    blazor: <SiBlazor />,
-  } as const;
 
   const aboutHighlights = [1, 3, 5, 7, 9, 11, 13, 15, 17];
 
@@ -111,7 +85,7 @@ export default function ResumeSection() {
           {activeTab === "experience" && (
             <div className="md:max-h-[500px] md:overflow-y-auto md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {t.resume.experiences.map((exp, index) => (
+                {content.experience.map((exp, index) => (
                   <div
                     key={index}
                     className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-5 py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
@@ -138,7 +112,7 @@ export default function ResumeSection() {
           {activeTab === "education" && (
             <div className="md:max-h-[500px] md:overflow-y-auto md:pr-2 md:custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {t.resume.educations.map((edu, index) => (
+                {content.education.map((edu, index) => (
                   <div
                     key={index}
                     className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-5 py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
@@ -162,24 +136,21 @@ export default function ResumeSection() {
           )}
 
           {activeTab === "skills" && (
-            <ul className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-gray-200 mt-4">
-              {skills.map((skill, index) => (
-                <li
-                  key={index}
-                  className="relative cursor-pointer bg-gray-500/5 rounded-lg py-9 flex flex-col items-center group border border-transparent hover:border-[var(--primary-color)]/30 transition-all duration-500 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
-                >
-                  <i
-                    aria-hidden="true"
-                    className="text-5xl group-hover:text-[color:var(--primary-color)] transition-all duration-500 group-hover:scale-110"
-                  >
-                    {skillIcons[skill.id]}
-                  </i>
-                  <span className="mt-3 text-sm text-gray-300 text-center">
-                    {skill.name}
-                  </span>
-                </li>
+            <div className="space-y-8">
+              {content.skills.map((group) => (
+                <div key={group.category}>
+                  <h3 className="mb-4 text-xl font-semibold text-[var(--primary-color)]">{group.category}</h3>
+                  <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                    {group.items.map((skill) => (
+                      <li key={skill.name} className="rounded-lg border border-[var(--border-color)] bg-[var(--surface-muted)] p-5">
+                        <h4 className="font-semibold text-white">{skill.name}</h4>
+                        <p className="mt-2 text-sm text-gray-400">{skill.description}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
 
           {activeTab === "about" && (
