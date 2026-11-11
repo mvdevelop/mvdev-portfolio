@@ -25,28 +25,40 @@ const iconMap = {
 export default function ContactSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
-  const [formError, setFormError] = useState("");
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setFormError("");
+    setFormErrors({});
+    setSubmitMessage("");
 
     const formData = new FormData(event.currentTarget);
     const firstName = String(formData.get("firstName") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
+    const errors: Record<string, string> = {};
 
-    if (!firstName || !email || !message) {
-      setFormError("Please fill in your name, email, and message.");
+    if (!firstName) errors.firstName = t.contact.validation.firstNameRequired;
+    if (!email) {
+      errors.email = t.contact.validation.emailRequired;
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      errors.email = t.contact.validation.emailInvalid;
+    }
+    if (!message) errors.message = t.contact.validation.messageRequired;
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
       return;
     }
 
+    setIsSubmitting(true);
     const subject = encodeURIComponent(`Portfolio contact from ${firstName}`);
-    const body = encodeURIComponent(
-      `${message}\n\nReply to: ${email}`
-    );
-
+    const body = encodeURIComponent(`${message}\n\nReply to: ${email}`);
     window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+    setSubmitMessage(t.contact.mailtoNotice);
+    setIsSubmitting(false);
   };
 
   return (
@@ -85,6 +97,9 @@ export default function ContactSection() {
                   type="text"
                   placeholder={t.contact.firstName}
                   autoComplete="given-name"
+                  required
+                  aria-invalid={Boolean(formErrors.firstName)}
+                  aria-describedby={formErrors.firstName ? "firstName-error" : undefined}
                   className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
                 />
               </div>
@@ -113,6 +128,9 @@ export default function ContactSection() {
                   type="email"
                   placeholder={t.contact.email}
                   autoComplete="email"
+                  required
+                  aria-invalid={Boolean(formErrors.email)}
+                  aria-describedby={formErrors.email ? "email-error" : undefined}
                   className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
                 />
               </div>
@@ -160,21 +178,24 @@ export default function ContactSection() {
                 name="message"
                 rows={4}
                 placeholder={t.contact.message}
+                required
+                aria-invalid={Boolean(formErrors.message)}
+                aria-describedby={formErrors.message ? "message-error" : undefined}
                 className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 resize-none"
               ></textarea>
             </div>
 
-            {formError && (
-              <p role="alert" className="text-sm text-red-400">
-                {formError}
-              </p>
-            )}
+            {formErrors.firstName && <p id="firstName-error" role="alert" className="text-sm text-red-400">{formErrors.firstName}</p>}
+            {formErrors.email && <p id="email-error" role="alert" className="text-sm text-red-400">{formErrors.email}</p>}
+            {formErrors.message && <p id="message-error" role="alert" className="text-sm text-red-400">{formErrors.message}</p>}
+            {submitMessage && <p role="status" className="text-sm text-green-400">{submitMessage}</p>}
 
             <button
               type="submit"
-              className="bg-[var(--primary-color)] hover:bg-white text-white hover:text-black px-8 py-3 rounded-lg font-semibold transition-all duration-500 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--primary-color)]/20"
+              disabled={isSubmitting}
+              className="bg-[var(--primary-color)] hover:bg-white text-white hover:text-black px-8 py-3 rounded-lg font-semibold transition-all duration-500 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--primary-color)]/20 disabled:cursor-wait disabled:opacity-60"
             >
-              {t.contact.send}
+              {isSubmitting ? t.contact.sending : t.contact.send}
               <i className="bi bi-send ms-2"></i>
             </button>
           </form>

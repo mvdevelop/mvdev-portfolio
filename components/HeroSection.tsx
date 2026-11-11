@@ -112,17 +112,30 @@ export default function HeroSection() {
             {t.hero.descParts[4]}
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-8 items-center">
+          {/* Primary actions */}
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link
+              href="#contact"
+              className="group inline-flex items-center rounded-lg bg-[var(--primary-color)] px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
+            >
+              {t.hero.contactCta}
+              <i aria-hidden="true" className="bi bi-arrow-up-right ms-2"></i>
+            </Link>
+            <Link
+              href="#work"
+              className="inline-flex items-center rounded-lg border border-gray-700 px-6 py-3 font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
+            >
+              {t.hero.viewProjects}
+            </Link>
             <Link
               href={siteConfig.resume.en}
               download
-              className="group relative overflow-hidden border border-[var(--primary-color)] font-bold text-[var(--primary-color)] px-6 py-3 rounded-lg transition-all duration-500 hover:bg-[var(--primary-color)] hover:text-white"
+              className="inline-flex items-center px-2 py-3 font-semibold text-gray-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
             >
-              <span className="relative z-10">
-                <i className="bi bi-download me-2"></i> {t.hero.downloadCV}
-              </span>
+              <i aria-hidden="true" className="bi bi-download me-2"></i>
+              {t.hero.downloadCV}
             </Link>
+          </div>
 
             <div className="flex hero-social gap-2 text-3xl">
               <Link
@@ -151,7 +164,6 @@ export default function HeroSection() {
               </Link>
             </div>
           </div>
-        </div>
 
         {/* Right Image */}
         <div
