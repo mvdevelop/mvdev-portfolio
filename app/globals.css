@@ -107,6 +107,14 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga', 'clig';
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {

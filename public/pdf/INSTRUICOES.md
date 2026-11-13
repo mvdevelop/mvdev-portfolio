@@ -51,3 +51,16 @@ Antes de fazer deploy, confirme:
 - [ ] Formulário de contato funciona (test localmente)
 - [ ] Site carrega sem erros no console
 - [ ] Responsividade funciona em mobile/tablet/desktop
+
+---
+
+## Nota sobre Renderização de Texto
+
+Se notar texto "picotado" ou com bordas irregulares em telas grandes:
+
+1. **Verifique o navegador** - Use Chrome/Firefox atualizados
+2. **Desative hardware acceleration** (se necessário):
+   - Chrome: Configurações → Sistema → Desativar "Usar aceleração de hardware"
+3. **Teste em outro monitor** - Alguns monitores têm problemas de renderização
+
+Isso é normal em displays de alta resolução com fontes outline.
