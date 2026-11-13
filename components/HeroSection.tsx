@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CountUp } from "countup.js";
 import Image from "next/image";
+import { FaGithub, FaLinkedin, FaInstagram, FaArrowRight, FaDownload } from "react-icons/fa";
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
@@ -119,7 +120,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap gap-3 md:gap-4 items-center mb-8">
             <ButtonLink href="#contact">
               {t.hero.contactCta}
-              <i aria-hidden="true" className="bi bi-arrow-up-right ms-2"></i>
+              <FaArrowRight className="ms-2" aria-hidden="true" />
             </ButtonLink>
             <ButtonLink href="#work" variant="secondary">
               {t.hero.viewProjects}
@@ -127,40 +128,40 @@ export default function HeroSection() {
             <ResumeLink
               className="px-4 py-3 font-semibold text-gray-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
             >
-              <i aria-hidden="true" className="bi bi-download me-2"></i>
+              <FaDownload className="me-2" aria-hidden="true" />
               {t.hero.downloadCV}
             </ResumeLink>
           </div>
 
-          <div className="flex hero-social gap-2 text-2xl md:text-3xl">
+          <div className="flex hero-social gap-3 text-2xl md:text-3xl">
             <Link
               href={siteConfig.socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group"
+              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
               aria-label="GitHub profile"
             >
-              <i aria-hidden="true" className="bi bi-github cursor-pointer"></i>
+              <FaGithub size={20} />
               <span className="sr-only">GitHub</span>
             </Link>
             <Link
               href={siteConfig.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group"
+              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
               aria-label="LinkedIn profile"
             >
-              <i aria-hidden="true" className="bi bi-linkedin cursor-pointer"></i>
+              <FaLinkedin size={20} />
               <span className="sr-only">LinkedIn</span>
             </Link>
             <Link
               href={siteConfig.socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="group"
+              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
               aria-label="Instagram profile"
             >
-              <i aria-hidden="true" className="bi bi-instagram cursor-pointer"></i>
+              <FaInstagram size={20} />
               <span className="sr-only">Instagram</span>
             </Link>
           </div>

@@ -16,6 +16,7 @@ import {
   SiSupabase,
   SiVite,
 } from "react-icons/si";
+import { FaGithub, FaArrowRight, FaArrowLeft, FaArrowUp } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -154,7 +155,7 @@ export default function WorkSection() {
                       aria-label={`${project.title} live demo`}
                       className="w-10 h-10 md:w-15 md:h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
-                      <i aria-hidden="true" className="bi bi-arrow-up-right text-xl md:text-3xl"></i>
+                      <FaArrowUp size={20} className="md:size-7" />
                     </Link>
                     <Link
                       href={project.repo}
@@ -163,7 +164,7 @@ export default function WorkSection() {
                       aria-label={`${project.title} source code`}
                       className="w-10 h-10 md:w-15 md:h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
                     >
-                      <i aria-hidden="true" className="bi bi-github text-xl md:text-3xl"></i>
+                      <FaGithub size={20} className="md:size-7" />
                     </Link>
                   </div>
                 </div>
@@ -189,7 +190,7 @@ export default function WorkSection() {
               onClick={() => swiperRef.current?.slidePrev()}
               className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
             >
-              <i aria-hidden="true" className="bi bi-arrow-left text-xl md:text-2xl"></i>
+              <FaArrowLeft size={20} />
             </button>
             <button
               type="button"
@@ -198,7 +199,7 @@ export default function WorkSection() {
               onClick={() => swiperRef.current?.slideNext()}
               className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
             >
-              <i aria-hidden="true" className="bi bi-arrow-right text-xl md:text-2xl"></i>
+              <FaArrowRight size={20} />
             </button>
           </div>
         </Swiper>

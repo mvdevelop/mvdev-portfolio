@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -23,7 +24,7 @@ export default function ServicesSection() {
             <div className="mb-4 md:mb-6 flex items-center justify-between">
               <h3 className="stroke-text text-3xl md:text-4xl font-bold text-gray-400 transition-colors duration-300 group-hover:text-[var(--primary-color)]">{service.id}</h3>
               <div className="flex h-10 w-10 md:h-13 md:w-13 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:rotate-45 group-hover:bg-[var(--primary-color)] group-hover:text-white">
-                <i aria-hidden="true" className="bi bi-arrow-up-right text-xl md:text-2xl"></i>
+                <FaArrowRight size={20} className="md:size-7" aria-hidden="true" />
               </div>
             </div>
             <h2 className="mb-4 md:mb-5 font-unbounded text-2xl md:text-3xl font-normal transition-colors duration-300 group-hover:text-[var(--primary-color)]">{service.title}</h2>
