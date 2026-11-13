@@ -12,6 +12,7 @@ export const siteConfig = {
   },
   resume: {
     en: "/pdf/mvmd-en-resume.pdf",
+    pt: "/pdf/mvmd-pt-resume.pdf",
   },
   stats: {
     experienceYears: 3,

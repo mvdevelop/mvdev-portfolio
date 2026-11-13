@@ -28,7 +28,11 @@ export default function Nav() {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    mobileMenuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    mobileMenuRef.current?.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("focus", () => {
+        // Keep focus within mobile menu
+      });
+    });
 
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isMenuOpen]);
@@ -101,17 +105,16 @@ export default function Nav() {
 
   return (
     <nav
-      className={`w-full z-50 transition-all duration-500 fixed top-0 left-0 ${
-        scrolled
-          ? "bg-[#071108]/90 backdrop-blur-md shadow-lg shadow-black/20"
-          : "bg-transparent"
-      }`}
+      className="w-full z-50 transition-all duration-500 fixed top-0 left-0"
+      role="navigation"
+      aria-label="Main navigation"
     >
-      <div className="flex justify-between items-center px-[8%] lg:px-[16%] py-5">
+      <div className="flex justify-between items-center px-[5%] py-4 md:px-[8%] lg:px-[12%] xl:px-[16%]">
         <Link
           href="/#hero"
           onClick={(e) => handleNavClick(e, "#hero")}
-          className="text-5xl font-bold font-unbounded text-white logo"
+          className="text-4xl md:text-5xl font-bold font-unbounded text-white logo"
+          aria-label="MvDev home"
         >
           Mv
           <span className="text-[var(--primary-color)] font-unbounded">
@@ -153,7 +156,7 @@ export default function Nav() {
                   ? "bg-[var(--primary-color)] text-white"
                   : "text-white/60 hover:text-white"
               }`}
-              aria-label="English"
+              aria-label="Switch to English"
             >
               EN
             </button>
@@ -164,7 +167,7 @@ export default function Nav() {
                   ? "bg-[var(--primary-color)] text-white"
                   : "text-white/60 hover:text-white"
               }`}
-              aria-label="Português"
+              aria-label="Switch to Portuguese"
             >
               PT
             </button>
@@ -182,7 +185,7 @@ export default function Nav() {
                   ? "bg-[var(--primary-color)] text-white"
                   : "text-white/60 hover:text-white"
               }`}
-              aria-label="English"
+              aria-label="Switch to English"
             >
               EN
             </button>
@@ -193,7 +196,7 @@ export default function Nav() {
                   ? "bg-[var(--primary-color)] text-white"
                   : "text-white/60 hover:text-white"
               }`}
-              aria-label="Português"
+              aria-label="Switch to Portuguese"
             >
               PT
             </button>
@@ -201,7 +204,7 @@ export default function Nav() {
 
           <button
             ref={menuButtonRef}
-            className="text-2xl cursor-pointer text-white"
+            className="text-2xl cursor-pointer text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
@@ -216,8 +219,10 @@ export default function Nav() {
       <div
         ref={mobileMenuRef}
         id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
         aria-hidden={!isMenuOpen}
-        className={`lg:hidden bg-[#071108]/95 backdrop-blur-md text-white border-t border-[var(--primary-color)]/20 px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${
+        className={`lg:hidden bg-[#071108]/95 backdrop-blur-md text-white border-t border-[var(--primary-color)]/20 px-[5%] md:px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${
           isMenuOpen ? "max-h-96 py-5 opacity-100" : "max-h-0 py-0 opacity-0"
         }`}
       >
@@ -232,7 +237,7 @@ export default function Nav() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`block text-base relative py-2 transition-colors ${
+                  className={`block text-base relative py-3 transition-colors ${
                     isActive
                       ? "text-[var(--primary-color)]"
                       : "text-white/80 hover:text-white"

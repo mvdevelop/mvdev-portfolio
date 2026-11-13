@@ -6,6 +6,7 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
+import ResumeLink from "@/components/ResumeLink";
 
 type GitHubStatsResponse = {
   totalCommits: number;
@@ -19,7 +20,7 @@ const EXPERIENCE_START = new Date("2023-09-01");
 function getExperienceYears(): number {
   const now = new Date();
   const diffYears = (now.getTime() - EXPERIENCE_START.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  return Math.floor(diffYears) + 1; // Show "+ Years" format
+  return Math.floor(diffYears) + 1;
 }
 
 export default function HeroSection() {
@@ -79,37 +80,36 @@ export default function HeroSection() {
         }
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, totalCommits, completedProjects]);
+  }, [loading, totalCommits, completedProjects, statsData]);
 
   return (
     <section
       id="hero"
       className="min-h-screen flex flex-col justify-center text-white py-0 relative overflow-hidden"
+      aria-labelledby="hero-title"
     >
       {/* Animated Background Blobs */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[100px] -z-10 animate-pulse-slow"></div>
       <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[120px] -z-10 animate-pulse-slower"></div>
       <div className="absolute bottom-0 left-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[100px] -z-10 animate-pulse-slow"></div>
 
-      <div className="flex pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[8%] lg:px-[16%] flex-1">
+      <div className="flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
         {/* Left Content */}
-        <div className="lg:w-1/2 text-start md:text-left">
+        <div className="lg:w-1/2 text-start md:text-left mb-10 lg:mb-0">
           {/* Role Badge */}
           <p className="text-sm font-semibold text-[var(--primary-color)] uppercase tracking-wider mb-3">
             {t.hero.role}
           </p>
 
-          <h1 className="text-5xl md:text-6xl font-unbounded font-normal mb-4 leading-tight">
+          <h1 id="hero-title" className="text-4xl md:text-5xl lg:text-6xl font-unbounded font-normal mb-4 leading-tight">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--primary-color)]">
               {t.hero.name}
             </span>
           </h1>
 
-          <p className="text-gray-400 text-lg lg:text-xl font-sora my-8 leading-relaxed">
+          <p className="text-gray-400 text-base md:text-lg lg:text-xl font-sora my-6 lg:my-8 leading-relaxed">
             {t.hero.descParts.map((part, index) => {
-              // Highlight key technologies
               const isHighlighted = part.includes("C#") ||
                                    part.includes(".NET") ||
                                    part.includes("TypeScript") ||
@@ -125,7 +125,7 @@ export default function HeroSection() {
           </p>
 
           {/* Primary actions */}
-          <div className="flex flex-wrap gap-4 items-center mb-8">
+          <div className="flex flex-wrap gap-3 md:gap-4 items-center mb-8">
             <ButtonLink href="#contact">
               {t.hero.contactCta}
               <i aria-hidden="true" className="bi bi-arrow-up-right ms-2"></i>
@@ -133,21 +133,21 @@ export default function HeroSection() {
             <ButtonLink href="#work" variant="secondary">
               {t.hero.viewProjects}
             </ButtonLink>
-            <Link
-              href={siteConfig.resume.en}
-              download
-              className="inline-flex items-center px-2 py-3 font-semibold text-gray-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
+            <ResumeLink
+              className="px-4 py-3 font-semibold text-gray-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
             >
               <i aria-hidden="true" className="bi bi-download me-2"></i>
               {t.hero.downloadCV}
-            </Link>
+            </ResumeLink>
           </div>
 
-          <div className="flex hero-social gap-2 text-3xl">
+          <div className="flex hero-social gap-2 text-2xl md:text-3xl">
             <Link
               href={siteConfig.socialLinks.github}
               target="_blank"
+              rel="noopener noreferrer"
               className="group"
+              aria-label="GitHub profile"
             >
               <i aria-hidden="true" className="bi bi-github cursor-pointer"></i>
               <span className="sr-only">GitHub</span>
@@ -155,7 +155,9 @@ export default function HeroSection() {
             <Link
               href={siteConfig.socialLinks.linkedin}
               target="_blank"
+              rel="noopener noreferrer"
               className="group"
+              aria-label="LinkedIn profile"
             >
               <i aria-hidden="true" className="bi bi-linkedin cursor-pointer"></i>
               <span className="sr-only">LinkedIn</span>
@@ -163,7 +165,9 @@ export default function HeroSection() {
             <Link
               href={siteConfig.socialLinks.instagram}
               target="_blank"
+              rel="noopener noreferrer"
               className="group"
+              aria-label="Instagram profile"
             >
               <i aria-hidden="true" className="bi bi-instagram cursor-pointer"></i>
               <span className="sr-only">Instagram</span>
@@ -172,15 +176,16 @@ export default function HeroSection() {
         </div>
 
         {/* Right Image */}
-        <div className="lg:w-1/2 w-full mt-10 lg:mt-0 flex justify-center relative">
-          <div className="relative rounded-full flex items-center justify-center">
+        <div className="lg:w-1/2 w-full mt-8 lg:mt-0 flex justify-center relative">
+          <div className="relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
             <div className="relative hero-image w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]">
               <Image
                 src="/images/mvdevelop.jpeg"
-                alt="Portfolio Picture"
+                alt="Vinicius Dilly - Full Stack Developer"
                 width={320}
                 height={320}
-                className="w-80 h-80 object-cover rounded"
+                className="w-full h-full object-cover rounded-full"
+                priority
               />
             </div>
           </div>
@@ -189,8 +194,10 @@ export default function HeroSection() {
 
       {/* Stats */}
       <div
-        className="stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6"
+        className="stats px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-y-6"
         aria-busy={loading}
+        role="region"
+        aria-label="Statistics"
       >
         {statsError && (
           <p role="status" className="col-span-full text-sm text-gray-500">
@@ -203,16 +210,17 @@ export default function HeroSection() {
           </p>
         )}
         {statsData.map((stat, index) => (
-          <div key={index} className="flex gap-2 items-center">
-            <h1
+          <div key={index} className="flex flex-col md:flex-row gap-2 items-start md:items-center">
+            <h2
               ref={(el) => {
                 if (el) countRefs.current[index] = el;
               }}
-              className="text-5xl font-unbounded font-bold"
+              className="text-3xl md:text-4xl lg:text-5xl font-unbounded font-bold"
+              aria-live="polite"
             >
               0
-            </h1>
-            <p className="text-xl ps-4 text-gray-400 font-semibold whitespace-pre-line">
+            </h2>
+            <p className="text-sm md:text-base lg:text-xl ps-0 md:ps-4 text-gray-400 font-semibold whitespace-pre-line md:whitespace-normal">
               {stat.label}
             </p>
           </div>
