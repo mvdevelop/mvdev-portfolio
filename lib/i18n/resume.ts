@@ -50,7 +50,7 @@ export const resumeContent: Record<Language, ResumeContent> = {
       { year: "2022 — 2026", degree: "Computer Science", institute: "Unif", type: "academic" },
       { year: "2024 — 2025", degree: "DevOps Engineering", institute: "FIAP", type: "course" },
       { year: "2021 — 2023", degree: "English Proficiency C1", institute: "IBL", type: "language" },
-      { year: "2021 — 2022", degree: "CS50's Introduction to Computer Science", institute: "Harvard University", type: "course" },
+      { year: "2021 — 2022", degree: "CS50's Introduction to Computer Science", institute: "Harvard University", type: "course", free: true },
     ],
     skills: [
       {
@@ -125,7 +125,7 @@ export const resumeContent: Record<Language, ResumeContent> = {
       { year: "2022 — 2026", degree: "Ciência da Computação", institute: "Unif", type: "academic" },
       { year: "2024 — 2025", degree: "Engenharia DevOps", institute: "FIAP", type: "course" },
       { year: "2021 — 2023", degree: "Proficiência em Inglês C1", institute: "IBL", type: "language" },
-      { year: "2021 — 2022", degree: "CS50's Introdução à Ciência da Computação", institute: "Harvard University", type: "course" },
+      { year: "2021 — 2022", degree: "CS50's Introdução à Ciência da Computação", institute: "Harvard University", type: "course", free: true },
     ],
     skills: [
       {
