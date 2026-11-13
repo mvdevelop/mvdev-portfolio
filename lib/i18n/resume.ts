@@ -14,6 +14,7 @@ export type ResumeEducation = {
   degree: string;
   institute: string;
   type: "academic" | "course" | "language";
+  free?: boolean;
 };
 
 export type ResumeSkill = {
