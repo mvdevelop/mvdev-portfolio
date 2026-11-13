@@ -85,22 +85,22 @@ export default function HeroSection() {
       <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[120px] -z-10 animate-pulse-slower"></div>
       <div className="absolute bottom-0 left-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[100px] -z-10 animate-pulse-slow"></div>
 
-      <div className="flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
+      <div className="flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%] flex-1">
         {/* Left Content */}
-        <div className="lg:w-1/2 text-start md:text-left mb-10 lg:mb-0">
+        <div className="w-full lg:w-[55%] xl:w-[50%] text-start md:text-left mb-10 lg:mb-0">
           {/* Role Badge */}
           <p className="text-caption font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-3">
             {t.hero.role}
           </p>
 
-          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-4 leading-tight">
+          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-4 leading-tight max-w-[600px]">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--color-primary)]">
               {t.hero.name}
             </span>
           </h1>
 
-          <p className="text-body my-6 lg:my-8 leading-relaxed">
+          <p className="text-body my-6 lg:my-8 leading-relaxed max-w-[540px]">
             {t.hero.descParts.map((part, index) => {
               const isHighlighted = part.includes("C#") ||
                                    part.includes(".NET") ||
