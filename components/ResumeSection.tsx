@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import SectionTitle from "./SectionTitle";
-import { resumeTabIds, type ResumeTabId } from "@/lib/content";
-import { resumeContent } from "@/lib/resume-content";
+import { resumeTabIds, type ResumeTabId, resumeContent } from "@/lib/content";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -13,13 +12,10 @@ export default function ResumeSection() {
   const content = resumeContent[language];
   const { ref, isVisible } = useAnimateIn("up");
 
-
   const getTabLabel = (tabId: ResumeTabId) =>
     tabs[resumeTabIds.indexOf(tabId)];
 
   const tabLabel = getTabLabel(activeTab);
-
-  const aboutHighlights = [1, 3, 5, 7, 9, 11, 13, 15, 17];
 
   return (
     <section
@@ -103,6 +99,18 @@ export default function ResumeSection() {
                       </span>{" "}
                       {exp.company}
                     </p>
+                    <p className="text-gray-500 text-xs mt-1">{exp.location}</p>
+                    <p className="text-gray-400 text-sm mt-3">{exp.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {exp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs text-[var(--primary-color)] bg-[var(--primary-color)]/10 px-2 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -129,6 +137,9 @@ export default function ResumeSection() {
                       </span>{" "}
                       {edu.institute}
                     </p>
+                    <span className="inline-block mt-2 text-xs px-2 py-1 rounded bg-gray-700/50">
+                      {edu.type === "academic" ? "Degree" : edu.type === "course" ? "Course" : "Language"}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -156,18 +167,7 @@ export default function ResumeSection() {
           {activeTab === "about" && (
             <div className="text-gray-400 space-y-4 animate-fade-in">
               <p className="text-normal leading-relaxed whitespace-pre-line">
-                {t.resume.aboutParts.map((part, index) =>
-                  aboutHighlights.includes(index) ? (
-                    <span
-                      key={index}
-                      className="text-[color:var(--primary-color)] font-semibold"
-                    >
-                      {part}
-                    </span>
-                  ) : (
-                    <React.Fragment key={index}>{part}</React.Fragment>
-                  )
-                )}
+                {content.about.join("\n")}
               </p>
             </div>
           )}

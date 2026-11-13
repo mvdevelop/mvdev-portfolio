@@ -1,7 +1,11 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { translations, type Language, type Translations } from "./translations";
+import {
+  translations,
+  type Language,
+  type Translations,
+} from "./i18n/translations";
 
 type LanguageContextType = {
   language: Language;
@@ -9,38 +13,33 @@ type LanguageContextType = {
   t: Translations;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [language, setLanguage] = useState<Language>("en");
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>("en");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("language") as Language | null;
-
     if (saved === "en" || saved === "pt") {
-      // The state update synchronizes React with the browser's persisted preference.
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLanguage(saved);
+      setLanguageState(saved);
     }
-
     setMounted(true);
   }, []);
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
+    setLanguageState(lang);
     localStorage.setItem("language", lang);
   };
 
+  // Synchronize html lang attribute for SEO and accessibility
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   const t = translations[language];
 
-  // Avoid hydration mismatch
   if (!mounted) {
     return (
       <LanguageContext.Provider

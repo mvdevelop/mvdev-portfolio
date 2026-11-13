@@ -4,8 +4,6 @@
 @import 'swiper/css';
 @import 'swiper/css/navigation';
 
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-@import 'remixicon/fonts/remixicon.css';
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

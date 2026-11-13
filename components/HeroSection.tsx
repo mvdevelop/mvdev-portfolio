@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { CountUp } from "countup.js";
 import Link from "next/link";
+import { CountUp } from "countup.js";
 import Image from "next/image";
-import { useAnimateIn } from "@/lib/useScrollReveal";
-import { useLanguage } from "@/lib/LanguageContext";
 import { siteConfig } from "@/lib/site-config";
+import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
 
 type GitHubStatsResponse = {
@@ -13,6 +12,15 @@ type GitHubStatsResponse = {
   publicRepos: number;
   source: "github" | "fallback";
 };
+
+// Calculate years of experience from September 2023
+const EXPERIENCE_START = new Date("2023-09-01");
+
+function getExperienceYears(): number {
+  const now = new Date();
+  const diffYears = (now.getTime() - EXPERIENCE_START.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.floor(diffYears) + 1; // Show "+ Years" format
+}
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -23,22 +31,18 @@ export default function HeroSection() {
     siteConfig.stats.githubFallback.publicRepos,
   );
   const [loading, setLoading] = useState(true);
-  const [statsSource, setStatsSource] = useState<"github" | "fallback">(
-    "fallback",
-  );
+  const [statsSource, setStatsSource] = useState<"github" | "fallback">("fallback");
   const [statsError, setStatsError] = useState(false);
+  const experienceYears = getExperienceYears();
 
   const statsData = [
-    { value: 3, label: t.hero.stats.experience },
+    { value: experienceYears, label: t.hero.stats.experience },
     { value: completedProjects, label: t.hero.stats.completed },
-    { value: 12, label: t.hero.stats.technologies },
+    { value: siteConfig.stats.technologies, label: t.hero.stats.technologies },
     { value: totalCommits, label: t.hero.stats.commits },
   ];
 
   const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
-  const { ref: titleRef, isVisible: titleVisible } = useAnimateIn("up", 0);
-  const { ref: imageRef, isVisible: imageVisible } = useAnimateIn("scale", 200);
-  const { ref: statsRef, isVisible: statsVisible } = useAnimateIn("up", 300);
 
   useEffect(() => {
     async function getGitHubData() {
@@ -51,7 +55,7 @@ export default function HeroSection() {
           setStatsSource(data.source);
         }
       } catch (err) {
-        console.error("Não foi possível buscar dados em tempo real:", err);
+        console.error("Failed to fetch GitHub stats:", err);
         setStatsError(true);
       } finally {
         setLoading(false);
@@ -90,31 +94,38 @@ export default function HeroSection() {
 
       <div className="flex pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[8%] lg:px-[16%] flex-1">
         {/* Left Content */}
-        <div
-          ref={titleRef as React.RefObject<HTMLDivElement>}
-          className={`lg:w-1/2 text-start md:text-left transition-all duration-700 ease-out ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-        >
-          <p className="text-lg mb-2 text-gray-400">{t.hero.role}</p>
-          <h1 className="text-5xl text-start lg:text-6xl font-unbounded font-normal mb-2">
+        <div className="lg:w-1/2 text-start md:text-left">
+          {/* Role Badge */}
+          <p className="text-sm font-semibold text-[var(--primary-color)] uppercase tracking-wider mb-3">
+            {t.hero.role}
+          </p>
+
+          <h1 className="text-5xl md:text-6xl font-unbounded font-normal mb-4 leading-tight">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--primary-color)]">
               {t.hero.name}
             </span>
           </h1>
-          <p className="text-gray-400 text-md lg:text-xl font-normal font-sora my-8">
-            {t.hero.descParts[0]}
-            <span className="text-[color:var(--primary-color)]">
-              {t.hero.descParts[1]}
-            </span>
-            {t.hero.descParts[2]}
-            <span className="text-[color:var(--primary-color)]">
-              {t.hero.descParts[3]}
-            </span>
-            {t.hero.descParts[4]}
+
+          <p className="text-gray-400 text-lg lg:text-xl font-sora my-8 leading-relaxed">
+            {t.hero.descParts.map((part, index) => {
+              // Highlight key technologies
+              const isHighlighted = part.includes("C#") ||
+                                   part.includes(".NET") ||
+                                   part.includes("TypeScript") ||
+                                   part.includes("React");
+              return isHighlighted ? (
+                <span key={index} className="text-[color:var(--primary-color)] font-semibold">
+                  {part}
+                </span>
+              ) : (
+                <span key={index}>{part}</span>
+              );
+            })}
           </p>
 
           {/* Primary actions */}
-          <div className="flex flex-wrap gap-4 items-center">
+          <div className="flex flex-wrap gap-4 items-center mb-8">
             <ButtonLink href="#contact">
               {t.hero.contactCta}
               <i aria-hidden="true" className="bi bi-arrow-up-right ms-2"></i>
@@ -132,39 +143,36 @@ export default function HeroSection() {
             </Link>
           </div>
 
-            <div className="flex hero-social gap-2 text-3xl">
-              <Link
-                href={siteConfig.socialLinks.github}
-                target="_blank"
-                className="group"
-              >
-                <i aria-hidden="true" className="bi bi-github cursor-pointer"></i>
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
-                href={siteConfig.socialLinks.linkedin}
-                target="_blank"
-                className="group"
-              >
-                <i aria-hidden="true" className="bi bi-linkedin cursor-pointer"></i>
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link
-                href={siteConfig.socialLinks.instagram}
-                target="_blank"
-                className="group"
-              >
-                <i aria-hidden="true" className="bi bi-instagram cursor-pointer"></i>
-                <span className="sr-only">Instagram</span>
-              </Link>
-            </div>
+          <div className="flex hero-social gap-2 text-3xl">
+            <Link
+              href={siteConfig.socialLinks.github}
+              target="_blank"
+              className="group"
+            >
+              <i aria-hidden="true" className="bi bi-github cursor-pointer"></i>
+              <span className="sr-only">GitHub</span>
+            </Link>
+            <Link
+              href={siteConfig.socialLinks.linkedin}
+              target="_blank"
+              className="group"
+            >
+              <i aria-hidden="true" className="bi bi-linkedin cursor-pointer"></i>
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+            <Link
+              href={siteConfig.socialLinks.instagram}
+              target="_blank"
+              className="group"
+            >
+              <i aria-hidden="true" className="bi bi-instagram cursor-pointer"></i>
+              <span className="sr-only">Instagram</span>
+            </Link>
           </div>
+        </div>
 
         {/* Right Image */}
-        <div
-          ref={imageRef as React.RefObject<HTMLDivElement>}
-          className={`lg:w-1/2 w-full mt-10 lg:mt-0 flex justify-center relative transition-all duration-700 ease-out delay-200 ${imageVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-        >
+        <div className="lg:w-1/2 w-full mt-10 lg:mt-0 flex justify-center relative">
           <div className="relative rounded-full flex items-center justify-center">
             <div className="relative hero-image w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]">
               <Image
@@ -181,8 +189,7 @@ export default function HeroSection() {
 
       {/* Stats */}
       <div
-        ref={statsRef as React.RefObject<HTMLDivElement>}
-        className={`stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6 transition-all duration-700 ease-out delay-300 ${statsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className="stats px-[8%] lg:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6"
         aria-busy={loading}
       >
         {statsError && (

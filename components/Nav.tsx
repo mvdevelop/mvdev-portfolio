@@ -50,10 +50,6 @@ export default function Nav() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
   const currentActiveSection = isProjectsRoute ? "projects" : activeSection;
   const isMobileMenuOpen = isMenuOpen ? "true" : "false";
 

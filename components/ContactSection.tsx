@@ -1,13 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  BiPhone,
-  BiEnvelope,
-  BiMap,
-  BiTime,
-  BiMessageDetail,
-  BiGlobe,
-} from "react-icons/bi";
+import { BiPhone, BiEnvelope, BiMap, BiTime, BiMessageDetail, BiGlobe } from "react-icons/bi";
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";

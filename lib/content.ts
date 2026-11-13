@@ -1,35 +1,24 @@
-export type SkillCategory = "backend" | "frontend" | "data" | "devops";
+/**
+ * Backward-compatibility re-exports.
+ * New code should import directly from lib/i18n/.
+ * This file is kept so existing imports don't break during migration.
+ */
+export {
+  type Language,
+  type Translations,
+  type ResumeContent,
+  type ResumeExperience,
+  type ResumeEducation,
+  type ResumeSkill,
+  type ResumeSkillGroup,
+  type ProjectsData,
+  type SkillsData,
+  type NavLinks,
+  translations,
+} from "./i18n/translations";
 
-export type SkillId =
-  | "typescript"
-  | "react"
-  | "tailwind"
-  | "nodejs"
-  | "csharp"
-  | "dotnet"
-  | "mongodb"
-  | "sql"
-  | "docker"
-  | "linux"
-  | "cloud"
-  | "blazor";
-
-export type Skill = {
-  id: SkillId;
-  name: string;
-  category: SkillCategory;
-};
-
-export type Project = {
-  slug: string;
-  id: string;
-  title: string;
-  description: string;
-  tech: string[];
-  img: string;
-  href: string;
-  repo: string;
-};
+export { resumeContent } from "./i18n/resume";
+export { projects, skills, featuredProjectCount, type Project, type Skill, type SkillCategory, type SkillId } from "./i18n/projects";
 
 export type ResumeTabId = "experience" | "education" | "skills" | "about";
 
@@ -38,72 +27,4 @@ export const resumeTabIds: ResumeTabId[] = [
   "education",
   "skills",
   "about",
-];
-
-/**
- * Projects currently published in the portfolio. Keep URLs and assets aligned
- * with the validated project entries in the translation content.
- */
-export const projects: Project[] = [
-  {
-    slug: "macaw-english-school",
-    id: "01",
-    title: "Macaw English School",
-    description: "English School Platform",
-    tech: ["TS", "React Vite", ".Net"],
-    img: "/images/macaw-landing.png",
-    href: "https://macaw-english-course.vercel.app/",
-    repo: "https://github.com/mvdevelop/macaw-english-school",
-  },
-  {
-    slug: "macaw-social-media",
-    id: "02",
-    title: "Macaw",
-    description: "Social Media",
-    tech: ["TS", "NextJs", "Supabase"],
-    img: "/images/new-macaw-banner.png",
-    href: "https://macaw-social-media.vercel.app/",
-    repo: "https://github.com/mvdevelop/macaw-social-media",
-  },
-  {
-    slug: "snake-game",
-    id: "03",
-    title: "Snake's",
-    description: "Snake Mini-Game",
-    tech: ["JS", "React", "Tailwindcss"],
-    img: "/images/new-snakegame-banner.png",
-    href: "https://snake-game-inky-pi.vercel.app/",
-    repo: "https://github.com/mvdevelop/snake-game",
-  },
-  {
-    slug: "blushify",
-    id: "04",
-    title: "Blushify",
-    description: "Cosmetics E-Commerce Store",
-    tech: ["JS", "React", "Tailwindcss"],
-    img: "/images/new-blushify-banner.png",
-    href: "https://ecommerce-beauty-ashy.vercel.app/",
-    repo: "https://github.com/mvdevelop/ecommerce-beauty",
-  },
-];
-
-export const featuredProjectCount = projects.length;
-
-/**
- * Skills currently presented by the portfolio. Keep this list limited to
- * technologies supported by the owner's confirmed content and projects.
- */
-export const skills: Skill[] = [
-  { id: "typescript", name: "TypeScript", category: "frontend" },
-  { id: "react", name: "React", category: "frontend" },
-  { id: "tailwind", name: "Tailwind CSS", category: "frontend" },
-  { id: "nodejs", name: "Node.js", category: "backend" },
-  { id: "csharp", name: "C#", category: "backend" },
-  { id: "dotnet", name: ".NET", category: "backend" },
-  { id: "mongodb", name: "MongoDB", category: "data" },
-  { id: "sql", name: "SQL", category: "data" },
-  { id: "docker", name: "Docker", category: "devops" },
-  { id: "linux", name: "Linux", category: "devops" },
-  { id: "cloud", name: "Cloud", category: "devops" },
-  { id: "blazor", name: "Blazor", category: "frontend" },
 ];
