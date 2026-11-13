@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^3.1.0",
+    "@swc/plugin-styled-components": "^18.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "countup.js": "^2.9.0",

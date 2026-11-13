@@ -54,3 +54,25 @@ Práticas: Clean Architecture, SOLID, REST API Design, Scrum/Agile
 
 ## Link para download:
 O sistema já está configurado para alternar automaticamente entre EN/PT baseado na linguagem selecionada pelo usuário.
+
+## Instruções Rápidas:
+
+### Para criar o PDF em Português:
+1. Copie o conteúdo acima
+2. Use o Canva (procure por "currículo profissional")
+3. Preencha com os dados fornecidos
+4. Exporte como PDF
+5. Salve como `mvmd-pt-resume.pdf` neste diretório
+
+### Para ativar o envio de emails (produção):
+```bash
+# Adicione ao .env.local ou variáveis de ambiente da Vercel:
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxx
+```
+
+### Testando localmente:
+```bash
+npm run dev
+# Acesse http://localhost:3000/#contact
+# Preencha o formulário e verifique o console
+```
