@@ -28,12 +28,14 @@ export default function HeroSection() {
   const [statsError, setStatsError] = useState(false);
   const experienceYears = 3; // Fixed at 3+ as per portfolio positioning
 
-  const statsData = [
+  // Stats data - use refs to avoid recreating array on every render
+  const statsRef = useRef([
     { value: experienceYears, label: t.hero.stats.experience },
     { value: completedProjects, label: t.hero.stats.completed },
     { value: siteConfig.stats.technologies, label: t.hero.stats.technologies },
     { value: totalCommits, label: t.hero.stats.commits },
-  ];
+  ]);
+  const statsData = statsRef.current;
 
   const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
 

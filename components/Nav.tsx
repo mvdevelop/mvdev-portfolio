@@ -13,7 +13,7 @@ export default function Nav() {
   const isProjectsRoute = pathname.startsWith("/projects");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [scrolled, setScrolled] = useState(false);
+  
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
