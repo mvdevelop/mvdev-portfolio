@@ -171,7 +171,7 @@ export default function HeroSection() {
 
         {/* Right Image */}
         <div className="lg:w-1/2 w-full mt-8 lg:mt-0 flex justify-center relative">
-          <div className="relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+          <div className="relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-[17rem] lg:h-[17rem] xl:w-[18rem] xl:h-[18rem]">
             <div className="relative hero-image w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]">
               <Image
                 src="/images/mvdevelop.jpeg"
