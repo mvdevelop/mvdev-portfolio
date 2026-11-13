@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { BiCopyright } from "react-icons/bi";
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { useLanguage } from "@/lib/LanguageContext";
 import { siteConfig } from "@/lib/site-config";
 
@@ -62,30 +63,34 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                aria-label="GitHub profile"
               >
-                <i className="bi bi-github text-lg"></i>
+                <FaGithub size={20} />
               </a>
               <a
                 href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                aria-label="LinkedIn profile"
               >
-                <i className="bi bi-linkedin text-lg"></i>
+                <FaLinkedin size={20} />
               </a>
               <a
                 href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                aria-label="Instagram profile"
               >
-                <i className="bi bi-instagram text-lg"></i>
+                <FaInstagram size={20} />
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                aria-label="Send email"
               >
-                <i className="bi bi-envelope text-lg"></i>
+                <FaEnvelope size={20} />
               </a>
             </div>
           </div>
