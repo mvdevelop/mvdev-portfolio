@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicius Dilly - Currículo</title>
+    <title>Vinicius Dilly - Currículo Profissional</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,123 +14,156 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a1a;
+            background: white;
             max-width: 210mm;
+            min-height: 297mm;
             margin: 0 auto;
             padding: 20mm;
-            background: white;
         }
 
+        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 30px;
             padding-bottom: 20px;
+            margin-bottom: 25px;
             border-bottom: 3px solid #4d8be9;
         }
 
         .name {
             font-size: 32px;
-            font-weight: bold;
+            font-weight: 700;
             color: #1a1a1a;
-            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
         .tagline {
-            font-size: 16px;
+            font-size: 14px;
             color: #4d8be9;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .contact {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .contact span {
-            margin: 0 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        /* Sections */
         .section {
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            color: #4d8be9;
+            margin-bottom: 12px;
             padding-bottom: 5px;
-            border-bottom: 2px solid #4d8be9;
+            border-bottom: 2px solid #e5e7eb;
         }
 
-        .experience-item, .education-item {
-            margin-bottom: 20px;
+        /* Experience & Education Items */
+        .item {
+            margin-bottom: 16px;
         }
 
         .item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .item-title {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 600;
             color: #1a1a1a;
         }
 
         .item-date {
-            font-size: 14px;
-            color: #666;
-            font-style: italic;
-        }
-
-        .item-subtitle {
-            font-size: 14px;
-            color: #4d8be9;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .item-description {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .tech-stack {
-            margin-top: 8px;
-            font-size: 12px;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            background: #f0f4ff;
-            color: #4d8be9;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            font-size: 11px;
+            color: #6b7280;
             font-weight: 500;
         }
 
+        .item-subtitle {
+            font-size: 12px;
+            color: #4d8be9;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .item-description {
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #eff6ff;
+            color: #4d8be9;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .badge-free {
+            background: #ecfdf5;
+            color: #059669;
+            border-color: #a7f3d0;
+        }
+
+        .badge-type {
+            background: #f3f4f6;
+            color: #6b7280;
+            border-color: #e5e7eb;
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
 
         .skill-category h4 {
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .skill-list {
@@ -136,10 +171,10 @@
         }
 
         .skill-list li {
-            font-size: 13px;
-            color: #555;
-            margin-bottom: 5px;
-            padding-left: 15px;
+            font-size: 11px;
+            color: #4b5563;
+            margin-bottom: 4px;
+            padding-left: 14px;
             position: relative;
         }
 
@@ -148,42 +183,62 @@
             position: absolute;
             left: 0;
             color: #4d8be9;
+            font-size: 10px;
         }
 
+        /* About */
         .about-text {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.7;
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.6;
             text-align: justify;
         }
 
+        /* Print Styles */
         @media print {
             body {
                 padding: 15mm;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
             .no-print {
-                display: none;
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
             }
         }
 
-        .print-hint {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 15px;
+        /* Instructions (hidden in print) */
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 12px 15px;
             margin-bottom: 20px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 14px;
-            color: #856404;
+            font-size: 12px;
+            color: #92400e;
+        }
+
+        .instructions strong {
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="print-hint no-print">
-        💡 <strong>Dica:</strong> Abra este arquivo no navegador e use Ctrl+P → Salvar como PDF para gerar a versão final.
+    <!-- Instruções (não aparece no PDF) -->
+    <div class="instructions no-print">
+        <strong>💡 Como gerar o PDF:</strong><br>
+        1. Abra este arquivo no Google Chrome<br>
+        2. Pressione <code>Ctrl+P</code> (ou Cmd+P no Mac)<br>
+        3. Selecione "Salvar como PDF"<br>
+        4. Configurações: Margens = Padrão, Escala = 100%, Desmarque "Cabeçalhos e rodapés"<br>
+        5. Salve como <code>mvmd-pt-resume.pdf</code> na pasta public/pdf/
     </div>
 
+    <!-- Cabeçalho -->
     <header class="header">
         <h1 class="name">VINICIUS DILLY</h1>
         <p class="tagline">Desenvolvedor Full Stack · Engenharia de Backend</p>
@@ -198,6 +253,7 @@
         </div>
     </header>
 
+    <!-- Resumo Profissional -->
     <section class="section">
         <h2 class="section-title">Resumo Profissional</h2>
         <p class="about-text">
@@ -208,10 +264,11 @@
         </p>
     </section>
 
+    <!-- Experiência Profissional -->
     <section class="section">
         <h2 class="section-title">Experiência Profissional</h2>
 
-        <div class="experience-item">
+        <div class="item">
             <div class="item-header">
                 <span class="item-title">Desenvolvedor Full Stack</span>
                 <span class="item-date">Setembro de 2023 — Presente</span>
@@ -222,58 +279,74 @@
                 de sistemas utilizando o ecossistema Microsoft. Colaboração em times ágeis com entregas iterativas
                 e focadas em valor para o negócio.
             </p>
-            <div class="tech-stack">
-                <span class="tech-tag">C#</span>
-                <span class="tech-tag">.NET Core</span>
-                <span class="tech-tag">Entity Framework</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">REST APIs</span>
-                <span class="tech-tag">Git</span>
+            <div class="badges">
+                <span class="badge">C#</span>
+                <span class="badge">.NET Core</span>
+                <span class="badge">Entity Framework</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">React</span>
+                <span class="badge">REST APIs</span>
+                <span class="badge">Git</span>
             </div>
         </div>
     </section>
 
+    <!-- Formação Acadêmica -->
     <section class="section">
         <h2 class="section-title">Formação Acadêmica</h2>
 
-        <div class="education-item">
+        <div class="item">
             <div class="item-header">
                 <span class="item-title">Ciência da Computação</span>
                 <span class="item-date">2022 — 2026</span>
             </div>
             <div class="item-subtitle">Unif · Em andamento</div>
+            <div class="badges">
+                <span class="badge badge-type">Graduação</span>
+            </div>
         </div>
 
-        <div class="education-item">
+        <div class="item">
             <div class="item-header">
                 <span class="item-title">Engenharia DevOps</span>
                 <span class="item-date">2024 — 2025</span>
             </div>
             <div class="item-subtitle">FIAP · Curso técnico</div>
+            <div class="badges">
+                <span class="badge badge-type">Curso Técnico</span>
+            </div>
         </div>
     </section>
 
+    <!-- Certificações e Cursos -->
     <section class="section">
         <h2 class="section-title">Certificações e Cursos</h2>
 
-        <div class="education-item">
+        <div class="item">
             <div class="item-header">
                 <span class="item-title">Proficiência em Inglês Nível C1</span>
                 <span class="item-date">2021 — 2023</span>
             </div>
             <div class="item-subtitle">IBL · Certificação de idioma</div>
+            <div class="badges">
+                <span class="badge badge-type">Idioma</span>
+            </div>
         </div>
 
-        <div class="education-item">
+        <div class="item">
             <div class="item-header">
                 <span class="item-title">CS50's Introduction to Computer Science</span>
                 <span class="item-date">2021 — 2022</span>
             </div>
             <div class="item-subtitle">Harvard University · Curso online</div>
+            <div class="badges">
+                <span class="badge badge-type">Curso</span>
+                <span class="badge badge-free">Free Course</span>
+            </div>
         </div>
     </section>
 
+    <!-- Habilidades Técnicas -->
     <section class="section">
         <h2 class="section-title">Habilidades Técnicas</h2>
         <div class="skills-grid">
@@ -287,7 +360,6 @@
                     <li>Java / Spring Boot</li>
                 </ul>
             </div>
-
             <div class="skill-category">
                 <h4>Frontend</h4>
                 <ul class="skill-list">
@@ -295,10 +367,9 @@
                     <li>React & Next.js</li>
                     <li>Tailwind CSS</li>
                     <li>Blazor Server/WASM</li>
-                    <li>Javascript ES6+</li>
+                    <li>JavaScript ES6+</li>
                 </ul>
             </div>
-
             <div class="skill-category">
                 <h4>Bancos de Dados</h4>
                 <ul class="skill-list">
@@ -308,13 +379,12 @@
                     <li>Supabase</li>
                 </ul>
             </div>
-
             <div class="skill-category">
                 <h4>DevOps & Ferramentas</h4>
                 <ul class="skill-list">
                     <li>Docker</li>
                     <li>Git / GitHub</li>
-                    <li>AWS (básico)</li>
+                    <li>AWS (conceitos básicos)</li>
                     <li>Google Cloud Platform</li>
                     <li>Linux / Bash</li>
                 </ul>
@@ -322,6 +392,7 @@
         </div>
     </section>
 
+    <!-- Práticas de Engenharia -->
     <section class="section">
         <h2 class="section-title">Práticas de Engenharia</h2>
         <div class="skills-grid">
@@ -344,7 +415,8 @@
         </div>
     </section>
 
-    <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; font-size: 11px; color: #999;">
+    <!-- Rodapé -->
+    <footer style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 10px; color: #9ca3af;">
         <p>Referências disponíveis sob solicitação · Última atualização: Novembro 2024</p>
     </footer>
 </body>

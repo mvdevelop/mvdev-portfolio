@@ -93,7 +93,7 @@ export default function HeroSection() {
             {t.hero.role}
           </p>
 
-          <h1 id="hero-title" className="text-h1 font-display font-bold mb-4 leading-tight">
+          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-4 leading-tight">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--color-primary)]">
               {t.hero.name}
