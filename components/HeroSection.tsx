@@ -14,15 +14,6 @@ type GitHubStatsResponse = {
   source: "github" | "fallback";
 };
 
-// Calculate years of experience from September 2023
-const EXPERIENCE_START = new Date("2023-09-01");
-
-function getExperienceYears(): number {
-  const now = new Date();
-  const diffYears = (now.getTime() - EXPERIENCE_START.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-  return Math.floor(diffYears) + 1;
-}
-
 export default function HeroSection() {
   const { t } = useLanguage();
   const [totalCommits, setTotalCommits] = useState<number>(
@@ -34,7 +25,7 @@ export default function HeroSection() {
   const [loading, setLoading] = useState(true);
   const [statsSource, setStatsSource] = useState<"github" | "fallback">("fallback");
   const [statsError, setStatsError] = useState(false);
-  const experienceYears = getExperienceYears();
+  const experienceYears = 3; // Fixed at 3+ as per portfolio positioning
 
   const statsData = [
     { value: experienceYears, label: t.hero.stats.experience },

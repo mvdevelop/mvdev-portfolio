@@ -136,7 +136,6 @@ export const translations: Record<Language, Translations> = {
         { name: "Resume", href: "#resume" },
         { name: "Work", href: "#work" },
         { name: "Contact", href: "#contact" },
-        { name: "Projects", href: "/projects" },
       ],
     },
     hero: {
@@ -277,7 +276,6 @@ export const translations: Record<Language, Translations> = {
         { name: "Currículo", href: "#resume" },
         { name: "Projetos", href: "#work" },
         { name: "Contato", href: "#contact" },
-        { name: "Projetos", href: "/projects" },
       ],
     },
     hero: {
