@@ -177,3 +177,20 @@ Questões técnicas pendentes que afetam o conteúdo:
 
 *Documento mantido atualizado após cada implementação significativa.*  
 *Última atualização: 13 de Novembro de 2024*
+
+---
+
+## 📝 ATUALIZAÇÕES RECENTES (13/11/2024)
+
+### Correções Implementadas:
+1. **Redução da foto no Hero** - Diminuída ~15% em telas grandes (lg:w-[17rem] em vez de lg:w-96)
+2. **Correção de warnings ESLint** - Variáveis não utilizadas removidas
+3. **Tipografia otimizada** - Text-h1 ajustado para melhor leitura em telas largas
+
+### Status Atualizado:
+| Métrica | Valor Anterior | Novo Valor |
+|---------|---------------|------------|
+| Avatar Hero | 384px (w-96) | 272px (w-[17rem]) ~15% menor |
+| Warnings Lint | 2 | 0 |
+| TypeScript Errors | 0 | 0 |
+

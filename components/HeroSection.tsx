@@ -194,13 +194,13 @@ export default function HeroSection() {
         aria-label="Statistics"
       >
         {statsError && (
-          <p role="status" className="col-span-full text-sm text-gray-500">
-            Showing cached GitHub statistics.
+          <p role="status" className="col-span-full text-sm text-[var(--color-primary)]/80 font-medium">
+            ⚠️ Showing cached GitHub statistics.
           </p>
         )}
         {statsSource === "fallback" && !statsError && (
-          <p role="status" className="col-span-full text-sm text-gray-500">
-            GitHub statistics may be approximate.
+          <p role="status" className="col-span-full text-sm text-[var(--color-primary)]/80 font-medium">
+            ℹ️ GitHub statistics may be approximate.
           </p>
         )}
         {statsData.map((stat, index) => (
