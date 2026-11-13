@@ -89,25 +89,25 @@ export default function HeroSection() {
         {/* Left Content */}
         <div className="lg:w-1/2 text-start md:text-left mb-10 lg:mb-0">
           {/* Role Badge */}
-          <p className="text-sm font-semibold text-[var(--primary-color)] uppercase tracking-wider mb-3">
+          <p className="text-caption font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-3">
             {t.hero.role}
           </p>
 
-          <h1 id="hero-title" className="text-4xl md:text-5xl lg:text-6xl font-unbounded font-normal mb-4 leading-tight">
+          <h1 id="hero-title" className="text-h1 font-display font-bold mb-4 leading-tight">
             {t.hero.greeting}{" "}
-            <span className="text-[color:var(--primary-color)]">
+            <span className="text-[color:var(--color-primary)]">
               {t.hero.name}
             </span>
           </h1>
 
-          <p className="text-gray-400 text-base md:text-lg lg:text-xl font-sora my-6 lg:my-8 leading-relaxed">
+          <p className="text-body my-6 lg:my-8 leading-relaxed">
             {t.hero.descParts.map((part, index) => {
               const isHighlighted = part.includes("C#") ||
                                    part.includes(".NET") ||
                                    part.includes("TypeScript") ||
                                    part.includes("React");
               return isHighlighted ? (
-                <span key={index} className="text-[color:var(--primary-color)] font-semibold">
+                <span key={index} className="text-[color:var(--color-primary)] font-semibold">
                   {part}
                 </span>
               ) : (
@@ -126,7 +126,7 @@ export default function HeroSection() {
               {t.hero.viewProjects}
             </ButtonLink>
             <ResumeLink
-              className="px-4 py-3 font-semibold text-gray-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]"
+              className="btn btn-ghost px-6 py-3"
             >
               <FaDownload className="me-2" aria-hidden="true" />
               {t.hero.downloadCV}
