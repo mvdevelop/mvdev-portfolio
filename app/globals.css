@@ -612,3 +612,55 @@ html.lenis, html.lenis body {
   --font-mono: var(--font-mono);
   --font-display: var(--font-display);
 }
+
+/* ============================================
+   PIXEL ART AVATAR ANIMATIONS
+   ============================================ */
+
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  shape-rendering: crispEdges;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-5px) rotate(-2deg);
+    opacity: 0.8;
+  }
+}
+
+.animate-float-fast {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Hover effect for pixel avatar */
+.hero-pixel-container:hover .pixel-art {
+  filter: brightness(1.1) drop-shadow(0 0 10px rgba(77, 139, 233, 0.5));
+  transition: filter 0.3s ease;
+}
+
+.hero-pixel-container {
+  position: relative;
+  cursor: pointer;
+}

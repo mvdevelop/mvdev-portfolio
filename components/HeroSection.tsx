@@ -2,12 +2,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CountUp } from "countup.js";
-import Image from "next/image";
 import { FaGithub, FaLinkedin, FaInstagram, FaArrowRight, FaDownload } from "react-icons/fa";
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
 import ResumeLink from "@/components/ResumeLink";
+import PixelAvatar from "@/components/PixelAvatar";
 
 type GitHubStatsResponse = {
   totalCommits: number;
@@ -167,18 +167,12 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Image */}
+        {/* Right Pixel Avatar */}
         <div className="lg:w-1/2 w-full mt-8 lg:mt-0 flex justify-center relative">
-          <div className="relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-            <div className="relative hero-image w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]">
-              <Image
-                src="/images/mvdevelop.jpeg"
-                alt="Vinicius Dilly - Full Stack Developer"
-                width={320}
-                height={320}
-                className="w-full h-full object-cover rounded-full"
-                priority
-              />
+          <div className="hero-pixel-container relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)] opacity-50"></div>
+            <div className="relative w-[85%] h-[85%] rounded-full overflow-hidden border-2 border-[var(--primary-color)]/30 shadow-[var(--shadow-glow)]">
+              <PixelAvatar />
             </div>
           </div>
         </div>
