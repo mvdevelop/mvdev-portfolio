@@ -5,6 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import LenisScroll from "@/components/Lenis";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { ThemeProvider } from "@/lib/ThemeContext";
 import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
@@ -140,11 +141,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LanguageProvider>
-          <LenisScroll />
-          <Nav />
-          <main id="main-content">{children}</main>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <LenisScroll />
+            <Nav />
+            <main id="main-content">{children}</main>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

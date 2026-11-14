@@ -578,6 +578,42 @@ html.lenis, html.lenis body {
 }
 
 /* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+
+[data-theme="light"] {
+  /* Brand colors remain the same */
+  --color-primary: #2563eb;
+  --color-primary-light: rgba(37, 99, 235, 0.1);
+  --color-primary-lighter: rgba(37, 99, 235, 0.2);
+  --color-primary-dark: #1d4ed8;
+
+  /* Light backgrounds */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-surface-muted: rgba(0, 0, 0, 0.03);
+  --color-surface-hover: rgba(0, 0, 0, 0.06);
+  --color-surface-elevated: rgba(0, 0, 0, 0.04);
+
+  /* Light borders */
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-focus: rgba(37, 99, 235, 0.5);
+
+  /* Dark text on light background */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
+
+  /* Status colors remain accessible */
+  --color-success: #059669;
+  --color-error: #dc2626;
+  --color-warning: #d97706;
+  --color-info: #2563eb;
+}
+
+/* ============================================
    THEME CONFIGURATION (Shadcn)
    ============================================ */
 
