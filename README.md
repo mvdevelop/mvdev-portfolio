@@ -258,10 +258,10 @@ npx tsc --noEmit
 - [x] **Performance Audit:** Lighthouse CI configurado com assertions rigorosas
 
 ### ⚪ Opcionais (futuro)
-- [ ] Light/Dark mode toggle (sistema suporta, UI não exposta)
-- [ ] Páginas individuais por projeto (backlog - removido por decisão estratégica)
-- [ ] Blog/Articles section
-- [ ] Integração LinkedIn Auto-Save ao postar conteúdo
+- [x] **Light/Dark mode toggle:** Implementado com ThemeContext + persistência localStorage
+- [ ] **Páginas individuais por projeto:** Backlog - removido por decisão estratégica
+- [ ] **Blog/Articles section:** Futuro, requer configuração MDX
+- [ ] **Integração LinkedIn Auto-Save:** Ao postar conteúdo
 
 ---
 
