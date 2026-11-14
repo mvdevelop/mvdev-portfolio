@@ -58,13 +58,6 @@ export default function Nav() {
   const isMobileMenuOpen = isMenuOpen ? "true" : "false";
 
   useEffect(() => {
-    const handleScroll = () => { const _y = window.scrollY; };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
     if (isProjectsRoute) return;
 
     const sections = sectionIds
