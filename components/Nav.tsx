@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/LanguageContext";
 import { scrollToWithLenis } from "./Lenis";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const sectionIds = ["hero", "services", "resume", "work", "contact"];
 
@@ -28,9 +29,14 @@ export default function Nav() {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    mobileMenuRef.current?.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
-      link.addEventListener("focus", () => {
-        // Keep focus within mobile menu
+    mobileMenuRef.current?.querySelectorAll<HTMLAnchorElement>("a").forEach((link, index, links) => {
+      link.addEventListener("focus", (e) => {
+        const focusedIndex = Array.from(links).indexOf(e.target as HTMLAnchorElement);
+        if (focusedIndex === 0) {
+          links[links.length - 1]?.setAttribute("data-last-focused", "true");
+        } else if (focusedIndex === links.length - 1) {
+          links[0]?.setAttribute("data-first-focused", "true");
+        }
       });
     });
 
@@ -203,7 +209,7 @@ export default function Nav() {
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
           >
-            <i className={isMenuOpen ? "ri-close-line" : "ri-menu-2-fill"}></i>
+            {isMenuOpen ? <FaTimes size={20} aria-hidden="true" /> : <FaBars size={20} aria-hidden="true" />}
           </button>
         </div>
       </div>

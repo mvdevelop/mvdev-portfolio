@@ -4,7 +4,6 @@ import { FaArrowRight } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
-import Card from "@/components/ui/Card";
 
 export default function ServicesSection() {
   const { t } = useLanguage();
@@ -16,9 +15,11 @@ export default function ServicesSection() {
       <SectionTitle label={t.services.label} title={t.services.title} subtitle={t.services.subtitle} />
       <div ref={ref as React.RefObject<HTMLDivElement>} className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
         {t.services.items.map((service, index) => (
-          <Card
+          <article
             key={service.id}
-            className="service-card group cursor-pointer px-6 md:px-10 py-6 md:py-4 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--primary-color)] hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
+            tabIndex={0}
+            aria-label={`Service ${service.id}: ${service.title}`}
+            className="service-card group cursor-pointer px-6 md:px-10 py-6 md:py-4 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--primary-color)] hover:shadow-lg hover:shadow-[var(--primary-color)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-primary)] rounded-xl"
             style={{ transitionDelay: `${index * 100}ms` }}
           >
             <div className="mb-4 md:mb-6 flex items-center justify-between">
@@ -30,7 +31,7 @@ export default function ServicesSection() {
             <h2 className="mb-4 md:mb-5 font-unbounded text-2xl md:text-3xl font-normal transition-colors duration-300 group-hover:text-[var(--primary-color)]">{service.title}</h2>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed">{service.description}</p>
             <div className="mt-5 border-t border-gray-700 duration-300 group-hover:border-[var(--primary-color)]" />
-          </Card>
+          </article>
         ))}
       </div>
     </section>
