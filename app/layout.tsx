@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sora, Unbounded } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import LenisScroll from "@/components/Lenis";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -119,6 +121,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${unbounded.variable}`}
       >
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <LanguageProvider>
           <LenisScroll />
           <Nav />
@@ -128,3 +135,25 @@ export default function RootLayout({
     </html>
   );
 }
+
+// JSON-LD Structured Data for better SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "MvDev Portfolio",
+  url: siteConfig.websiteUrl,
+  description: "Full Stack Developer specializing in C#, .NET, TypeScript, React and Next.js",
+  author: {
+    "@type": "Person",
+    name: "Vinicius Dilly",
+    jobTitle: "Full Stack Developer",
+    url: siteConfig.socialLinks.linkedin,
+  },
+  sameAs: [
+    siteConfig.socialLinks.github,
+    siteConfig.socialLinks.linkedin,
+    siteConfig.socialLinks.instagram,
+  ],
+};
+
+export const dynamic = 'force-static';
