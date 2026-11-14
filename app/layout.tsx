@@ -129,6 +129,12 @@ export default function RootLayout({
         >
           Pular para o conteúdo principal
         </a>
+        {/* Analytics - Plausible (privacy-friendly) */}
+        <Script
+          defer
+          data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "mvdevelop.com.br"}
+          src="https://plausible.io/js/script.outbound-links.js"
+        />
         <Script
           id="json-ld"
           type="application/ld+json"
