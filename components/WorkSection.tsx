@@ -6,17 +6,21 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
-import {
-  SiJavascript,
-  SiReact,
-  SiTailwindcss,
-  SiDotnet,
-  SiTypescript,
-  SiNextdotjs,
-  SiSupabase,
-  SiVite,
-} from "react-icons/si";
-import { FaGithub, FaArrowRight, FaArrowLeft, FaArrowUp } from "react-icons/fa";
+import dynamic from "next/dynamic";
+
+const SiJavascript = dynamic(() => import("react-icons/si").then((mod) => mod.SiJavascript), { ssr: false });
+const SiReact = dynamic(() => import("react-icons/si").then((mod) => mod.SiReact), { ssr: false });
+const SiTailwindcss = dynamic(() => import("react-icons/si").then((mod) => mod.SiTailwindcss), { ssr: false });
+const SiDotnet = dynamic(() => import("react-icons/si").then((mod) => mod.SiDotnet), { ssr: false });
+const SiTypescript = dynamic(() => import("react-icons/si").then((mod) => mod.SiTypescript), { ssr: false });
+const SiNextdotjs = dynamic(() => import("react-icons/si").then((mod) => mod.SiNextdotjs), { ssr: false });
+const SiSupabase = dynamic(() => import("react-icons/si").then((mod) => mod.SiSupabase), { ssr: false });
+const SiVite = dynamic(() => import("react-icons/si").then((mod) => mod.SiVite), { ssr: false });
+
+const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
+const FaArrowRight = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowRight), { ssr: false });
+const FaArrowLeft = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowLeft), { ssr: false });
+const FaArrowUp = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowUp), { ssr: false });
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
