@@ -252,10 +252,10 @@ npx tsc --noEmit
   - Obter chave em: https://resend.com/api-keys
 
 ### 🟡 Recomendadas (melhorias)
-- [ ] **Open Graph Dinâmicas:** Implementar geração de imagens OG por projeto
-- [ ] **Analytics:** Adicionar Plausible ou PostHog
-- [ ] **Testes E2E:** Cypress/Playwright para validação cross-browser
-- [ ] **Performance Audit:** Lighthouse CI em PRs
+- [x] **Open Graph Dinâmicas:** Implementado via `/api/og` com ImageResponse
+- [x] **Analytics:** Plausible configurado com privacy-friendly tracking
+- [x] **Testes E2E:** Playwright instalado com suites completas (home, projects, contact)
+- [x] **Performance Audit:** Lighthouse CI configurado com assertions rigorosas
 
 ### ⚪ Opcionais (futuro)
 - [ ] Light/Dark mode toggle (sistema suporta, UI não exposta)
