@@ -1,37 +1,23 @@
 "use client";
-import React, { useId, useRef } from "react";
+import React from "react";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
-const SiJavascript = dynamic(() => import("react-icons/si").then((mod) => mod.SiJavascript), { ssr: false });
-const SiReact = dynamic(() => import("react-icons/si").then((mod) => mod.SiReact), { ssr: false });
-const SiTailwindcss = dynamic(() => import("react-icons/si").then((mod) => mod.SiTailwindcss), { ssr: false });
-const SiDotnet = dynamic(() => import("react-icons/si").then((mod) => mod.SiDotnet), { ssr: false });
-const SiTypescript = dynamic(() => import("react-icons/si").then((mod) => mod.SiTypescript), { ssr: false });
-const SiNextdotjs = dynamic(() => import("react-icons/si").then((mod) => mod.SiNextdotjs), { ssr: false });
-const SiSupabase = dynamic(() => import("react-icons/si").then((mod) => mod.SiSupabase), { ssr: false });
-const SiVite = dynamic(() => import("react-icons/si").then((mod) => mod.SiVite), { ssr: false });
-
-const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
-const FaArrowRight = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowRight), { ssr: false });
-const FaArrowLeft = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowLeft), { ssr: false });
-const FaArrowUp = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowUp), { ssr: false });
 import SectionTitle from "./SectionTitle";
 import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 import { projects as projectContent } from "@/lib/content";
 
+// Dynamic imports for icons
+const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
+const FaArrowRight = dynamic(() => import("react-icons/fa").then((mod) => mod.FaArrowRight), { ssr: false });
+const FaExternalLinkAlt = dynamic(() => import("react-icons/fa").then((mod) => mod.FaExternalLinkAlt), { ssr: false });
+
 export default function WorkSection() {
   const { t } = useLanguage();
   const { ref, isVisible } = useAnimateIn("up");
-  const swiperId = useId().replace(/:/g, "");
-  const swiperRef = useRef<import("swiper").Swiper | null>(null);
 
+  // Get localized projects and merge with detailed content
   const projects = t.work.projects.flatMap((localizedProject) => {
     const contentProject = projectContent.find(
       (project) => project.id === localizedProject.id,
@@ -66,147 +52,97 @@ export default function WorkSection() {
         ref={ref as React.RefObject<HTMLDivElement>}
         className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        <Swiper
-          modules={[Navigation]}
-          loop={true}
-          navigation={{
-            prevEl: `#${swiperId}-previous`,
-            nextEl: `#${swiperId}-next`,
-          }}
-          spaceBetween={30}
-          slidesPerView={1}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          aria-label="Featured projects"
-          aria-roledescription="carousel"
-        >
+        {/* Professional Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {projects.map((project) => (
-            <SwiperSlide key={project.id}>
-              <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
-                <div className="work-content order-2 md:order-1">
-                  <h2 className="text-6xl md:text-7xl font-bold stroke-text">
-                    {project.id}
-                  </h2>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold font-unbounded mt-3 md:mt-4">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 mt-2 md:mt-3 text-base md:text-lg leading-relaxed">
-                    {project.description}
-                  </p>
+            <article
+              key={project.id}
+              className="group relative rounded-2xl overflow-hidden bg-[var(--color-surface-muted)] border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[var(--primary-color)]/10"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-video overflow-hidden">
+                <Image
+                  src={project.img}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
 
-                  <div className="flex gap-3 md:gap-4 mt-4 flex-wrap">
-                    {project.tech.map((tech, index) => {
-                      let IconComponent: React.ElementType | null = null;
+              {/* Content */}
+              <div className="p-6 md:p-8">
+                {/* Category Badge */}
+                <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] text-xs font-semibold mb-4">
+                  {project.id}
+                </span>
 
-                      switch (tech.toLowerCase().trim()) {
-                        case "js":
-                        case "javascript":
-                          IconComponent = SiJavascript;
-                          break;
-                        case "ts":
-                        case "typescript":
-                          IconComponent = SiTypescript;
-                          break;
-                        case "react":
-                          IconComponent = SiReact;
-                          break;
-                        case "react vite":
-                        case "vite":
-                          IconComponent = SiVite;
-                          break;
-                        case "nextjs":
-                        case "next.js":
-                          IconComponent = SiNextdotjs;
-                          break;
-                        case "tailwindcss":
-                          IconComponent = SiTailwindcss;
-                          break;
-                        case ".net":
-                        case "dotnet":
-                          IconComponent = SiDotnet;
-                          break;
-                        case "supabase":
-                          IconComponent = SiSupabase;
-                          break;
-                      }
+                {/* Title */}
+                <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 group-hover:text-[var(--color-primary)] transition-colors">
+                  {project.title}
+                </h2>
 
-                      return IconComponent ? (
-                        <div
-                          key={index}
-                          className="work-icons text-2xl md:text-3xl text-[color:var(--primary-color)] cursor-pointer hover:text-white transition-all duration-300"
-                          title={tech}
-                        >
-                          <IconComponent aria-hidden="true" />
-                          <span className="sr-only">{tech}</span>
-                        </div>
-                      ) : null;
-                    })}
-                  </div>
+                {/* Description */}
+                <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4">
+                  {project.description}
+                </p>
 
-                  <div className="work-share flex gap-3 md:gap-4 mt-5 md:mt-6 border-t border-gray-500 pt-4 md:pt-5">
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      aria-label={`${project.title} project details`}
-                      className="flex items-center rounded-full bg-gray-500/5 px-4 md:px-5 py-2 md:py-3 text-xs md:text-sm font-semibold transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:text-black"
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.slice(0, 4).map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 rounded-md bg-[var(--color-surface-hover)] text-gray-300 text-xs font-medium"
                     >
-                      Details
-                    </Link>
-                    <Link
+                      {tech}
+                    </span>
+                  ))}
+                  {project.tech.length > 4 && (
+                    <span className="px-3 py-1 rounded-md bg-[var(--color-surface-hover)] text-gray-400 text-xs">
+                      +{project.tech.length - 4} more
+                    </span>
+                  )}
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center justify-between pt-4 border-t border-[var(--color-border)]">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-white transition-colors group/link"
+                  >
+                    View Case Study
+                    <FaArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+
+                  <div className="flex gap-3">
+                    <a
                       href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.title} live demo`}
-                      className="w-10 h-10 md:w-15 md:h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
+                      className="w-10 h-10 rounded-lg border border-[var(--color-border)] flex items-center justify-center text-gray-400 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
+                      aria-label={`View live demo of ${project.title}`}
+                      title="Live Demo"
                     >
-                      <FaArrowUp size={20} className="md:size-7" />
-                    </Link>
-                    <Link
+                      <FaExternalLinkAlt size={16} />
+                    </a>
+                    <a
                       href={project.repo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${project.title} source code`}
-                      className="w-10 h-10 md:w-15 md:h-15 flex items-center justify-center rounded-full bg-gray-500/5 hover:text-black hover:bg-white transition-all duration-500 hover:-translate-y-1"
+                      className="w-10 h-10 rounded-lg border border-[var(--color-border)] flex items-center justify-center text-gray-400 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
+                      aria-label={`View source code of ${project.title}`}
+                      title="GitHub Repository"
                     >
-                      <FaGithub size={20} className="md:size-7" />
-                    </Link>
+                      <FaGithub size={16} />
+                    </a>
                   </div>
                 </div>
-
-                <div className="relative work-image order-1 md:order-2">
-                  <Image
-                    src={project.img}
-                    alt={`${project.title} screenshot`}
-                    width={650}
-                    height={300}
-                    className="project-img rounded-lg shadow-lg hover:shadow-[var(--primary-color)]/10 transition-shadow duration-500 w-full"
-                  />
-                </div>
               </div>
-            </SwiperSlide>
+            </article>
           ))}
-
-          <div className="flex gap-2 md:gap-3 justify-end mt-4 md:mt-6">
-            <button
-              type="button"
-              aria-label="Previous project"
-              id={`${swiperId}-previous`}
-              onClick={() => swiperRef.current?.slidePrev()}
-              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
-            >
-              <FaArrowLeft size={20} />
-            </button>
-            <button
-              type="button"
-              aria-label="Next project"
-              id={`${swiperId}-next`}
-              onClick={() => swiperRef.current?.slideNext()}
-              className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[color:var(--primary-color)] text-white rounded-lg shadow hover:bg-white hover:text-black hover:-translate-y-0.5 cursor-pointer transition-all duration-500"
-            >
-              <FaArrowRight size={20} />
-            </button>
-          </div>
-        </Swiper>
+        </div>
       </div>
     </section>
   );
