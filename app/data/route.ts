@@ -2,57 +2,156 @@
 import { NextResponse } from 'next/server';
 import { siteConfig } from '@/lib/site-config';
 
-export async function GET() {
-    try {
-        const username = 'mvdevelop';
-        const token = process.env.GITHUB_TOKEN;
+const GITHUB_USERNAME = 'mvdevelop';
+const DEFAULT_TIMEOUT = 5000; // 5 seconds timeout
+const MAX_RETRIES = 2;
 
+interface GitHubStats {
+    totalCommits: number;
+    publicRepos: number;
+    source: "github" | "fallback";
+    cachedAt: string;
+    errors?: {
+        commits?: string;
+        profile?: string;
+    };
+}
+
+async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number): Promise<Response> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+        const response = await fetch(url, {
+            ...options,
+            signal: controller.signal,
+        });
+        return response;
+    } finally {
+        clearTimeout(timeoutId);
+    }
+}
+
+interface GitHubApiResponse {
+    ok: boolean;
+    data: Record<string, unknown> | null;
+    error?: string;
+}
+
+async function fetchGitHubData(
+    url: string,
+    headers: HeadersInit,
+    retries = MAX_RETRIES
+): Promise<GitHubApiResponse> {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+        try {
+            const response = await fetchWithTimeout(url, { headers }, DEFAULT_TIMEOUT);
+
+            if (response.ok) {
+                const data = await response.json();
+                return { ok: true, data };
+            }
+
+            if (attempt < retries && response.status === 403) {
+                // Rate limit - wait and retry
+                await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+                continue;
+            }
+
+            return {
+                ok: false,
+                data: null,
+                error: `HTTP ${response.status}: ${response.statusText}`,
+            };
+        } catch (error) {
+            if (attempt < retries) {
+                await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+                continue;
+            }
+
+            return {
+                ok: false,
+                data: null,
+                error: error instanceof Error ? error.message : 'Unknown error',
+            };
+        }
+    }
+
+    return { ok: false, data: null, error: 'Max retries exceeded' };
+}
+
+export async function GET() {
+    const now = new Date().toISOString();
+    const stats: GitHubStats = {
+        totalCommits: siteConfig.stats.githubFallback.totalCommits,
+        publicRepos: siteConfig.stats.githubFallback.publicRepos,
+        source: "fallback",
+        cachedAt: now,
+        errors: {},
+    };
+
+    try {
+        const token = process.env.GITHUB_TOKEN;
         const headers: HeadersInit = {
-            'Accept': 'application/vnd.github+json'
+            'Accept': 'application/vnd.github+json',
         };
 
         if (token) {
             headers.Authorization = `Bearer ${token}`;
         }
 
-        // Busca dados da API pública do GitHub
-        const [commitsResponse, profileResponse] = await Promise.all([
-            fetch(`https://api.github.com/search/commits?q=author:${username}`, { headers, next: { revalidate: 3600 } }),
-            fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } })
+        // Fetch both endpoints in parallel with individual error handling
+        const [commitsResult, profileResult] = await Promise.allSettled([
+            fetchGitHubData(
+                `https://api.github.com/search/commits?q=author:${GITHUB_USERNAME}`,
+                headers
+            ),
+            fetchGitHubData(
+                `https://api.github.com/users/${GITHUB_USERNAME}`,
+                headers
+            ),
         ]);
 
-        let totalCommits = siteConfig.stats.githubFallback.totalCommits;
-        let publicRepos = siteConfig.stats.githubFallback.publicRepos;
+        let usesGithubData = false;
 
-        if (commitsResponse.ok) {
-            const commitsData = await commitsResponse.json();
-            if (commitsData.total_count !== undefined) {
-                totalCommits = commitsData.total_count;
+        // Process commits data
+        if (commitsResult.status === 'fulfilled' && commitsResult.value.ok) {
+            const total_count = commitsResult.value.data?.total_count;
+            if (typeof total_count === 'number') {
+                stats.totalCommits = total_count;
+                usesGithubData = true;
+            } else {
+                stats.errors!.commits = 'Invalid response format';
             }
-        } else {
-            console.error(`Erro commits GitHub Status: ${commitsResponse.status}`);
+        } else if (commitsResult.status === 'rejected') {
+            stats.errors!.commits = commitsResult.reason?.message || 'Request failed';
         }
 
-        if (profileResponse.ok) {
-            const profileData = await profileResponse.json();
-            if (profileData.public_repos !== undefined) {
-                publicRepos = profileData.public_repos;
+        // Process profile data
+        if (profileResult.status === 'fulfilled' && profileResult.value.ok) {
+            const public_repos = profileResult.value.data?.public_repos;
+            if (typeof public_repos === 'number') {
+                stats.publicRepos = public_repos;
+                usesGithubData = true;
+            } else {
+                stats.errors!.profile = 'Invalid response format';
             }
-        } else {
-            console.error(`Erro profile GitHub Status: ${profileResponse.status}`);
+        } else if (profileResult.status === 'rejected') {
+            stats.errors!.profile = profileResult.reason?.message || 'Request failed';
         }
 
-        return NextResponse.json({ totalCommits, publicRepos, source: "github" });
+        // Update source if we got at least one successful response
+        if (usesGithubData) {
+            stats.source = "github";
+            console.log('✓ GitHub stats loaded successfully');
+        } else {
+            console.warn('⚠️ GitHub API unavailable, using fallback data:', stats.errors);
+        }
+
+        return NextResponse.json(stats);
 
     } catch (error) {
-        console.error("Erro interno no servidor ao buscar dados do GitHub:", error);
-        return NextResponse.json(
-            {
-                totalCommits: siteConfig.stats.githubFallback.totalCommits,
-                publicRepos: siteConfig.stats.githubFallback.publicRepos,
-                source: "fallback",
-            },
-            { status: 200 },
-        );
+        console.error("Critical error fetching GitHub stats:", error);
+        return NextResponse.json(stats);
     }
 }

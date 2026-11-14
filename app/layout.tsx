@@ -27,36 +27,85 @@ const unbounded = Unbounded({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mvdevelop.com.br"),
-  title: "MvDev | Full Stack Developer Portfolio",
-  description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET. Building modern and scalable web applications.",
+  title: {
+    default: "MvDev | Full Stack Developer · Backend Engineering",
+    template: "%s | MvDev Portfolio",
+  },
+  description:
+    "Full Stack Developer specializing in C#, .NET, TypeScript, React and Next.js. Building scalable backend systems and modern web applications.",
+  keywords: [
+    "full stack developer",
+    "backend engineer",
+    "C#",
+    ".NET",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Portfolio",
+    "Vinicius Dilly",
+    "MVDevelop",
+  ],
+  authors: [{ name: "Vinicius Dilly" }],
+  creator: "Vinicius Dilly",
+  publisher: "MvDev",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     url: "/",
-    title: "MvDev | Full Stack Developer Portfolio",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET.",
-    siteName: "MvDev",
+    title: "MvDev | Full Stack Developer · Backend Engineering",
+    description:
+      "Full Stack Developer specializing in C#, .NET, TypeScript, React and Next.js. Building scalable backend systems and modern web applications.",
+    siteName: "MvDev Portfolio",
     images: [
+      {
+        url: "/images/macaw-social-media-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "MvDev Portfolio - Full Stack Developer",
+        type: "image/png",
+      },
       {
         url: "/images/mvdevelop.jpeg",
         width: 320,
         height: 320,
-        alt: "MvDev portfolio profile image",
+        alt: "Vinicius Dilly - Full Stack Developer",
       },
     ],
+    locale: "en_US",
+    countryName: "Brazil",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MvDev | Full Stack Developer Portfolio",
-    description: "Full Stack Developer specializing in React, Next.js, Node.js, and .NET.",
-    images: ["/images/mvdevelop.jpeg"],
+    site: "@mvdevelop",
+    creator: "@mvdevelop",
+    title: "MvDev | Full Stack Developer · Backend Engineering",
+    description:
+      "Full Stack Developer specializing in C#, .NET, TypeScript, React and Next.js.",
+    images: ["/images/macaw-social-media-banner.png"],
   },
   icons: {
-    icon: "/images/icon.ico",
-    shortcut: "/images/icon.ico",
+    icon: [
+      { url: "/images/icon.ico", type: "image/x-icon" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
     apple: "/images/icon.ico",
+  },
+  verification: {
+    google: "your-google-site-verification",
   },
 };
 

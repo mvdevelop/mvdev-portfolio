@@ -3,7 +3,12 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CountUp } from "countup.js";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowRight, FaDownload } from "react-icons/fa";
+import dynamic from "next/dynamic";
+import { ArrowRight, Download } from "lucide-react";
+
+const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
+const FaLinkedin = dynamic(() => import("react-icons/fa").then((mod) => mod.FaLinkedin), { ssr: false });
+const FaInstagram = dynamic(() => import("react-icons/fa").then((mod) => mod.FaInstagram), { ssr: false });
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
@@ -13,6 +18,11 @@ type GitHubStatsResponse = {
   totalCommits: number;
   publicRepos: number;
   source: "github" | "fallback";
+  cachedAt: string;
+  errors?: {
+    commits?: string;
+    profile?: string;
+  };
 };
 
 export default function HeroSection() {
@@ -26,6 +36,8 @@ export default function HeroSection() {
   const [loading, setLoading] = useState(true);
   const [statsSource, setStatsSource] = useState<"github" | "fallback">("fallback");
   const [statsError, setStatsError] = useState(false);
+  const [cachedAt, setCachedAt] = useState<string>();
+  const [hasPartialData, setHasPartialData] = useState(false);
   const experienceYears = 3; // Fixed at 3+ as per portfolio positioning
 
   // Stats data - use refs to avoid recreating array on every render
@@ -48,6 +60,11 @@ export default function HeroSection() {
           setTotalCommits(data.totalCommits);
           setCompletedProjects(data.publicRepos);
           setStatsSource(data.source);
+          setCachedAt(data.cachedAt);
+          // Detect partial success (some endpoints failed but others succeeded)
+          if (data.source === "github" && data.errors) {
+            setHasPartialData(true);
+          }
         }
       } catch (err) {
         console.error("Failed to fetch GitHub stats:", err);
@@ -122,7 +139,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap gap-3 md:gap-4 items-center mb-8">
             <ButtonLink href="#contact">
               {t.hero.contactCta}
-              <FaArrowRight className="ms-2" aria-hidden="true" />
+              <ArrowRight className="ms-2" size={18} aria-hidden="true" />
             </ButtonLink>
             <ButtonLink href="#work" variant="secondary">
               {t.hero.viewProjects}
@@ -130,7 +147,7 @@ export default function HeroSection() {
             <ResumeLink
               className="btn btn-ghost px-6 py-3"
             >
-              <FaDownload className="me-2" aria-hidden="true" />
+              <Download className="me-2" size={18} aria-hidden="true" />
               {t.hero.downloadCV}
             </ResumeLink>
           </div>
@@ -194,14 +211,30 @@ export default function HeroSection() {
         aria-label="Statistics"
       >
         {statsError && (
-          <p role="status" className="col-span-full text-sm text-[var(--color-primary)]/80 font-medium">
-            ⚠️ Showing cached GitHub statistics.
-          </p>
+          <div role="alert" className="col-span-full p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+            <p className="text-sm text-red-400 font-medium">
+              ⚠️ Unable to load GitHub statistics. Showing cached values.
+            </p>
+          </div>
         )}
         {statsSource === "fallback" && !statsError && (
-          <p role="status" className="col-span-full text-sm text-[var(--color-primary)]/80 font-medium">
-            ℹ️ GitHub statistics may be approximate.
-          </p>
+          <div role="status" className="col-span-full flex flex-col gap-1">
+            <p className="text-sm text-[var(--color-primary)]/80 font-medium">
+              ℹ️ GitHub API unavailable. Showing estimated statistics.
+            </p>
+            {cachedAt && (
+              <p className="text-xs text-gray-500">
+                Last cache: {new Date(cachedAt).toLocaleString()}
+              </p>
+            )}
+          </div>
+        )}
+        {hasPartialData && (
+          <div role="status" className="col-span-full p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20">
+            <p className="text-xs text-yellow-400">
+              ⚡ Partial data available - some GitHub metrics unavailable
+            </p>
+          </div>
         )}
         {statsData.map((stat, index) => (
           <div key={index} className="flex flex-col md:flex-row gap-2 items-start md:items-center">
