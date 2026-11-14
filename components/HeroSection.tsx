@@ -1,97 +1,21 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { CountUp } from "countup.js";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { ArrowRight, Download } from "lucide-react";
-
-const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
-const FaLinkedin = dynamic(() => import("react-icons/fa").then((mod) => mod.FaLinkedin), { ssr: false });
-const FaInstagram = dynamic(() => import("react-icons/fa").then((mod) => mod.FaInstagram), { ssr: false });
+import { ArrowRight, Download, MapPin, Briefcase } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { useLanguage } from "@/lib/LanguageContext";
 import { ButtonLink } from "@/components/ui/Button";
 import ResumeLink from "@/components/ResumeLink";
 
-type GitHubStatsResponse = {
-  totalCommits: number;
-  publicRepos: number;
-  source: "github" | "fallback";
-  cachedAt: string;
-  errors?: {
-    commits?: string;
-    profile?: string;
-  };
-};
+// Dynamic imports for social icons
+const FaGithub = dynamic(() => import("react-icons/fa").then((mod) => mod.FaGithub), { ssr: false });
+const FaLinkedin = dynamic(() => import("react-icons/fa").then((mod) => mod.FaLinkedin), { ssr: false });
+const FaInstagram = dynamic(() => import("react-icons/fa").then((mod) => mod.FaInstagram), { ssr: false });
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const [totalCommits, setTotalCommits] = useState<number>(
-    siteConfig.stats.githubFallback.totalCommits,
-  );
-  const [completedProjects, setCompletedProjects] = useState<number>(
-    siteConfig.stats.githubFallback.publicRepos,
-  );
-  const [loading, setLoading] = useState(true);
-  const [statsSource, setStatsSource] = useState<"github" | "fallback">("fallback");
-  const [statsError, setStatsError] = useState(false);
-  const [cachedAt, setCachedAt] = useState<string>();
-  const [hasPartialData, setHasPartialData] = useState(false);
-  const experienceYears = 3; // Fixed at 3+ as per portfolio positioning
-
-  // Stats data - use refs to avoid recreating array on every render
-  const statsRef = useRef([
-    { value: experienceYears, label: t.hero.stats.experience },
-    { value: completedProjects, label: t.hero.stats.completed },
-    { value: siteConfig.stats.technologies, label: t.hero.stats.technologies },
-    { value: totalCommits, label: t.hero.stats.commits },
-  ]);
-  const statsData = statsRef.current;
-
-  const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);
-
-  useEffect(() => {
-    async function getGitHubData() {
-      try {
-        const response = await fetch("/data");
-        if (response.ok) {
-          const data = (await response.json()) as GitHubStatsResponse;
-          setTotalCommits(data.totalCommits);
-          setCompletedProjects(data.publicRepos);
-          setStatsSource(data.source);
-          setCachedAt(data.cachedAt);
-          // Detect partial success (some endpoints failed but others succeeded)
-          if (data.source === "github" && data.errors) {
-            setHasPartialData(true);
-          }
-        }
-      } catch (err) {
-        console.error("Failed to fetch GitHub stats:", err);
-        setStatsError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getGitHubData();
-  }, []);
-
-  useEffect(() => {
-    if (loading) return;
-    countRefs.current.forEach((el, index) => {
-      if (el) {
-        const countUP = new CountUp(el, statsData[index].value, {
-          duration: 3,
-          separator: ",",
-        });
-        if (!countUP.error) {
-          countUP.start();
-        } else {
-          console.error(countUP.error);
-        }
-      }
-    });
-  }, [loading, totalCommits, completedProjects, statsData]);
 
   return (
     <section
@@ -99,159 +23,133 @@ export default function HeroSection() {
       className="min-h-screen flex flex-col justify-center text-white py-0 relative overflow-hidden"
       aria-labelledby="hero-title"
     >
-      {/* Animated Background Blobs */}
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[100px] -z-10 animate-pulse-slow"></div>
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[120px] -z-10 animate-pulse-slower"></div>
-      <div className="absolute bottom-0 left-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-r from-[var(--primary-color)]/5 to-transparent blur-[100px] -z-10 animate-pulse-slow"></div>
+      {/* Subtle Background - Professional Engineering Aesthetic */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-primary)] via-[var(--color-bg-secondary)] to-[var(--color-bg-primary)]"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5">
+        {/* Abstract code/terminal pattern */}
+        <div className="w-full h-full bg-[linear-gradient(rgba(77,139,233,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(77,139,233,0.1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
+      </div>
 
-      <div className="flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%] flex-1">
-        {/* Left Content */}
-        <div className="w-full lg:w-[55%] xl:w-[50%] text-start md:text-left mb-10 lg:mb-0">
+      <div className="relative z-10 flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
+        {/* Left Content - Professional & Clean */}
+        <div className="w-full lg:w-[55%] xl:w-[50%] text-start mb-12 lg:mb-0">
           {/* Role Badge */}
-          <p className="text-caption font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-3">
+          <p className="text-caption font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-4">
             {t.hero.role}
           </p>
 
-          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-4 leading-tight max-w-[600px]">
+          {/* Main Heading */}
+          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-6 leading-tight max-w-[650px]">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--color-primary)]">
               {t.hero.name}
             </span>
           </h1>
 
-          <p className="text-body my-6 lg:my-8 leading-relaxed max-w-[540px]">
-            {t.hero.descParts.map((part, index) => {
-              const isHighlighted = part.includes("C#") ||
-                                   part.includes(".NET") ||
-                                   part.includes("TypeScript") ||
-                                   part.includes("React");
-              return isHighlighted ? (
-                <span key={index} className="text-[color:var(--color-primary)] font-semibold">
-                  {part}
-                </span>
-              ) : (
-                <span key={index}>{part}</span>
-              );
-            })}
+          {/* Headline - Strong Engineering Focus */}
+          <p className="text-xl md:text-2xl font-display font-medium text-white/90 mb-6 leading-snug">
+            {t.hero.headline}
           </p>
 
-          {/* Primary actions */}
-          <div className="flex flex-wrap gap-3 md:gap-4 items-center mb-8">
-            <ButtonLink href="#contact">
+          {/* Description - Professional Summary */}
+          <p className="text-body my-6 lg:my-8 leading-relaxed max-w-[580px]">
+            {t.hero.description}
+          </p>
+
+          {/* Location & Availability */}
+          <div className="flex flex-wrap gap-4 mb-8 text-sm text-gray-400">
+            <span className="flex items-center gap-2">
+              <MapPin size={16} className="text-[var(--color-primary)]" aria-hidden="true" />
+              {t.hero.location}
+            </span>
+            <span className="flex items-center gap-2">
+              <Briefcase size={16} className="text-[var(--color-primary)]" aria-hidden="true" />
+              {t.hero.availability}
+            </span>
+          </div>
+
+          {/* Primary Actions - Clear CTAs */}
+          <div className="flex flex-wrap gap-4 items-center mb-10">
+            <ButtonLink href="#contact" variant="primary">
               {t.hero.contactCta}
               <ArrowRight className="ms-2" size={18} aria-hidden="true" />
             </ButtonLink>
             <ButtonLink href="#work" variant="secondary">
               {t.hero.viewProjects}
             </ButtonLink>
-            <ResumeLink
-              className="btn btn-ghost px-6 py-3"
-            >
+            <ResumeLink className="btn btn-ghost px-6 py-3">
               <Download className="me-2" size={18} aria-hidden="true" />
               {t.hero.downloadCV}
             </ResumeLink>
           </div>
 
-          <div className="flex hero-social gap-3 text-2xl md:text-3xl">
+          {/* Social Links - Minimal & Professional */}
+          <div className="flex hero-social gap-4 text-2xl">
             <Link
               href={siteConfig.socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
+              className="group flex items-center justify-center w-12 h-12 rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
               aria-label="GitHub profile"
             >
-              <FaGithub size={20} />
+              <FaGithub size={22} />
               <span className="sr-only">GitHub</span>
             </Link>
             <Link
               href={siteConfig.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
+              className="group flex items-center justify-center w-12 h-12 rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
               aria-label="LinkedIn profile"
             >
-              <FaLinkedin size={20} />
+              <FaLinkedin size={22} />
               <span className="sr-only">LinkedIn</span>
             </Link>
             <Link
               href={siteConfig.socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center w-10 h-10 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300"
+              className="group flex items-center justify-center w-12 h-12 rounded-lg border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
               aria-label="Instagram profile"
             >
-              <FaInstagram size={20} />
+              <FaInstagram size={22} />
               <span className="sr-only">Instagram</span>
             </Link>
           </div>
         </div>
 
-        {/* Right Image */}
-        <div className="lg:w-1/2 w-full mt-8 lg:mt-0 flex justify-center relative">
-          <div className="relative rounded-full flex items-center justify-center w-64 h-64 md:w-80 md:h-80 lg:w-[17rem] lg:h-[17rem] xl:w-[18rem] xl:h-[18rem]">
-            <div className="relative hero-image w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--hero-image-from)] to-[var(--hero-image-to)]">
+        {/* Right Image - Professional Photo */}
+        <div className="lg:w-[40%] w-full flex justify-center relative">
+          <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[24rem] xl:h-[24rem]">
+            {/* Decorative Ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-[var(--color-primary)]/20 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
+
+            {/* Profile Image */}
+            <div className="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-r from-[var(--color-primary-light)] to-[var(--color-primary-lighter)] p-2">
               <Image
                 src="/images/mvdevelop.jpeg"
-                alt="Vinicius Dilly - Full Stack Developer"
-                width={320}
-                height={320}
+                alt={`${t.hero.name} - Full Stack Developer`}
+                width={384}
+                height={384}
                 className="w-full h-full object-cover rounded-full"
                 priority
               />
             </div>
+
+            {/* Tech Stack Indicators - Subtle & Meaningful */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center" title="C#">
+                <span className="text-xs font-bold text-[var(--color-primary)]">#</span>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center" title=".NET">
+                <span className="text-xs font-bold text-[var(--color-primary)]">N</span>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center" title="TypeScript">
+                <span className="text-xs font-bold text-[var(--color-primary)]">TS</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Stats */}
-      <div
-        className="stats px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] mt-10 lg:mt-0 pb-10 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-y-6"
-        aria-busy={loading}
-        role="region"
-        aria-label="Statistics"
-      >
-        {statsError && (
-          <div role="alert" className="col-span-full p-4 rounded-lg bg-red-500/10 border border-red-500/20">
-            <p className="text-sm text-red-400 font-medium">
-              ⚠️ Unable to load GitHub statistics. Showing cached values.
-            </p>
-          </div>
-        )}
-        {statsSource === "fallback" && !statsError && (
-          <div role="status" className="col-span-full flex flex-col gap-1">
-            <p className="text-sm text-[var(--color-primary)]/80 font-medium">
-              ℹ️ GitHub API unavailable. Showing estimated statistics.
-            </p>
-            {cachedAt && (
-              <p className="text-xs text-gray-500">
-                Last cache: {new Date(cachedAt).toLocaleString()}
-              </p>
-            )}
-          </div>
-        )}
-        {hasPartialData && (
-          <div role="status" className="col-span-full p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20">
-            <p className="text-xs text-yellow-400">
-              ⚡ Partial data available - some GitHub metrics unavailable
-            </p>
-          </div>
-        )}
-        {statsData.map((stat, index) => (
-          <div key={index} className="flex flex-col md:flex-row gap-2 items-start md:items-center">
-            <h2
-              ref={(el) => {
-                if (el) countRefs.current[index] = el;
-              }}
-              className="text-3xl md:text-4xl lg:text-5xl font-unbounded font-bold"
-              aria-live="polite"
-            >
-              0
-            </h2>
-            <p className="text-sm md:text-base lg:text-xl ps-0 md:ps-4 text-gray-400 font-semibold whitespace-pre-line md:whitespace-normal">
-              {stat.label}
-            </p>
-          </div>
-        ))}
       </div>
     </section>
   );

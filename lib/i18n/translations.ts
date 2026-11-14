@@ -57,18 +57,16 @@ export type Translations = {
   nav: { links: NavLinks };
   hero: {
     role: string;
+    location: string;
+    availability: string;
     greeting: string;
     name: string;
-    descParts: string[];
+    headline: string;
+    description: string;
     downloadCV: string;
     viewProjects: string;
     contactCta: string;
-    stats: {
-      experience: string;
-      completed: string;
-      technologies: string;
-      commits: string;
-    };
+    availableBadge: string;
   };
   services: {
     label: string;
@@ -140,26 +138,16 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       role: "Full Stack Developer · Backend Engineering",
+      location: "Rio de Janeiro, Brazil",
+      availability: "Available for new opportunities",
       greeting: "Hello, I'm",
       name: "Vinicius Dilly",
-      descParts: [
-        "I build ",
-        "backend systems and REST APIs",
-        " with ",
-        "C# and .NET",
-        ", then connect them to modern frontends using ",
-        "TypeScript and React",
-        ". I care about clean architecture, readable code, and solutions that scale — from first commit to production deployment.",
-      ],
+      headline: "Backend Engineer who builds robust APIs and scalable systems with C#, .NET, and TypeScript",
+      description: "I design and implement production-grade software solutions, specializing in distributed systems, RESTful APIs, and modern web architectures. With expertise spanning database optimization, cloud infrastructure, and full-stack development, I transform complex business requirements into elegant technical solutions.",
       downloadCV: "Download CV",
       viewProjects: "View Projects",
       contactCta: "Let's Talk",
-      stats: {
-        experience: "+ Years of\nExperience",
-        completed: "Completed\nProjects",
-        technologies: "Technologies\nUsed",
-        commits: "Code\nCommits",
-      },
+      availableBadge: "Open to Work",
     },
     services: {
       label: "What I Do",
@@ -280,24 +268,16 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       role: "Desenvolvedor Full Stack · Engenharia de Backend",
+      location: "Rio de Janeiro, Brasil",
+      availability: "Disponível para novas oportunidades",
       greeting: "Olá, eu sou",
       name: "Vinicius Dilly",
-      descParts: [
-        "Construo sistemas backend e APIs REST com ",
-        "C# e .NET",
-        ", e conecto eles a frontends modernos usando ",
-        "TypeScript e React",
-        ". Prezo por arquitetura limpa, código legível e soluções que escalam — do primeiro commit até a produção.",
-      ],
+      headline: "Engenheiro de Backend especializado em APIs robustas e sistemas escaláveis com C#, .NET e TypeScript",
+      description: "Desenvolvo soluções de software de nível produção, com foco em sistemas distribuídos, APIs RESTful e arquiteturas web modernas. Com expertise em otimização de bancos de dados, infraestrutura cloud e desenvolvimento full-stack, transformo requisitos complexos de negócio em soluções técnicas elegantes.",
       downloadCV: "Baixar Currículo",
       viewProjects: "Ver Projetos",
       contactCta: "Vamos Conversar",
-      stats: {
-        experience: "+ Anos de\nExperiência",
-        completed: "Projetos\nConcluídos",
-        technologies: "Tecnologias\nUtilizadas",
-        commits: "Commits de\nCódigo",
-      },
+      availableBadge: "Disponível para Trabalho",
     },
     services: {
       label: "O Que Eu Faço",
