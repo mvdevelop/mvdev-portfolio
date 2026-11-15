@@ -28,7 +28,7 @@ const unbounded = Unbounded({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+const englishMetadata: Metadata = {
   metadataBase: new URL("https://www.mvdevelop.com.br"),
   title: {
     default: "MvDev | Full Stack Developer · Backend Engineering",
@@ -65,6 +65,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    languages: {
+      en: "/en",
+      pt: "/pt",
+    },
   },
   openGraph: {
     type: "website",
@@ -116,13 +120,62 @@ export const metadata: Metadata = {
   },
 };
 
+const portugueseMetadata: Metadata = {
+  ...englishMetadata,
+  title: {
+    default: "MvDev | Desenvolvedor Full Stack · Engenharia de Backend",
+    template: "%s | MvDev Portfolio",
+  },
+  description:
+    "Desenvolvedor Full Stack especializado em C#, .NET, TypeScript, React e Next.js. Construindo sistemas backend escaláveis e aplicações web modernas.",
+  keywords: [
+    "desenvolvedor full stack",
+    "engenheiro backend",
+    "C#",
+    ".NET",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Portfólio",
+    "Vinicius Dilly",
+    "MVDevelop",
+  ],
+  openGraph: {
+    ...englishMetadata.openGraph!,
+    locale: "pt_BR",
+    title: "MvDev | Desenvolvedor Full Stack · Engenharia de Backend",
+    description:
+      "Desenvolvedor Full Stack especializado em C#, .NET, TypeScript, React e Next.js. Construindo sistemas backend escaláveis e aplicações web modernas.",
+  },
+  twitter: {
+    ...englishMetadata.twitter!,
+    title: "MvDev | Desenvolvedor Full Stack · Engenharia de Backend",
+    description:
+      "Desenvolvedor Full Stack especializado em C#, .NET, TypeScript, React e Next.js.",
+  },
+};
+
+// Dynamic metadata based on language detected from request headers
+// Language-aware metadata based on query params or Accept-Language header
+export async function generateMetadata({ searchParams }: { searchParams?: Promise<Record<string, string>> }): Promise<Metadata> {
+  // Check for language parameter in URL
+  if (searchParams) {
+    const params = await searchParams;
+    if (params.lang === 'pt') return portugueseMetadata;
+  }
+
+  // Default to English metadata
+  return englishMetadata;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${unbounded.variable}`}
       >

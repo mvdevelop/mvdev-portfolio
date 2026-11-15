@@ -11,15 +11,17 @@ const path = require("path");
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require("fs");
 
-const HTML_FILE = path.join(__dirname, "..", "public", "pdf", "mvmd-pt-resume.html");
-const PDF_OUTPUT = path.join(__dirname, "..", "public", "pdf", "mvmd-pt-resume.pdf");
+const FILES = [
+  { html: "mvmd-en-resume.html", pdf: "mvmd-en-resume.pdf", lang: "English" },
+  { html: "mvmd-pt-resume.html", pdf: "mvmd-pt-resume.pdf", lang: "Portuguese" },
+];
 
-async function generatePDF() {
-  console.log("🚀 Iniciando geração do PDF do currículo em português...");
+async function generatePDF(htmlFile, pdfOutput, langName) {
+  const fullPath = path.join(__dirname, "..", "public", "pdf", htmlFile);
 
-  if (!fs.existsSync(HTML_FILE)) {
-    console.error(`❌ Arquivo HTML não encontrado: ${HTML_FILE}`);
-    process.exit(1);
+  if (!fs.existsSync(fullPath)) {
+    console.error(`❌ HTML file not found: ${fullPath}`);
+    return false;
   }
 
   let browser;
@@ -32,25 +34,43 @@ async function generatePDF() {
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 800 });
 
-    const htmlUrl = `file://${HTML_FILE.replace(/\\/g, "/")}`;
+    const htmlUrl = `file://${fullPath.replace(/\\/g, "/")}`;
     await page.goto(htmlUrl, { waitUntil: "networkidle0" });
     await page.waitForFunction(() => document.fonts.ready).catch(() => {});
 
     await page.pdf({
-      path: PDF_OUTPUT,
+      path: pdfOutput,
       format: "A4",
       printBackground: true,
       margin: { top: "20mm", bottom: "20mm", left: "20mm", right: "20mm" },
     });
 
-    console.log(`✅ PDF gerado com sucesso: ${PDF_OUTPUT}`);
-    console.log(`📄 Tamanho: ${(fs.statSync(PDF_OUTPUT).size / 1024).toFixed(2)} KB`);
+    const sizeKB = (fs.statSync(pdfOutput).size / 1024).toFixed(2);
+    console.log(`✅ ${langName} PDF generated: ${path.basename(pdfOutput)} (${sizeKB} KB)`);
+    return true;
   } catch (error) {
-    console.error("❌ Erro ao gerar PDF:", error.message);
-    process.exit(1);
+    console.error(`❌ Error generating ${langName} PDF:`, error.message);
+    return false;
   } finally {
     if (browser) await browser.close();
   }
 }
 
-generatePDF();
+async function main() {
+  console.log("🚀 Starting PDF generation for all resume versions...\n");
+
+  let successCount = 0;
+  for (const { html, pdf, lang } of FILES) {
+    const outputPath = path.join(__dirname, "..", "public", "pdf", pdf);
+    const ok = await generatePDF(html, outputPath, lang);
+    if (ok) successCount++;
+  }
+
+  console.log(`\n✨ Done! ${successCount}/${FILES.length} PDF(s) generated successfully.`);
+
+  if (successCount === 0) {
+    process.exit(1);
+  }
+}
+
+main();

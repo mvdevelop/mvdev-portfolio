@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinicius Dilly - Professional Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: white;
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #4d8be9;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #4d8be9;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact {
+            font-size: 11px;
+            color: #666;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #4d8be9;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        /* Experience & Education Items */
+        .item {
+            margin-bottom: 16px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .item-date {
+            font-size: 11px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .item-subtitle {
+            font-size: 12px;
+            color: #4d8be9;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .item-description {
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #eff6ff;
+            color: #4d8be9;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .badge-free {
+            background: #ecfdf5;
+            color: #059669;
+            border-color: #a7f3d0;
+        }
+
+        .badge-type {
+            background: #f3f4f6;
+            color: #6b7280;
+            border-color: #e5e7eb;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-category h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            font-size: 11px;
+            color: #4b5563;
+            margin-bottom: 4px;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #4d8be9;
+            font-size: 10px;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 15mm;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* Instructions (hidden in print) */
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #92400e;
+        }
+
+        .instructions strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Instructions (does not appear in PDF) -->
+    <div class="instructions no-print">
+        <strong>💡 How to generate the PDF:</strong><br>
+        1. Open this file in Google Chrome<br>
+        2. Press <code>Ctrl+P</code> (or Cmd+P on Mac)<br>
+        3. Select "Save as PDF"<br>
+        4. Settings: Margins = Default, Scale = 100%, Uncheck "Headers and footers"<br>
+        5. Save as <code>mvmd-en-resume.pdf</code> in the public/pdf/ folder
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="name">VINICIUS DILLY</h1>
+        <p class="tagline">Full Stack Developer · Backend Engineering</p>
+        <div class="contact">
+            <span>📍 Teresópolis, Rio de Janeiro, Brazil</span>
+            <span>📧 marcosvmdilly@gmail.com</span>
+            <span>📱 (+55) 21 99050-6596</span>
+        </div>
+        <div class="contact" style="margin-top: 5px;">
+            <span>🔗 linkedin.com/in/vinicius-dilly</span>
+            <span>💻 github.com/mvdevelop</span>
+        </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="about-text">
+            Full Stack Developer with a focus on backend engineering, currently studying Computer Science
+            and working professionally in the Microsoft ecosystem. Solid experience building RESTful APIs,
+            web applications, and system integrations using C#, .NET Core, TypeScript, and React. Committed
+            to clean architecture, maintainable code, and solutions that scale — from concept to production.
+        </p>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">Full Stack Developer</span>
+                <span class="item-date">September 2023 — Present</span>
+            </div>
+            <div class="item-subtitle">19SL · Remote · Rio de Janeiro, Brazil</div>
+            <p class="item-description">
+                Full Stack development in a professional environment, building web applications and system integrations
+                using the Microsoft ecosystem. Collaboration in agile teams with iterative deliveries
+                focused on business value.
+            </p>
+            <div class="badges">
+                <span class="badge">C#</span>
+                <span class="badge">.NET Core</span>
+                <span class="badge">Entity Framework</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">React</span>
+                <span class="badge">REST APIs</span>
+                <span class="badge">Git</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Background -->
+    <section class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">Computer Science</span>
+                <span class="item-date">2022 — 2026</span>
+            </div>
+            <div class="item-subtitle">Unif · In progress</div>
+            <div class="badges">
+                <span class="badge badge-type">Degree</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">DevOps Engineering</span>
+                <span class="item-date">2024 — 2025</span>
+            </div>
+            <div class="item-subtitle">FIAP · Technical course</div>
+            <div class="badges">
+                <span class="badge badge-type">Technical Course</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications and Courses -->
+    <section class="section">
+        <h2 class="section-title">Certifications and Courses</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">English Proficiency Level C1</span>
+                <span class="item-date">2021 — 2023</span>
+            </div>
+            <div class="item-subtitle">IBL · Language certification</div>
+            <div class="badges">
+                <span class="badge badge-type">Language</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">CS50's Introduction to Computer Science</span>
+                <span class="item-date">2021 — 2022</span>
+            </div>
+            <div class="item-subtitle">Harvard University · Online course</div>
+            <div class="badges">
+                <span class="badge badge-type">Course</span>
+                <span class="badge badge-free">Free Course</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Backend</h4>
+                <ul class="skill-list">
+                    <li>C# and .NET Core</li>
+                    <li>ASP.NET Web APIs</li>
+                    <li>Entity Framework Core</li>
+                    <li>Node.js / Express</li>
+                    <li>Java / Spring Boot</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Frontend</h4>
+                <ul class="skill-list">
+                    <li>TypeScript</li>
+                    <li>React & Next.js</li>
+                    <li>Tailwind CSS</li>
+                    <li>Blazor Server/WASM</li>
+                    <li>JavaScript ES6+</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Databases</h4>
+                <ul class="skill-list">
+                    <li>SQL Server</li>
+                    <li>MongoDB</li>
+                    <li>PostgreSQL</li>
+                    <li>Supabase</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>DevOps & Tools</h4>
+                <ul class="skill-list">
+                    <li>Docker</li>
+                    <li>Git / GitHub</li>
+                    <li>AWS (basic concepts)</li>
+                    <li>Google Cloud Platform</li>
+                    <li>Linux / Bash</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Practices -->
+    <section class="section">
+        <h2 class="section-title">Engineering Practices</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <ul class="skill-list">
+                    <li>Clean Architecture</li>
+                    <li>SOLID Principles</li>
+                    <li>Design Patterns</li>
+                    <li>Dependency Injection</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <ul class="skill-list">
+                    <li>REST API Design</li>
+                    <li>JWT/OAuth Authentication</li>
+                    <li>CI/CD (concepts)</li>
+                    <li>Scrum / Agile</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 10px; color: #9ca3af;">
+        <p>References available upon request · Last updated: November 2024</p>
+    </footer>
+</body>
+</html>
