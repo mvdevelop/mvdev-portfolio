@@ -1,8 +1,8 @@
 # Itens Pendentes — MvDev Portfolio
 
-**Data:** 13 de Novembro de 2024  
-**Status do Projeto:** 97% Completo  
-**Próximo Passo:** Gerar PDF em português e configurar variáveis de ambiente
+**Data:** 15 de Novembro de 2024  
+**Status do Projeto:** 99% Completo  
+**Próximo Passo:** Configurar variáveis de ambiente para deploy
 
 ---
 
@@ -13,34 +13,42 @@
 | **Fases Implementadas** | 8 | 8 | 0 | 100% ✅ |
 | **Build & TypeScript** | 3 | 3 | 0 | 100% ✅ |
 | **Responsividade** | 5 | 5 | 0 | 100% ✅ |
-| **Acessibilidade** | 4 | 3 | 1 | 75% ⚠️ |
-| **Conteúdo EN/PT** | 6 | 5 | 1 | 83% ⚠️ |
+| **Acessibilidade** | 4 | 4 | 0 | 100% ✅ |
+| **Conteúdo EN/PT** | 6 | 6 | 0 | 100% ✅ |
+| **SEO/OG Dinâmicas** | 3 | 3 | 0 | 100% ✅ |
 
 ---
 
-## 🔴 PENDÊNCIAS CRÍTICAS (Bloqueiam Deploy)
+## ✅ ITENS CONCLUÍDOS NA ÚLTIMA ITERAÇÃO
 
-### 1. PDF Currículo em Português
-**Impacto:** Alto — Quebra funcionalidade bilíngue quando PT está ativo  
-**Ação Necessária:** Gerar arquivo `mvmd-pt-resume.pdf`
+### 1. PDF Currículo em Português ✅
+**Status:** Gerado automaticamente via Puppeteer  
+**Tamanho:** 242KB  
+**Script:** `scripts/generate-pt-pdf.js`
 
 ```bash
-# Como gerar:
-1. Abra: public/pdf/mvmd-pt-resume.html
-2. Pressione Ctrl+P
-3. Selecione "Salvar como PDF"
-4. Salve como: mvmd-pt-resume.pdf
-5. Local: public/pdf/
+# Para regenerar no futuro:
+node scripts/generate-pt-pdf.js
 ```
 
-**Arquivos disponíveis:**
-- ✅ Template HTML: `public/pdf/mvmd-pt-resume.html` (11KB)
-- ✅ Instruções detalhadas: `public/pdf/INSTRUICOES.md`
-- ❌ PDF gerado: `public/pdf/mvmd-pt-resume.pdf`
+### 2. Correção de Bug Título Hero (telas largas) ✅
+**Problema:** Título aparecia grande demais em telas >1440p  
+**Correção:** 
+- Ajustado `clamp()` de `2rem, 4vw, 2.5rem` para `1.75rem, 3.5vw, 2rem`
+- Adicionado `max-w` responsivo no H1 do HeroSection
+- Limitado a 680px em telas xl+
+
+### 3. Open Graph Dinâmicas por Projeto ✅
+**Melhoria:** OG agora gera imagem personalizada por projeto
+- Parâmetros dinâmicos: `title`, `subtitle`, `project`
+- Font size adaptativo baseado no tamanho do título
+- Layout otimizado para compartilhamento social
 
 ---
 
-### 2. Variável RESEND_API_KEY (para emails reais)
+## 🔴 PENDÊNCIA RESTANTE (Não bloqueante)
+
+### RESEND_API_KEY (para emails reais)
 **Impacto:** Médio — Formulário funciona localmente (mock), mas não envia em produção  
 **Configuração Atual:** `.env.local` com template pronto
 
@@ -54,6 +62,18 @@
 ```
 
 **Status atual:** Funcional com fallback para mailto:
+
+---
+
+## 🟡 PENDÊNCIA DE CONTEÚDO (Aguardando Usuário)
+
+Questões técnicas pendentes que precisam ser respondidas:
+
+| # | Pergunta | Impacto | Status |
+|---|----------|---------|--------|
+| 1 | Experiências da **Brs Inc.** são reais? Devem ser adicionadas? | Atualizar currículo | ⏳ Aguardando confirmação |
+| 2 | **Métricas/resultados da 19SL**? | Enriquecer cards de experiência | ⏳ Aguardando dados |
+| 3 | Manter claims **Blazor/AWS/Docker** no about? | Justificativa técnica vs evidência | ⏳ Aguardando decisão |
 
 ---
 
@@ -91,30 +111,42 @@ Questões técnicas pendentes que afetam o conteúdo:
 - ✅ Tipografia escalonada com clamp()
 - ✅ Ícones restaurados (react-icons)
 - ✅ Avatar 8-bit removido (voltou foto original)
+- ✅ **Bug corrigido:** Título Hero ajustado para telas largas
 
 ### Fases 07-08 — Funcionalidades
 - ✅ Formulário de contato funcional (API route + Zod)
 - ✅ Sistema bilíngue de currículos (EN/PT)
 - ✅ Navegação simplificada (sem página `/projects`)
 - ✅ Ferramentas otimizadas (puppeteer instalado)
+- ✅ **PDF PT gerado automaticamente** (242KB)
+
+### SEO e Performance
+- ✅ Open Graph dinâmicas por projeto
+- ✅ Analytics Plausible configurado
+- ✅ Testes E2E (Playwright)
+- ✅ Lighthouse CI configurado
+- ✅ Light/Dark mode toggle
 
 ---
 
 ## 🎯 CHECKLIST PARA DEPLOY EM PRODUÇÃO
 
 ### Obrigatório (antes de ir ao ar)
-- [ ] Criar `public/pdf/mvmd-pt-resume.pdf`
-- [ ] Configurar `RESEND_API_KEY` se desejar emails reais
-- [ ] Testar formulário de contato localmente
-- [ ] Verificar responsividade em dispositivo móvel real
-- [ ] Confirmar que todos os ícones aparecem corretamente
+- [x] ✅ Gerar `public/pdf/mvmd-pt-resume.pdf` (feito via script)
+- [ ] ⚠️ Configurar `RESEND_API_KEY` se desejar emails reais
+- [x] ✅ Testar formulário de contato localmente
+- [x] ✅ Verificar responsividade em dispositivo móvel real
+- [x] ✅ Confirmar que todos os ícones aparecem corretamente
+- [x] ✅ Build passando sem erros
+- [x] ✅ TypeScript limpo
+- [x] ✅ ESLint clean
 
 ### Recomendado (pós-deploy)
-- [ ] Adicionar analytics (Plausible/PostHog)
-- [ ] Configurar Open Graph dinâmicas
-- [ ] Executar Lighthouse audit completo
-- [ ] Testar acessibilidade com axe DevTools
-- [ ] Configurar monitoramento de erros (Sentry)
+- [x] ✅ Analytics Plausible configurado
+- [x] ✅ Open Graph dinâmicas implementadas
+- [ ] ⏳ Executar Lighthouse audit completo pós-deploy
+- [ ] ⏳ Testar acessibilidade com axe DevTools
+- [ ] ⏳ Configurar monitoramento de erros (Sentry)
 
 ---
 
@@ -122,36 +154,38 @@ Questões técnicas pendentes que afetam o conteúdo:
 
 | Métrica | Valor | Status |
 |---------|-------|--------|
-| Arquivos TypeScript | ~45 | ✅ |
-| Linhas de código | ~3,500 | ✅ |
+| Arquivos TypeScript | ~50 | ✅ |
+| Linhas de código | ~3,800 | ✅ |
 | Componentes React | 12 | ✅ |
-| Páginas geradas | 4 | ✅ |
+| Páginas geradas | 5 (+ 4 case studies) | ✅ |
 | Idiomas suportados | 2 (EN, PT) | ✅ |
 | Erros TypeScript | 0 | ✅ Clean |
 | Warnings ESLint | 0 | ✅ Clean |
-| Dependências prod | 12 | ✅ Otimizado |
-| Tamanho bundle (est.) | ~180KB | ✅ Bom |
-| Tempo build | ~45s | ✅ Razoável |
+| Build status | Passing | ✅ |
+| PDF PT disponível | 242KB | ✅ |
+| TempO build | ~68s | ✅ |
 
 ---
 
 ## 🔧 PRÓXIMOS PASSOS SUGERIDOS
 
-### Curto Prazo (Hoje/Tomorrow)
-1. **Gerar PDF PT** (5 min) — siga instruções em `public/pdf/INSTRUICOES.md`
-2. **Testar local** (10 min) — `npm run dev` e verificar hero + footer
-3. **Responder perguntas** (15 min) — confirmar experiências adicionais
+### Curto Prazo (Imediato)
+1. **[NÃO NECESSÁRIO]** Gerar PDF PT → ✅ Já automatizado via script
+2. **[NÃO NECESSÁRIO]** Corrigir bug título Hero → ✅ Já corrigido
+3. **[NÃO NECESSÁRIO]** Implementar OG dinâmicas → ✅ Já implementado
+4. **Testar local** (10 min) — `npm run dev` e verificar todas as seções
+5. **Responder perguntas** (15 min) — confirmar experiências adicionais
 
 ### Médio Prazo (1 semana)
-4. **Deploy Vercel** — configurarem variáveis de ambiente
-5. **Configurar domínio** — mvdevelop.com.br ou similar
-6. **Adicionar analytics** — Plausible.io (recomendação privacy-friendly)
+6. **Configurar RESEND_API_KEY** para emails reais
+7. **Deploy Vercel** — configurar variáveis de ambiente
+8. **Configurar domínio** — mvdevelop.com.br ou similar
 
 ### Longo Prazo (1 mês+)
-7. **Implementar OG dinâmicas** — por projeto usando API como Resizer.sh
-8. **Criar blog** — MDX simples para artigos técnicos
-9. **Otimizar performance** — lazy loading agressivo, image optimization
-10. **Estabelecer CI/CD** — testes automatizados em PRs
+9. **Executar Lighthouse audit completo** pós-deploy
+10. **Testar acessibilidade** com axe DevTools
+11. **Adicionar monitoring** (Sentry ou similar)
+12. **Criar blog** com MDX (opcional)
 
 ---
 
@@ -176,21 +210,34 @@ Questões técnicas pendentes que afetam o conteúdo:
 ---
 
 *Documento mantido atualizado após cada implementação significativa.*  
-*Última atualização: 13 de Novembro de 2024*
+*Última atualização: 15 de Novembro de 2024*
 
 ---
 
-## 📝 ATUALIZAÇÕES RECENTES (13/11/2024)
+## 📝 ATUALIZAÇÕES RECENTES (15/11/2024)
 
-### Correções Implementadas:
-1. **Redução da foto no Hero** - Diminuída ~15% em telas grandes (lg:w-[17rem] em vez de lg:w-96)
-2. **Correção de warnings ESLint** - Variáveis não utilizadas removidas
-3. **Tipografia otimizada** - Text-h1 ajustado para melhor leitura em telas largas
+### Correeções Implementadas:
+1. **Bug correting Title Hero Size** - Ajustado clamp() de `2rem, 4vw, 2.5rem` para `1.75rem, 3.5vw, 2rem`
+2. **Max-width responsivo no H1** - Adicionado `max-w-[600px] xl:max-w-[680px]` no HeroSection
+3. **PDF PT gerado automaticamente** - Script Puppeteer criado em `scripts/generate-pt-pdf.js`
+4. **OG dinâmicas por projeto** - Endpoint `/api/og` agora suporta parâmetros de projeto
+5. **Metadata de projeto melhorada** - Imagens OG únicas por projeto nos case studies
 
 ### Status Atualizado:
 | Métrica | Valor Anterior | Novo Valor |
 |---------|---------------|------------|
-| Avatar Hero | 384px (w-96) | 272px (w-[17rem]) ~15% menor |
-| Warnings Lint | 2 | 0 |
-| TypeScript Errors | 0 | 0 |
+| Título H1 max | 2.5rem fixo | 2rem responsivo |
+| PDF PT | ❌ Ausente | ✅ 242KB |
+| OG por projeto | ⚠️ Estático | ✅ Dinâmico |
+| Scripts de geração | 0 | 1 (Puppeteer) |
+| Build status | ✅ | ✅ |
+
+---
+
+## 📁 NOVOS ARQUIVOS CRIADOS
+
+| Arquivo | Propósito |
+|---------|-----------|
+| `scripts/generate-pt-pdf.js` | Geração automática do PDF currículo PT |
+| `public/pdf/mvmd-pt-resume.pdf` | Currículo em português (242KB) |
 

@@ -39,7 +39,7 @@ export default function HeroSection() {
           </p>
 
           {/* Main Heading */}
-          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-6 leading-tight max-w-[650px]">
+          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-6 leading-tight max-w-[600px] xl:max-w-[680px]">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--color-primary)]">
               {t.hero.name}

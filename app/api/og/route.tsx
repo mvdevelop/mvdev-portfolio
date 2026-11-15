@@ -9,6 +9,9 @@ export function GET(request: NextRequest) {
   const subtitle = searchParams.get('subtitle') || 'Full Stack Developer';
   const project = searchParams.get('project');
 
+  // Calculate safe font size based on title length
+  const titleFontSize = Math.max(48, 72 - Math.floor(title.length / 5));
+
   return new ImageResponse(
     (
       <div
@@ -39,14 +42,14 @@ export function GET(request: NextRequest) {
         />
 
         {/* Content */}
-        <div style={{ zIndex: 1 }}>
+        <div style={{ zIndex: 1, maxWidth: '1040px' }}>
           {/* Top label */}
           <div
             style={{
-              fontSize: '24px',
+              fontSize: '20px',
               fontWeight: '600',
               color: '#4d8be9',
-              marginBottom: '24px',
+              marginBottom: '20px',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
             }}
@@ -57,12 +60,12 @@ export function GET(request: NextRequest) {
           {/* Main title */}
           <h1
             style={{
-              fontSize: '72px',
+              fontSize: titleFontSize,
               fontWeight: 'bold',
               color: '#ffffff',
               lineHeight: 1.1,
-              margin: '0 0 32px 0',
-              maxWidth: '800px',
+              margin: '0 0 24px 0',
+              wordBreak: 'break-word',
             }}
           >
             {title}
@@ -71,39 +74,40 @@ export function GET(request: NextRequest) {
           {/* Subtitle */}
           <p
             style={{
-              fontSize: '32px',
+              fontSize: '24px',
               color: '#a5adb8',
               margin: '0',
+              lineHeight: 1.4,
               maxWidth: '700px',
             }}
           >
             {subtitle}
           </p>
+        </div>
 
-          {/* Bottom accent line */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '80px',
-              left: '80px',
-              right: '80px',
-              height: '2px',
-              background: 'linear-gradient(90deg, #4d8be9 0%, transparent 100%)',
-            }}
-          />
+        {/* Bottom accent line */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '80px',
+            left: '80px',
+            right: '80px',
+            height: '2px',
+            background: 'linear-gradient(90deg, #4d8be9 0%, transparent 100%)',
+          }}
+        />
 
-          {/* Footer info */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '40px',
-              left: '80px',
-              fontSize: '20px',
-              color: '#6b7280',
-            }}
-          >
-            Full Stack Developer · Backend Engineering
-          </div>
+        {/* Footer info */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '80px',
+            fontSize: '18px',
+            color: '#6b7280',
+          }}
+        >
+          Full Stack Developer · Backend Engineering
         </div>
       </div>
     ),

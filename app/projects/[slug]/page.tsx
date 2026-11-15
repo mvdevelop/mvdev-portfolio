@@ -29,6 +29,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const ogParams = new URLSearchParams({
+    title: project.title,
+    subtitle: project.category,
+    project: project.title,
+  });
+
   return {
     title: `${project.title} | MvDev Portfolio`,
     description: project.summary,
@@ -36,7 +42,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${project.title} - Case Study`,
       description: project.summary,
       url: `${siteConfig.websiteUrl}/projects/${project.slug}`,
+      type: "website",
       images: [
+        {
+          url: `/api/og?${ogParams.toString()}`,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} case study preview`,
+        },
         {
           url: project.imageUrl,
           width: 1200,

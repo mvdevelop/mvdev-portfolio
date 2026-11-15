@@ -1,8 +1,8 @@
 # 📋 Pendências para Implementação — MvDev Portfolio
 
-**Data:** 14 de Novembro de 2026  
-**Versão:** 3.0  
-**Status Geral:** 98% Completo | 2% Pendente (bloqueadores manuais + melhorias)
+**Data:** 15 de Novembro de 2024  
+**Versão:** 3.1  
+**Status Geral:** 99% Completo | 1% Pendente (configuração manual apenas)
 
 ---
 
@@ -18,29 +18,31 @@
 
 ---
 
-## 🔴 PENDÊNCIAS CRÍTICAS (Bloqueiam Deploy Completo)
+## ✅ PENDÊNCIAS RESOLVIDAS NA ÚLTIMA ITERAÇÃO
 
-### 1. PDF Currículo em Português
-**Impacto:** Alto — Quebra funcionalidade bilíngue quando PT está ativo  
-**Ação Necessária:** Gerar manualmente via navegador
+### 1. PDF Currículo em Português ✅
+**Status:** Resolvido via script Puppeteer
+**Comando:** `node scripts/generate-pt-pdf.js`
+**Resultado:** `public/pdf/mvmd-pt-resume.pdf` (242KB) gerado automaticamente
 
-```bash
-# Abra no navegador:
-start public/pdf/mvmd-pt-resume.html
+### 2. Bug Título Hero em Telas Grandes ✅
+**Status:** Corrigido
+**Alterações:**
+- `app/globals.css:148` — clamp alterado de `2rem, 4vw, 2.5rem` para `1.75rem, 3.5vw, 2rem`
+- `components/HeroSection.tsx:42` — max-w adicionado: `max-w-[600px] xl:max-w-[680px]`
 
-# Pressione Ctrl+P → Salvar como PDF
-# Nome do arquivo: mvmd-pt-resume.pdf
-# Local: public/pdf/
-```
-
-**Arquivos disponíveis:**
-- ✅ Template HTML: `public/pdf/mvmd-pt-resume.html` (12KB)
-- ✅ Instruções: `public/pdf/INSTRUICOES.md`
-- ❌ PDF gerado: `public/pdf/mvmd-pt-resume.pdf` (ausente)
+### 3. Open Graph Dinâmicas por Projeto ✅
+**Status:** Implementado
+**Melhorias:**
+- `/api/og` suporta parâmetros: `title`, `subtitle`, `project`
+- Font size adaptativo baseado no comprimento do título
+- Metadata OG específica por projeto em `app/projects/[slug]/page.tsx`
 
 ---
 
-### 2. Configuração RESEND_API_KEY (para emails reais)
+## 🔴 PENDÊNCIA RESTANTE (Não Bloqueante)
+
+### Configurar RESEND_API_KEY (para emails reais)
 **Impacto:** Médio — Formulário funciona localmente (mock), mas não envia em produção  
 **Configuração atual:** `.env.local` com template pronto
 
@@ -54,39 +56,7 @@ RESEND_API_KEY=re_sua_chave_aqui
 # 4. Descomente seção Resend em app/api/contact/route.ts
 ```
 
----
-
-## ⚠️ PENDÊNCIA TÉCNICA — BUG NO TÍTULO (Prompt 04)
-
-### Problema Identificado
-O título da seção Hero aparece **grande demais em telas grandes** (>27" / 1440p+).
-
-**Locais afetados:**
-- `app/globals.css:148` — Classe `.text-h1` com `clamp(2rem, 4vw, 2.5rem)`
-- `components/HeroSection.tsx:42` — `<h1>` usando a classe `text-h1`
-
-**Código atual (problema):**
-```css
-.text-h1 {
-  font-size: clamp(2rem, 4vw, 2.5rem); /* Máximo 2.5rem em telas >1920px */
-}
-```
-
-**Correção sugerida:**
-```css
-/* Opção 1: Reduzir máximo para 2rem */
-.text-h1 {
-  font-size: clamp(2rem, 3.5vw, 2rem);
-}
-
-/* Opção 2: Limitar largura do container */
-<h1 className="text-h1 max-w-[800px] xl:max-w-[900px]">
-```
-
-**Passos para corrigir:**
-1. Abrir `app/globals.css` linha 148
-2. Alterar o valor máximo do `clamp()` de `2.5rem` para `2rem`
-3. Ou adicionar `max-w` no componente HeroSection
+**Status atual:** Funcional com fallback para mailto:
 
 ---
 
