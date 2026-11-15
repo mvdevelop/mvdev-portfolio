@@ -144,11 +144,15 @@ export default function ResumeSection() {
                         edu.type === "course" ? "bg-green-500/20 text-green-400" :
                         "bg-purple-500/20 text-purple-400"
                       }`}>
-                        {edu.type === "academic" ? "Degree" : edu.type === "course" ? "Course" : "Language"}
+                        {edu.type === "academic"
+                          ? (language === "pt" ? "Graduação" : "Degree")
+                          : edu.type === "course"
+                            ? (language === "pt" ? "Curso" : "Course")
+                            : (language === "pt" ? "Idioma" : "Language")}
                       </span>
                       {edu.free && (
                         <span className="text-xs px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 font-medium">
-                          Free Course
+                          {language === "pt" ? "Curso Gratuito" : "Free Course"}
                         </span>
                       )}
                     </div>
