@@ -30,9 +30,9 @@ export default function HeroSection() {
         <div className="w-full h-full bg-[linear-gradient(rgba(77,139,233,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(77,139,233,0.1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] pt-32 md:pt-36 lg:pt-28 xl:pt-32 pb-32 min-h-screen gap-12 lg:gap-0">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] pt-32 md:pt-36 lg:pt-28 xl:pt-32 pb-32 min-h-screen gap-12 lg:gap-16">
         {/* Left Content - Professional & Clean */}
-        <div className="w-full lg:w-[55%] xl:w-[50%] text-start mb-12 lg:mb-0">
+        <div className="w-full lg:w-[55%] xl:w-[50%] text-start order-2 lg:order-1">
           {/* Role Badge */}
           <p className="text-caption font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-4">
             {t.hero.role}
@@ -118,9 +118,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Image - Professional Photo */}
-        <div className="lg:w-[40%] w-full flex justify-center relative">
-          <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[24rem] xl:h-[24rem]">
+        {/* Right Image - Professional Photo (mobile: first, desktop: second) */}
+        <div className="w-full lg:w-[40%] flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-[22rem] lg:h-[22rem] xl:w-[24rem] xl:h-[24rem]">
             {/* Decorative Ring */}
             <div className="absolute inset-0 rounded-full border-2 border-[var(--color-primary)]/20 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
 
