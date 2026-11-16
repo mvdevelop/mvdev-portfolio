@@ -30,7 +30,7 @@ export default function HeroSection() {
         <div className="w-full h-full bg-[linear-gradient(rgba(77,139,233,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(77,139,233,0.1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
       </div>
 
-      <div className="relative z-10 flex pt-28 md:pt-32 lg:pt-0 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
+      <div className="relative z-10 flex pt-28 md:pt-32 lg:pt-24 xl:pt-28 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
         {/* Left Content - Professional & Clean */}
         <div className="w-full lg:w-[55%] xl:w-[50%] text-start mb-12 lg:mb-0">
           {/* Role Badge */}
@@ -39,7 +39,7 @@ export default function HeroSection() {
           </p>
 
           {/* Main Heading */}
-          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-6 leading-tight max-w-[520px] xl:max-w-[600px]">
+          <h1 id="hero-title" className="text-h1 font-display font-semibold mb-6 leading-tight max-w-[480px] xl:max-w-[540px]">
             {t.hero.greeting}{" "}
             <span className="text-[color:var(--color-primary)]">
               {t.hero.name}

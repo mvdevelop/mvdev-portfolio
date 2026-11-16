@@ -3,20 +3,18 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/LanguageContext";
-import { useTheme } from "@/lib/ThemeContext";
 import { scrollToWithLenis } from "./Lenis";
-import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const sectionIds = ["hero", "services", "resume", "work", "contact"];
 
 export default function Nav() {
   const { t, language, setLanguage } = useLanguage();
-  const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const isProjectsRoute = pathname.startsWith("/projects");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  
+
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -148,22 +146,8 @@ export default function Nav() {
             })}
           </div>
 
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="ms-3 p-2 rounded-lg bg-gray-800/50 border border-gray-600 hover:border-[var(--color-primary)] transition-all duration-300"
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            title={theme === "dark" ? "Light Mode" : "Dark Mode"}
-          >
-            {theme === "dark" ? (
-              <FaSun size={18} className="text-yellow-400" />
-            ) : (
-              <FaMoon size={18} className="text-blue-400" />
-            )}
-          </button>
-
           {/* Language Toggle */}
-          <div className="flex items-center bg-gray-800/50 rounded-lg border border-gray-600 overflow-hidden">
+          <div className="flex items-center bg-gray-800/50 rounded-lg border border-gray-600 overflow-hidden ms-3">
             <button
               onClick={() => setLanguage("en")}
               className={`px-3 py-1.5 text-sm font-bold uppercase transition-all duration-300 cursor-pointer ${
@@ -191,19 +175,6 @@ export default function Nav() {
 
         {/* Mobile Button */}
         <div className="flex lg:hidden items-center gap-3">
-          {/* Theme Toggle - Mobile */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-lg bg-gray-800/50 border border-gray-600 hover:border-[var(--color-primary)] transition-all duration-300"
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? (
-              <FaSun size={18} className="text-yellow-400" />
-            ) : (
-              <FaMoon size={18} className="text-blue-400" />
-            )}
-          </button>
-
           {/* Mobile Language Toggle */}
           <div className="flex items-center bg-gray-800/50 rounded-lg border border-gray-600 overflow-hidden">
             <button

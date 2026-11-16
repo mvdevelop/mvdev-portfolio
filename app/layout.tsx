@@ -5,7 +5,6 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import LenisScroll from "@/components/Lenis";
 import { LanguageProvider } from "@/lib/LanguageContext";
-import { ThemeProvider } from "@/lib/ThemeContext";
 import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
@@ -152,20 +151,16 @@ const portugueseMetadata: Metadata = {
     ...englishMetadata.twitter!,
     title: "MvDev | Desenvolvedor Full Stack · Engenharia de Backend",
     description:
-      "Desenvolvedor Full Stack especializado em C#, .NET, TypeScript, React e Next.js.",
+      "Full Stack Developer specializing in C#, .NET, TypeScript, React and Next.js.",
   },
 };
 
 // Dynamic metadata based on language detected from request headers
-// Language-aware metadata based on query params or Accept-Language header
 export async function generateMetadata({ searchParams }: { searchParams?: Promise<Record<string, string>> }): Promise<Metadata> {
-  // Check for language parameter in URL
   if (searchParams) {
     const params = await searchParams;
     if (params.lang === 'pt') return portugueseMetadata;
   }
-
-  // Default to English metadata
   return englishMetadata;
 }
 
@@ -198,13 +193,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ThemeProvider>
-          <LanguageProvider>
-            <LenisScroll />
-            <Nav />
-            <main id="main-content">{children}</main>
-          </LanguageProvider>
-        </ThemeProvider>
+        <LanguageProvider>
+          <LenisScroll />
+          <Nav />
+          <main id="main-content">{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );
