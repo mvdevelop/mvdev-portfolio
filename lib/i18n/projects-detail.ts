@@ -43,92 +43,280 @@ export type ProjectDetail = {
 export const projectsDetail: Record<Language, ProjectDetail[]> = {
   en: [
     {
-      slug: "macaw-english-school",
+      slug: "enem-station",
       id: "01",
-      title: "Macaw English School",
+      title: "ENEM Station",
       category: "Educational Platform",
       summary:
-        "A comprehensive learning management system designed for language schools, featuring course management, student progress tracking, and interactive lessons.",
+        "A comprehensive exam preparation platform for Brazil's national high school exam (ENEM), featuring structured study content by knowledge areas, progress statistics, and interactive learning tools.",
       problem:
-        "The school needed a centralized platform to manage online courses, track student progress, and provide an engaging learning experience without relying on third-party LMS solutions.",
+        "Students preparing for ENEM needed an organized, free resource that structures content by knowledge areas and provides progress tracking to optimize study time.",
       objective:
-        "Build a scalable web application that supports course creation, student enrollment, progress tracking, and interactive lesson delivery with real-time feedback.",
+        "Build a full-stack educational platform with MongoDB backend, JWT authentication, and React frontend supporting content organization and progress analytics.",
       myRole:
-        "Full-stack development including database design, API implementation, frontend architecture, and deployment infrastructure.",
+        "Full-stack developer responsible for .NET API design, MongoDB schema, React interface, real-time progress tracking, and deployment on Vercel/Render.",
       features: [
         {
-          title: "Course Management System",
+          title: "Structured Content by Knowledge Areas",
           description:
-            "Create, organize, and publish courses with modules, lessons, and assessments in a structured curriculum format.",
+            "Content organized across Mathematics, Natural Sciences, Human Sciences, and Languages following ENEM blueprint.",
         },
         {
-          title: "Student Progress Tracking",
+          title: "Progress Analytics Dashboard",
           description:
-            "Real-time dashboard showing completion rates, quiz scores, and learning milestones for each student.",
+            "Visual statistics showing completion rates, weak areas identification, and study time tracking.",
         },
         {
-          title: "Interactive Lessons",
+          title: "JWT Authentication System",
           description:
-            "Rich content delivery with video playback, quizzes, and exercises integrated into the learning flow.",
+            "Secure user registration and login with BCrypt password hashing and session management.",
         },
         {
-          title: "Teacher Dashboard",
+          title: "Responsive Learning Interface",
           description:
-            "Comprehensive tools for managing students, creating assignments, and monitoring class performance.",
+            "Mobile-first design with Tailwind CSS ensuring accessibility across devices.",
         },
       ],
       technologies: [
-        { name: "TypeScript", category: "frontend" },
         { name: "React", category: "frontend" },
-        { name: ".NET Core", category: "backend" },
-        { name: "Vite", category: "frontend" },
-        { name: "PostgreSQL", category: "database" },
-        { name: "Entity Framework", category: "backend" },
+        { name: "TypeScript", category: "frontend" },
+        { name: ".NET 8", category: "backend" },
+        { name: "MongoDB", category: "database" },
+        { name: "Tailwind CSS", category: "frontend" },
+        { name: "Redux Toolkit", category: "frontend" },
       ],
       architecture: [
         {
-          decision: "Client-server separation with SPA architecture",
+          decision: "RESTful API with .NET 8 Web API",
           rationale:
-            "Enables independent scaling of frontend and backend services while maintaining fast client-side navigation.",
+            "Strongly-typed C# backend provides excellent performance and mature ecosystem for enterprise-grade applications.",
         },
         {
-          decision: "RESTful API with JWT authentication",
+          decision: "MongoDB document database",
           rationale:
-            "Standardized communication pattern ensuring security, scalability, and easy integration with mobile clients.",
+            "Flexible schema accommodates varying content structures per knowledge area while maintaining query performance.",
         },
         {
-          decision: "Modular component architecture",
+          decision: "JWT-based authentication",
           rationale:
-            "Promotes reusability and maintainability across different course types and content structures.",
+            "Stateless token validation enables horizontal scaling without session storage dependencies.",
         },
       ],
       challenges: [
         {
-          challenge: "Real-time progress updates",
+          challenge: "Content categorization complexity",
           solution:
-            "Implemented WebSocket connections for live progress synchronization between students and teachers.",
+            "Designed hierarchical topic model with tags enabling both broad area filtering and specific topic targeting.",
         },
         {
-          challenge: "Video streaming optimization",
+          challenge: "Progress calculation performance",
           solution:
-            "Integrated CDN-based video hosting with adaptive bitrate streaming for smooth playback across devices.",
+            "Implemented aggregate queries on MongoDB with calculated fields updated via application logic.",
         },
       ],
       learnings: [
-        "Designed a flexible content model supporting various lesson types (video, text, quiz, exercise)",
-        "Implemented role-based access control for students, teachers, and administrators",
-        "Created automated assessment grading with instant feedback loops",
+        "Applied MongoDB aggregation pipelines for complex progress analytics",
+        "Designed REST API following OpenAPI specification for consistent client integration",
+        "Implemented responsive curriculum structure accommodating ENEM's four knowledge areas",
       ],
       results: [
         {
-          metric: "Students onboarded",
-          value: "500+",
-          context: "Within first 3 months of launch",
+          metric: "Content modules",
+          value: "50+",
+          context: "Across all four knowledge areas",
         },
         {
-          metric: "Course completion rate",
-          value: "78%",
-          context: "Above industry average of 65%",
+          metric: "Study tracks",
+          value: "12",
+          context: "Personalized learning paths based on weak areas",
+        },
+      ],
+      demoUrl: "https://enem-station.vercel.app/",
+      repoUrl: "https://github.com/mvdevelop/enem-station",
+      imageUrl: "/images/enem-station-banner.png",
+    },
+    {
+      slug: "smart-agenda",
+      id: "02",
+      title: "Smart Agenda (OrgApp)",
+      category: "Productivity Application",
+      summary:
+        "An intelligent personal organizer unifying tasks, habits, goals, studies, and notes with an integrated AI assistant powered by OpenRouter for contextual recommendations and productivity insights.",
+      problem:
+        "Users struggle with fragmented productivity tools — separate apps for tasks, habits, notes, and schedules — leading to context switching and decreased adherence to routines.",
+      objective:
+        "Create a unified organizational platform integrating multiple life domains with AI-powered assistance for personalized productivity guidance.",
+      myRole:
+        "Lead full-stack developer implementing React frontend, Express API, MongoDB data layer, Clerk authentication, and OpenRouter AI integration.",
+      features: [
+        {
+          title: "Unified Task & Habit Tracking",
+          description:
+            "Combined view of daily tasks, recurring habits with streak tracking, and milestone visualization.",
+        },
+        {
+          title: "AI-Powered Assistant",
+          description:
+            "Context-aware chat interface using GPT-4o-mini for study planning, task prioritization, and habit coaching.",
+        },
+        {
+          title: "Multi-domain Organization",
+          description:
+            "Dedicated sections for studies (with Pomodoro timer), financial goals, readings, and life planning.",
+        },
+        {
+          title: "Smart Notifications",
+          description:
+            "Intelligent reminders based on task priority, due dates, and user behavior patterns.",
+        },
+      ],
+      technologies: [
+        { name: "React", category: "frontend" },
+        { name: "TypeScript", category: "frontend" },
+        { name: "Express", category: "backend" },
+        { name: "MongoDB", category: "database" },
+        { name: "Tailwind CSS", category: "frontend" },
+        { name: "OpenRouter", category: "other" },
+        { name: "Clerk", category: "backend" },
+      ],
+      architecture: [
+        {
+          decision: "Monorepo with workspace structure",
+          rationale:
+            "Enables shared types and utilities between frontend and backend while allowing independent deployment.",
+        },
+        {
+          decision: "Mongoose ODM for MongoDB",
+          rationale:
+            "Schema validation and middleware hooks ensure data consistency across interconnected domains.",
+        },
+        {
+          decision: "External AI via OpenRouter",
+          rationale:
+            "Abstraction layer over multiple LLM providers enables cost optimization and fallback strategies.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Cross-domain data relationships",
+          solution:
+            "Designed reference-based model linking tasks to habits, goals to studies, enabling holistic progress views.",
+        },
+        {
+          challenge: "AI response quality control",
+          solution:
+            "Implemented system prompts and output validation to ensure advice aligns with productivity best practices.",
+        },
+      ],
+      learnings: [
+        "Architected normalized schema balancing query performance with data integrity",
+        "Integrated LLM APIs with streaming responses for conversational UX",
+        "Built reusable component library with consistent design tokens across domains",
+      ],
+      results: [
+        {
+          metric: "Active modules",
+          value: "6",
+          context: "Tasks, Notes, Habits, Goals, Studies, Calendar",
+        },
+        {
+          metric: "AI interactions/day",
+          value: "50+",
+          context: "Average in beta testing phase",
+        },
+      ],
+      demoUrl: "https://smart-agenda.vercel.app/",
+      repoUrl: "https://github.com/mvdevelop/personal-organization-app",
+      imageUrl: "/images/smart-agenda-banner.png",
+    },
+    {
+      slug: "macaw-english-school",
+      id: "03",
+      title: "Macaw English School",
+      category: "Educational Platform",
+      summary:
+        "A CEFR-structured English learning platform spanning levels A1 through C2, featuring persistent student progress tracking, optimistic UI updates, and dark mode support.",
+      problem:
+        "Language learners needed a structured, self-paced platform following the Common European Framework with clear progression metrics and offline-capable progress persistence.",
+      objective:
+        "Build a full-stack learning management system with React frontend, Express API, SQLite database, and Clerk authentication supporting the complete CEFR curriculum.",
+      myRole:
+        "Full-stack developer implementing RTK Query data layer, optimistic updates, Clerk auth bridge, and responsive course navigation.",
+      features: [
+        {
+          title: "CEFR Curriculum Structure",
+          description:
+            "Six proficiency levels (A1-C2) with ordered lessons, duration tracking, and progressive difficulty.",
+        },
+        {
+          title: "Optimistic Progress Updates",
+          description:
+            "Instant UI feedback on lesson completion with automatic rollback on server errors.",
+        },
+        {
+          title: "Dark Mode with FOUC Prevention",
+          description:
+            "Class-based theming synchronized via <html> attribute with OS preference detection.",
+        },
+        {
+          title: "Responsive Navigation",
+          description:
+            "Collapsible sidebar with progress percentages and mobile drawer menu for touch interfaces.",
+        },
+      ],
+      technologies: [
+        { name: "React", category: "frontend" },
+        { name: "TypeScript", category: "frontend" },
+        { name: "Express", category: "backend" },
+        { name: "SQLite", category: "database" },
+        { name: "RTK Query", category: "frontend" },
+        { name: "Clerk", category: "backend" },
+        { name: "Prisma", category: "backend" },
+      ],
+      architecture: [
+        {
+          decision: "RTK Query for data fetching",
+          rationale:
+            "Built-in caching, optimistic updates, and tag invalidation reduce boilerplate and improve UX.",
+        },
+        {
+          decision: "SQLite via Prisma ORM",
+          rationale:
+            "File-based database simplifies deployment while Prisma provides type-safe queries and migrations.",
+        },
+        {
+          decision: "Clerk for authentication",
+          rationale:
+            "Managed auth service handles JWT issuance, session management, and security best practices out-of-the-box.",
+        },
+      ],
+      challenges: [
+        {
+          challenge: "Optimistic update rollback reliability",
+          solution:
+            "Implemented patch collection pattern with undo capability when server confirmation fails.",
+        },
+        {
+          challenge: "Theme synchronization across components",
+          solution:
+            "Centralized theme state in Redux with useEffect mirroring to document.documentElement.classList.",
+        },
+      ],
+      learnings: [
+        "Applied CEFR framework to structure adaptive learning paths",
+        "Implemented atomic upsert operations for concurrent progress tracking",
+        "Designed class-based dark mode avoiding flash of unstyled content on load",
+      ],
+      results: [
+        {
+          metric: "Curriculum coverage",
+          value: "A1-C2",
+          context: "Complete CEFR proficiency spectrum",
+        },
+        {
+          metric: "Seeded lessons",
+          value: "12",
+          context: "Sample curriculum for each proficiency level",
         },
       ],
       demoUrl: "https://macaw-english-course.vercel.app/",
@@ -136,176 +324,84 @@ export const projectsDetail: Record<Language, ProjectDetail[]> = {
       imageUrl: "/images/macaw-landing.png",
     },
     {
-      slug: "macaw-social-media",
-      id: "02",
-      title: "Macaw Social Media",
-      category: "Social Platform",
-      summary:
-        "A modern social media application enabling users to share content, connect with others, and engage through comments and reactions in a responsive interface.",
-      problem:
-        "Need for a lightweight, privacy-focused social platform that prioritizes meaningful interactions over algorithmic content distribution.",
-      objective:
-        "Build a social network with core features: user profiles, content posting, real-time interactions, and secure messaging.",
-      myRole:
-        "Lead developer responsible for full-stack implementation, database design, real-time features, and cloud deployment.",
-      features: [
-        {
-          title: "User Profiles & Networks",
-          description:
-            "Customizable profiles with avatar, bio, interests, and connection management with privacy controls.",
-        },
-        {
-          title: "Content Feed",
-          description:
-            "Chronological feed displaying posts from connections with support for images, videos, and text.",
-        },
-        {
-          title: "Real-time Interactions",
-          description:
-            "Live notifications, instant messaging, and real-time reaction updates using Supabase subscriptions.",
-        },
-        {
-          title: "Content Moderation",
-          description:
-            "Built-in reporting system and admin tools for maintaining community guidelines and content quality.",
-        },
-      ],
-      technologies: [
-        { name: "Next.js", category: "frontend" },
-        { name: "TypeScript", category: "frontend" },
-        { name: "Supabase", category: "backend" },
-        { name: "Tailwind CSS", category: "frontend" },
-        { name: "React Query", category: "frontend" },
-      ],
-      architecture: [
-        {
-          decision: "Server-side rendering with Next.js",
-          rationale:
-            "Optimizes SEO, improves initial load performance, and provides better accessibility for content discovery.",
-        },
-        {
-          decision: "Supabase for backend-as-a-service",
-          rationale:
-            "Reduces infrastructure complexity while providing PostgreSQL, auth, real-time subscriptions, and storage.",
-        },
-        {
-          decision: "Edge functions for custom logic",
-          rationale:
-            "Handles sensitive operations like email verification and push notifications at the edge for low latency.",
-        },
-      ],
-      challenges: [
-        {
-          challenge: "Real-time sync across clients",
-          solution:
-            "Leveraged Supabase realtime subscriptions for instant updates on messages, notifications, and feed changes.",
-        },
-        {
-          challenge: "Image optimization at scale",
-          solution:
-            "Implemented automatic image resizing and WebP conversion using Cloudinary integration.",
-        },
-      ],
-      learnings: [
-        "Architected a scalable real-time system handling concurrent user sessions",
-        "Designed database schemas optimizing for read-heavy social patterns",
-        "Implemented row-level security policies balancing privacy and functionality",
-      ],
-      results: [
-        {
-          metric: "Daily active users",
-          value: "200+",
-          context: "Beta phase engagement",
-        },
-        {
-          metric: "Message latency",
-          value: "<500ms",
-          context: "Global average response time",
-        },
-      ],
-      demoUrl: "https://macaw-social-media.vercel.app/",
-      repoUrl: "https://github.com/mvdevelop/macaw-social-media",
-      imageUrl: "/images/new-macaw-banner.png",
-    },
-    {
       slug: "snake-game",
-      id: "03",
-      title: "Snake's Game",
+      id: "04",
+      title: "Snake Game",
       category: "Interactive Game",
       summary:
-        "A modern recreation of the classic Snake game built with React and vanilla JavaScript, featuring responsive design, high score tracking, and smooth animations.",
+        "A modern recreation of the classic Snake arcade game featuring responsive controls, score tracking, smooth CSS animations, and cross-platform compatibility.",
       problem:
-        "Create an engaging, browser-based game demonstrating interactive programming skills and attention to user experience details.",
+        "Classic games often lack modern responsiveness and mobile support, limiting accessibility for casual gaming sessions.",
       objective:
-        "Deliver a polished, performant game with intuitive controls, progressive difficulty, and cross-platform compatibility.",
+        "Deliver a polished, browser-based Snake implementation with intuitive touch controls, persistent high scores, and performant animation loops.",
       myRole:
-        "Solo development covering game logic, graphics rendering, state management, and performance optimization.",
+        "Solo developer covering game mechanics, rendering engine, state management, and responsive design implementation.",
       features: [
         {
-          title: "Smooth Gameplay",
+          title: "Smooth Game Loop",
           description:
-            "60 FPS animation loop with responsive keyboard controls and touch support for mobile devices.",
+            "RequestAnimationFrame-based rendering ensuring consistent 60fps gameplay across devices.",
         },
         {
-          title: "Progressive Difficulty",
+          title: "Responsive Controls",
           description:
-            "Dynamic speed adjustment based on player performance, keeping gameplay challenging and engaging.",
+            "Keyboard arrows for desktop, swipe gestures for mobile with haptic feedback support.",
         },
         {
-          title: "High Score System",
+          title: "Persistent Scoring",
           description:
-            "Persistent leaderboards stored locally with option to save scores across sessions.",
+            "High score tracking via localStorage with session-based current score display.",
         },
         {
-          title: "Visual Feedback",
+          title: "Landing Page",
           description:
-            "Particle effects, sound cues, and smooth transitions enhancing the gaming experience.",
+            "Attractive entry point with play button and instructions before launching game board.",
         },
       ],
       technologies: [
-        { name: "JavaScript", category: "frontend" },
         { name: "React", category: "frontend" },
-        { name: "Tailwind CSS", category: "frontend" },
-        { name: "Canvas API", category: "frontend" },
+        { name: "TypeScript", category: "frontend" },
+        { name: "CSS Animations", category: "frontend" },
+        { name: "localStorage", category: "other" },
       ],
       architecture: [
         {
-          decision: "Game loop with requestAnimationFrame",
+          decision: "React state for game logic",
           rationale:
-            "Ensures smooth 60fps rendering synchronized with display refresh rate for optimal performance.",
+            "Declarative state management simplifies debugging and enables replay functionality.",
         },
         {
-          decision: "State management with useReducer",
+          decision: "Component-based rendering",
           rationale:
-            "Centralized game state simplifies debugging, replay functionality, and state serialization.",
+            "Separate Board, Landing, and Navbar components enable isolated testing and maintenance.",
         },
         {
-          decision: "Component-based game entities",
+          decision: "CSS transforms for animation",
           rationale:
-            "Separates rendering logic from game rules, enabling easier testing and future feature additions.",
+            "GPU-accelerated transitions provide smoother movement than DOM manipulation.",
         },
       ],
       challenges: [
         {
-          challenge: "Collision detection accuracy",
+          challenge: "Touch control precision",
           solution:
-            "Implemented grid-based collision checking with sub-pixel precision for fair gameplay.",
+            "Implemented swipe angle threshold detection preventing accidental direction changes.",
         },
         {
-          challenge: "Mobile touch responsiveness",
+          challenge: "Game loop timing consistency",
           solution:
-            "Added swipe gesture recognition with haptic feedback for tactile confirmation.",
+            "Used requestAnimationFrame with delta time calculation for frame-rate independent updates.",
         },
       ],
       learnings: [
-        "Applied game loop patterns (update/render cycle) for consistent behavior across devices",
-        "Optimized rendering by batching DOM updates and using canvas where appropriate",
-        "Implemented local storage persistence with encryption for score protection",
+        "Applied game loop patterns (update/render cycle) for consistent behavior",
+        "Optimized rendering by batching state updates and minimizing re-renders",
+        "Implemented local persistence with JSON serialization for score retention",
       ],
       results: [
         {
           metric: "Average session length",
-          value: "8 minutes",
+          value: "8 min",
           context: "Player engagement metric",
         },
         {
@@ -314,105 +410,13 @@ export const projectsDetail: Record<Language, ProjectDetail[]> = {
           context: "Players returning within 7 days",
         },
       ],
-      demoUrl: "https://snake-game-inky-pi.vercel.app/",
+      demoUrl: "https://snake-game.vercel.app/",
       repoUrl: "https://github.com/mvdevelop/snake-game",
-      imageUrl: "/images/new-snakegame-banner.png",
-    },
-    {
-      slug: "blushify",
-      id: "04",
-      title: "Blushify E-commerce",
-      category: "E-commerce Platform",
-      summary:
-        "A cosmetics e-commerce store featuring product catalog browsing, shopping cart functionality, user authentication, and order management with a modern UI focused on conversion optimization.",
-      problem:
-        "Create an online storefront that provides a seamless shopping experience with product discovery, secure checkout, and inventory management.",
-      objective:
-        "Build a functional e-commerce prototype demonstrating full-stack capabilities including payment integration, cart management, and admin dashboard.",
-      myRole:
-        "Full-stack development including product catalog, shopping cart, user authentication, and order processing workflow.",
-      features: [
-        {
-          title: "Product Catalog",
-          description:
-            "Browse products with filtering, sorting, and search functionality across categories and price ranges.",
-        },
-        {
-          title: "Shopping Cart",
-          description:
-            "Persistent cart with quantity management, price calculations, and saved items for later purchase.",
-        },
-        {
-          title: "User Authentication",
-          description:
-            "Secure login/register with password validation and session management.",
-        },
-        {
-          title: "Order Management",
-          description:
-            "Order history, status tracking, and checkout flow with address and payment information.",
-        },
-      ],
-      technologies: [
-        { name: "JavaScript", category: "frontend" },
-        { name: "React", category: "frontend" },
-        { name: "Tailwind CSS", category: "frontend" },
-        { name: "Node.js", category: "backend" },
-        { name: "MongoDB", category: "database" },
-      ],
-      architecture: [
-        {
-          decision: "MERN stack architecture",
-          rationale:
-            "JavaScript throughout the stack enables shared types and streamlined development workflow.",
-        },
-        {
-          decision: "REST API with Express middleware",
-          rationale:
-            "Modular route handlers and middleware chains enable clean separation of concerns and extensibility.",
-        },
-        {
-          decision: "MongoDB document store",
-          rationale:
-            "Flexible schema accommodates varying product attributes while maintaining query performance.",
-        },
-      ],
-      challenges: [
-        {
-          challenge: "Cart state persistence",
-          solution:
-            "Implemented localStorage synchronization with server-side cart management for reliability.",
-        },
-        {
-          challenge: "Image optimization",
-          solution:
-            "Used lazy loading and responsive images to reduce initial page weight while maintaining quality.",
-        },
-      ],
-      learnings: [
-        "Designed database schemas optimizing for product variations and inventory tracking",
-        "Implemented cart recovery strategy allowing users to resume shopping across sessions",
-        "Created admin dashboard with CRUD operations for product and order management",
-      ],
-      results: [
-        {
-          metric: "Page load time",
-          value: "<2s",
-          context: "First contentful paint on 4G connection",
-        },
-        {
-          metric: "Cart conversion",
-          value: "12%",
-          context: "Add-to-cart to checkout completion",
-        },
-      ],
-      demoUrl: "https://ecommerce-beauty-ashy.vercel.app/",
-      repoUrl: "https://github.com/mvdevelop/ecommerce-beauty",
-      imageUrl: "/images/new-blushify-banner.png",
+      imageUrl: "/images/snake-game-banner.png",
     },
   ],
   pt: [], // Will be populated with Portuguese translations
-} as const;
+};
 
 // Get single language version
 export function getProjectsDetail(lang: Language): ProjectDetail[] {

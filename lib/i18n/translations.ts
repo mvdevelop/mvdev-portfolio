@@ -209,10 +209,10 @@ export const translations: Record<Language, Translations> = {
       subtitle:
         "A collection of projects showcasing my expertise across different domains.",
       projects: [
-        { id: "01", title: "Macaw English School", description: "English School Platform" },
-        { id: "02", title: "Macaw", description: "Social Media" },
-        { id: "03", title: "Snake's", description: "Snake Mini-Game" },
-        { id: "04", title: "Blushify", description: "Cosmetics E-Commerce Store" },
+        { id: "01", title: "ENEM Station", description: "Exam Prep Platform" },
+        { id: "02", title: "Smart Agenda", description: "AI-Powered Personal Organizer" },
+        { id: "03", title: "Macaw English", description: "CEFR Language Learning Platform" },
+        { id: "04", title: "Snake Game", description: "Classic Arcade Game" },
       ],
     },
     contact: {
@@ -339,10 +339,10 @@ export const translations: Record<Language, Translations> = {
       subtitle:
         "Uma coleção de projetos que demonstram minha expertise em diferentes áreas.",
       projects: [
-        { id: "01", title: "Macaw English School", description: "Plataforma de Escola de Inglês" },
-        { id: "02", title: "Macaw", description: "Rede Social" },
-        { id: "03", title: "Snake's", description: "Mini-Jogo Snake" },
-        { id: "04", title: "Blushify", description: "Loja de Cosméticos" },
+        { id: "01", title: "ENEM Station", description: "Plataforma de Estudos para ENEM" },
+        { id: "02", title: "Smart Agenda", description: "Organizador Pessoal com IA" },
+        { id: "03", title: "Macaw English", description: "Plataforma de Ensino de Inglês (CEFR)" },
+        { id: "04", title: "Snake Game", description: "Jogo Clássico da Cobrinha" },
       ],
     },
     contact: {
