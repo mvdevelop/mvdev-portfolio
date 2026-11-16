@@ -104,7 +104,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="w-full z-50 transition-all duration-500 fixed top-0 left-0"
+      className="w-full z-50 transition-all duration-300 fixed top-0 left-0 bg-[#071108]/80 backdrop-blur-md border-b border-white/5"
       role="navigation"
       aria-label="Main navigation"
     >

@@ -105,14 +105,9 @@ const englishMetadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon-16x16.svg", sizes: "16x16", type: "image/svg+xml" },
-      { url: "/favicon-32x32.svg", sizes: "32x32", type: "image/svg+xml" },
       { url: "/images/icon.ico", type: "image/x-icon" },
     ],
     apple: "/apple-touch-icon.svg",
-    other: [
-      { rel: "mask-icon", url: "/favicon-32x32.svg", color: "#4d8be9" },
-    ],
   },
   verification: {
     google: "your-google-site-verification",

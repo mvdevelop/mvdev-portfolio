@@ -30,7 +30,7 @@ export default function HeroSection() {
         <div className="w-full h-full bg-[linear-gradient(rgba(77,139,233,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(77,139,233,0.1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
       </div>
 
-      <div className="relative z-10 flex pt-28 md:pt-32 lg:pt-24 xl:pt-28 flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] flex-1">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] pt-32 md:pt-36 lg:pt-28 xl:pt-32 pb-32 min-h-screen gap-12 lg:gap-0">
         {/* Left Content - Professional & Clean */}
         <div className="w-full lg:w-[55%] xl:w-[50%] text-start mb-12 lg:mb-0">
           {/* Role Badge */}
