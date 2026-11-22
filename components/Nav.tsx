@@ -123,10 +123,8 @@ export default function Nav() {
           className="text-4xl md:text-5xl font-bold font-unbounded text-white logo"
           aria-label="MvDev home"
         >
-          Mv
-          <span className="text-[#F1F5F9] font-unbounded">
-            Dev
-          </span>
+          <span className="text-white font-unbounded">Mv</span>
+          <span className="text-[#007bff] font-unbounded inline-block" style={{textShadow:"0 0 4px rgba(0,123,255,0.6),0 0 12px rgba(0,123,255,0.4)"}}>Dev</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -144,7 +142,7 @@ export default function Nav() {
                   aria-current={isActive ? "page" : undefined}
                   className={`nav-link text-base font-bold transition-all text-white/80 relative px-4 py-2 rounded-lg ${
                     isActive
-                      ? "active text-[#F1F5F9]"
+                      ? "active text-[#F8FAFC]"
                       : "hover:text-white"
                   }`}
                 >
@@ -160,7 +158,7 @@ export default function Nav() {
               onClick={() => setLanguage("en")}
               className={`px-3 py-1.5 text-sm font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "en"
-                  ? "bg-[#0A66C2] text-white"
+                  ? "bg-[#007bff] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to English"
@@ -171,7 +169,7 @@ export default function Nav() {
               onClick={() => setLanguage("pt")}
               className={`px-3 py-1.5 text-sm font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "pt"
-                  ? "bg-[#0A66C2] text-white"
+                  ? "bg-[#007bff] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to Portuguese"
@@ -189,7 +187,7 @@ export default function Nav() {
               onClick={() => setLanguage("en")}
               className={`px-2 py-1 text-xs font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "en"
-                  ? "bg-[#0A66C2] text-white"
+                  ? "bg-[#007bff] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to English"
@@ -200,7 +198,7 @@ export default function Nav() {
               onClick={() => setLanguage("pt")}
               className={`px-2 py-1 text-xs font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "pt"
-                  ? "bg-[#0A66C2] text-white"
+                  ? "bg-[#007bff] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to Portuguese"
@@ -247,7 +245,7 @@ export default function Nav() {
                   className={`block text-base relative py-3 transition-colors ${
                     isActive
                       ? "text-[var(--primary-color)]"
-                      : "text-white/80 hover:text-[#0A66C2]"
+                      : "text-white/80 hover:text-[#F8FAFC]"
                   }`}
                 >
                   {link.name}

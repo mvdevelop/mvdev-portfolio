@@ -25,7 +25,7 @@ export default function Footer() {
               href="#hero"
               className="text-4xl font-bold font-unbounded text-white"
             >
-              Mv<span className="text-[#0A66C2]">Dev</span>
+              <span className="text-white">Mv</span><span className="text-[#007bff]" style={{textShadow:"0 0 4px rgba(0,123,255,0.6),0 0 12px rgba(0,123,255,0.4)"}}>Dev</span>
             </Link>
             <p className="text-[#94A3B8] text-sm mt-4 leading-relaxed max-w-xs">
               {t.footer.description}
@@ -43,7 +43,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     aria-label={`Navigate to ${link.name}`}
-                    className="text-[#94A3B8] hover:text-[#0A66C2] transition-colors duration-300 text-sm"
+                    className="text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </a>
@@ -62,7 +62,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
                 aria-label="GitHub profile"
               >
                 <FaGithub size={20} />
@@ -71,7 +71,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
                 aria-label="LinkedIn profile"
               >
                 <FaLinkedin size={20} />
@@ -80,14 +80,14 @@ export default function Footer() {
                 href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
                 aria-label="Instagram profile"
               >
                 <FaInstagram size={20} />
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
                 aria-label="Send email"
               >
                 <FaEnvelope size={20} />
@@ -104,7 +104,7 @@ export default function Footer() {
           </p>
           <p className="text-[#64748B] text-sm">
             {t.footer.builtWith}{" "}
-            <span className="text-[#0A66C2]">♥</span>
+            <span className="text-[#007bff]">♥</span>
           </p>
         </div>
       </div>

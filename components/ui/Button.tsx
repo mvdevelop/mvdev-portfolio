@@ -7,11 +7,11 @@ type ButtonProps = ButtonBaseProps & ComponentProps<"button">;
 type ButtonLinkProps = ButtonBaseProps & ComponentProps<typeof Link>;
 
 const variants: Record<ButtonClass, string> = {
-  primary: "bg-[#0A66C2] text-white hover:-translate-y-0.5 hover:bg-[#084C91]",
-  secondary: "border border-[#3A465E] bg-transparent text-[#F1F5F9] hover:-translate-y-0.5 hover:border-[#60A5FA] hover:text-[#60A5FA]",
-  ghost: "text-[#CBD5E1] hover:text-[#60A5FA] hover:shadow-[0_0_8px_rgba(96,165,250,0.3)]",
+  primary: "bg-[#007bff] text-white hover:-translate-y-0.5 hover:bg-[#339dff] hover:shadow-[0_0_20px_rgba(248,250,252,0.7),0_0_40px_rgba(248,250,252,0.4)]",
+  secondary: "border border-[#3A465E] bg-transparent text-[#F1F5F9] hover:-translate-y-0.5 hover:border-[#F8FAFC] hover:text-[#F8FAFC]",
+  ghost: "text-[#CBD5E1] hover:text-[#F8FAFC] hover:shadow-[0_0_8px_rgba(248,250,252,0.3)]",
 };
-const baseClassName = "inline-flex items-center justify-center rounded-xl px-7 py-3.5 font-semibold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#60A5FA] disabled:cursor-not-allowed disabled:opacity-60";
+const baseClassName = "inline-flex items-center justify-center rounded-xl px-7 py-3.5 font-semibold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F8FAFC] disabled:cursor-not-allowed disabled:opacity-60";
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   return <button className={`${baseClassName} ${variants[variant]} ${className}`} {...props}>{children}</button>;

@@ -6,9 +6,9 @@ import { useAnimateIn } from "@/lib/useScrollReveal";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const serviceMeta = [
-  { icon: Code2, color: "#F8FAFC", soft: "rgba(248,250,252,.12)", tech: ["C#", ".NET", "Blazor"] },
+  { icon: Code2, color: "#2DD4BF", soft: "rgba(45,212,191,.12)", tech: ["C#", ".NET", "Blazor"] },
   { icon: Braces, color: "#A78BFA", soft: "rgba(167,139,250,.12)", tech: ["TypeScript", "React", "Next.js"] },
-  { icon: Layers, color: "#60A5FA", soft: "rgba(96,165,250,.12)", tech: ["REST API", "Auth", "SQL"] },
+  { icon: Layers, color: "#FBBF24", soft: "rgba(251,191,36,.12)", tech: ["REST API", "Auth", "SQL"] },
   { icon: Cloud, color: "#F8FAFC", soft: "rgba(248,250,252,.12)", tech: ["Docker", "CI/CD", "AWS"] },
 ];
 

@@ -11,20 +11,20 @@
 
 :root {
   /* ─── BRAND COLORS ─────────────────────────── */
-  --color-primary: #0A66C2;
-  --color-primary-light: rgba(10, 102, 194, 0.12);
-  --color-primary-lighter: rgba(10, 102, 194, 0.2);
-  --color-primary-dark: #084C91;
+  --color-primary: #007bff;
+  --color-primary-light: rgba(0, 123, 255, 0.12);
+  --color-primary-lighter: rgba(0, 123, 255, 0.2);
+  --color-primary-dark: #0056b3;
   --color-accent-teal: #F8FAFC;
   --color-accent-violet: #A78BFA;
-  --color-accent-blue: #60A5FA;
+  --color-accent-blue: #F8FAFC;
   --color-accent-success: #F8FAFC;
   /* Legacy aliases mapped to the master palette */
-  --primary-color: #0A66C2;
+  --primary-color: #007bff;
   --border-color: #232C3F;
   --surface-muted: #141A28;
   --text-muted: #64748B;
-  --focus-ring: #60A5FA;
+  --focus-ring: #F8FAFC;
 
   /* ─── BACKGROUND LAYERS ───────────────────── */
   --color-bg-primary: #0B0E14;
@@ -47,7 +47,7 @@
   /* ─── STATUS COLORS ───────────────────────── */
   --color-success: #10b981;
   --color-error: #ef4444;
-  --color-warning: #0A66C2;
+  --color-warning: #007bff;
   --color-info: #3b82f6;
 
   /* ─── TYPOGRAPHY ──────────────────────────── */
@@ -79,7 +79,7 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 20px rgba(96, 165, 250, 0.35), 0 0 40px rgba(96, 165, 250, 0.15);
+  --shadow-glow: 0 0 20px rgba(248, 250, 252, 0.35), 0 0 40px rgba(248, 250, 252, 0.15);
 
   /* ─── BORDER RADIUS ───────────────────────── */
   --radius-sm: 0.25rem;
@@ -546,8 +546,8 @@ html.lenis, html.lenis body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: #60A5FA;
-  box-shadow: 0 0 8px #60A5FA, 0 0 16px #60A5FA, 0 0 24px rgba(96, 165, 250, 0.5);
+  background: #F8FAFC;
+  box-shadow: 0 0 8px #F8FAFC, 0 0 16px #F8FAFC, 0 0 24px rgba(248, 250, 252, 0.6);
   transform: translateX(-50%);
   transition: width var(--transition-slower);
 }
@@ -557,19 +557,20 @@ html.lenis, html.lenis body {
 }
 
 .nav-link:hover {
-  color: #F1F5F9;
-  text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+  color: #F8FAFC;
+  text-shadow: 0 0 10px rgba(248, 250, 252, 0.8), 0 0 20px rgba(248, 250, 252, 0.5);
 }
 
-/* Active state with neon glow */
+/* Active state with white-smoke neon glow */
 .nav-link.active {
-  color: #F1F5F9;
+  color: #F8FAFC;
+  text-shadow: 0 0 6px rgba(248,250,252,0.9), 0 0 14px rgba(248,250,252,0.6);
 }
 
 .nav-link.active::after {
   width: 80%;
-  background: #60A5FA;
-  box-shadow: 0 0 10px #60A5FA, 0 0 20px #60A5FA, 0 0 30px rgba(96, 165, 250, 0.6);
+  background: #F8FAFC;
+  box-shadow: 0 0 10px #F8FAFC, 0 0 20px #F8FAFC, 0 0 30px rgba(248,250,252,0.6);
 }
 
 /* ============================================
@@ -740,23 +741,23 @@ html.lenis, html.lenis body {
   /* ── Strong phase (full brightness, intense glow) ── */
   0%, 100% {
     opacity: 1;
-    filter: brightness(1.15) drop-shadow(0 0 18px rgba(96,165,250,0.9));
+    filter: brightness(1.15) drop-shadow(0 0 18px rgba(248,250,252,0.9));
   }
   /* ── Transition toward weak ── */
-  12%  { opacity: 0.95; filter: brightness(1.05) drop-shadow(0 0 12px rgba(96,165,250,0.7)); }
-  20%  { opacity: 0.85; filter: brightness(0.92) drop-shadow(0 0 8px rgba(96,165,250,0.5)); }
+  12%  { opacity: 0.95; filter: brightness(1.05) drop-shadow(0 0 12px rgba(248,250,252,0.7)); }
+  20%  { opacity: 0.85; filter: brightness(0.92) drop-shadow(0 0 8px rgba(248,250,252,0.5)); }
   /* ── Weak phase (dim, soft glow) ── */
   30%, 35% {
     opacity: 0.72;
-    filter: brightness(0.78) drop-shadow(0 0 4px rgba(96,165,250,0.3));
+    filter: brightness(0.78) drop-shadow(0 0 4px rgba(248,250,252,0.3));
   }
   /* ── Micro-flicker during weak ── */
   32%  { opacity: 0.68; filter: brightness(0.72); }
   34%  { opacity: 0.76; filter: brightness(0.82); }
   /* ── Transition back to strong ── */
-  48%  { opacity: 0.88; filter: brightness(0.96) drop-shadow(0 0 8px rgba(96,165,250,0.5)); }
-  60%  { opacity: 0.97; filter: brightness(1.08) drop-shadow(0 0 14px rgba(96,165,250,0.8)); }
-  75%  { opacity: 1;    filter: brightness(1.12) drop-shadow(0 0 18px rgba(96,165,250,0.9)); }
+  48%  { opacity: 0.88; filter: brightness(0.96) drop-shadow(0 0 8px rgba(248,250,252,0.5)); }
+  60%  { opacity: 0.97; filter: brightness(1.08) drop-shadow(0 0 14px rgba(248,250,252,0.8)); }
+  75%  { opacity: 1;    filter: brightness(1.12) drop-shadow(0 0 18px rgba(248,250,252,0.9)); }
 }
 
 /**
@@ -775,5 +776,38 @@ html.lenis, html.lenis body {
   94% { opacity: 1; }
 }
 
-/* Neon glow keyframes — applied via inline className on individual elements */
+/* ============================================
+   NEON TEXT EFFECT (for titles/logos)
+   ============================================ */
+
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(255,255,255,0.8),
+      0 0 12px rgba(248,250,252,0.9),
+      0 0 24px rgba(248,250,252,0.7),
+      0 0 48px rgba(248,250,252,0.5),
+      0 0 80px rgba(248,250,252,0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 2px rgba(255,255,255,0.9),
+      0 0 8px rgba(248,250,252,0.6),
+      0 0 16px rgba(248,250,252,0.4),
+      0 0 32px rgba(248,250,252,0.3),
+      0 0 60px rgba(248,250,252,0.15);
+  }
+}
+
+.neon-text {
+  color: #007bff;
+  animation: neon-dynamic 8s ease-in-out infinite, neon-micro-flicker 4s steps(2,end) infinite;
+  text-shadow:
+    0 0 4px rgba(0,123,255,0.5),
+    0 0 12px rgba(0,123,255,0.4),
+    0 0 24px rgba(0,123,255,0.25),
+    0 0 48px rgba(0,123,255,0.15);
+}
+
+
 

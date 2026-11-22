@@ -19,17 +19,17 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative flex min-h-[85vh] items-center overflow-hidden px-6 pb-20 pt-32 text-white md:px-12 lg:px-16 lg:pt-28" aria-labelledby="hero-title">
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_45%,rgba(96,165,250,0.08),transparent 40%),linear-gradient(135deg,#0B0F19,#0F1420)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_45%,rgba(248,250,252,0.08),transparent 40%),linear-gradient(135deg,#0B0F19,#0F1420)]" />
       {/* Grid overlay */}
-      <div className="absolute right-0 top-0 h-full w-1/2 opacity-10 [background-image:linear-gradient(rgba(96,165,250,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,.1)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:linear-gradient(to_left,black,transparent)]" />
+      <div className="absolute right-0 top-0 h-full w-1/2 opacity-10 [background-image:linear-gradient(rgba(248,250,252,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(248,250,252,.1)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:linear-gradient(to_left,black,transparent)]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-[1200px] items-center gap-14 lg:grid-cols-[3fr_2fr]">
         <div>
           {/* ── NEON OUTDOOR SIGN ── */}
           <div id="hero-title" className="relative font-unbounded leading-tight select-none">
             {/* Line 1 — Role tag */}
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#60A5FA]">
-              <span className="h-px w-8 bg-[#60A5FA] shadow-[0_0_10px_#60A5FA]" />
+            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#F8FAFC]">
+              <span className="h-px w-8 bg-[#F8FAFC] shadow-[0_0_10px_#F8FAFC]" />
               {t.hero.role}
             </div>
             {/* Line 2 — Greeting + Name */}
@@ -41,10 +41,10 @@ export default function HeroSection() {
                   animation: "neon-dynamic 8s ease-in-out infinite, neon-micro-flicker 4s steps(2,end) infinite",
                   textShadow: `
                     0 0 7px rgba(248,250,252,1),
-                    0 0 20px rgba(96,165,250,0.9),
-                    0 0 42px rgba(96,165,250,0.7),
-                    0 0 82px rgba(96,165,250,0.5),
-                    0 0 120px rgba(96,165,250,0.3)
+                    0 0 20px rgba(248,250,252,0.9),
+                    0 0 42px rgba(248,250,252,0.7),
+                    0 0 82px rgba(248,250,252,0.5),
+                    0 0 120px rgba(248,250,252,0.3)
                   `,
                 }}
               >{t.hero.name}</span>
@@ -57,10 +57,10 @@ export default function HeroSection() {
                 color: "#F8FAFC",
                 textShadow: `
                   0 0 4px rgba(248,250,252,0.9),
-                  0 0 12px rgba(96,165,250,0.8),
-                  0 0 24px rgba(96,165,250,0.6),
-                  0 0 48px rgba(96,165,250,0.4),
-                  0 0 80px rgba(96,165,250,0.2)
+                  0 0 12px rgba(248,250,252,0.8),
+                  0 0 24px rgba(248,250,252,0.6),
+                  0 0 48px rgba(248,250,252,0.4),
+                  0 0 80px rgba(248,250,252,0.2)
                 `,
               }}
             >
@@ -100,7 +100,7 @@ export default function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${label} profile`}
-                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[#334155] bg-[#1E293B] text-[#CBD5E1] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#60A5FA] hover:text-[#F8FAFC] hover:shadow-[0_0_12px_rgba(96,165,250,0.5)]"
+                className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[#334155] bg-[#1E293B] text-[#CBD5E1] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:shadow-[0_0_12px_rgba(248,250,252,0.5)]"
               >
                 <Icon size={19} />
               </Link>
@@ -111,7 +111,7 @@ export default function HeroSection() {
         {/* Photo */}
         <div className="flex justify-center lg:justify-end">
           <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-[380px] lg:w-[380px]">
-            <div className="absolute -inset-2 rounded-full border-8 border-[rgba(96,165,250,0.15)] shadow-[0_0_40px_rgba(96,165,250,0.2)]" />
+            <div className="absolute -inset-2 rounded-full border-8 border-[rgba(248,250,252,0.15)] shadow-[0_0_40px_rgba(248,250,252,0.2)]" />
             <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 bg-[#1E293B] p-1 shadow-2xl">
               <Image
                 src="/images/mvdevelop.jpeg"

@@ -424,7 +424,7 @@ function getTechBadgeColor(category: string): string {
     case "backend":
       return "bg-[#F8FAFC]/10 text-[#F8FAFC] border border-[#F8FAFC]/20";
     case "database":
-      return "bg-[#0A66C2]/10 text-[#60A5FA] border border-[#0A66C2]/20";
+      return "bg-[#007bff]/10 text-[#F8FAFC] border border-[#007bff]/20";
     case "devops":
       return "bg-purple-500/10 text-purple-400 border border-purple-500/20";
     default:
