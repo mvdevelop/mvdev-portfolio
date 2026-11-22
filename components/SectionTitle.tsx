@@ -8,7 +8,7 @@ export default function SectionTitle({ label, title, subtitle }: SectionTitlePro
   return (
     <div className="mb-12 text-center md:mb-16">
       {label && (
-        <span className="mb-4 inline-block rounded-full border border-[#1E40AF] bg-[#1E3A8A]/30 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#60A5FA]">
+        <span className="mb-4 inline-block rounded-full border border-[#232C3F] bg-[#141A28] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#0A66C2]">
           {label}
         </span>
       )}

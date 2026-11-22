@@ -16,8 +16,8 @@ export default function Footer() {
   }));
 
   return (
-    <footer className="w-full border-t border-[#252D3A] bg-[#0F172A]">
-      <div className="max-w-7xl mx-auto px-[8%] lg:px-[16%] py-12">
+    <footer className="w-full border-t border-[#252D3A] bg-gradient-to-br from-[#0B0E14] via-[#0F141D] to-[#111722]">
+      <div className="mx-auto max-w-[1200px] px-6 py-14 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">
@@ -25,9 +25,9 @@ export default function Footer() {
               href="#hero"
               className="text-4xl font-bold font-unbounded text-white"
             >
-              Mv<span className="text-[var(--primary-color)]">Dev</span>
+              Mv<span className="text-[#0A66C2]">Dev</span>
             </Link>
-            <p className="text-gray-400 text-sm mt-4 leading-relaxed max-w-xs">
+            <p className="text-[#94A3B8] text-sm mt-4 leading-relaxed max-w-xs">
               {t.footer.description}
             </p>
           </div>
@@ -43,7 +43,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     aria-label={`Navigate to ${link.name}`}
-                    className="text-gray-400 hover:text-[var(--primary-color)] transition-colors duration-300 text-sm"
+                    className="text-[#94A3B8] hover:text-[#0A66C2] transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </a>
@@ -62,7 +62,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
                 aria-label="GitHub profile"
               >
                 <FaGithub size={20} />
@@ -71,7 +71,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
                 aria-label="LinkedIn profile"
               >
                 <FaLinkedin size={20} />
@@ -80,14 +80,14 @@ export default function Footer() {
                 href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
                 aria-label="Instagram profile"
               >
                 <FaInstagram size={20} />
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-700 text-gray-400 hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] hover:bg-[var(--primary-color)]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 transition-all duration-300"
                 aria-label="Send email"
               >
                 <FaEnvelope size={20} />
@@ -97,14 +97,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800/50 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm flex items-center gap-1">
+        <div className="border-t border-[#252D3A]/50 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[#64748B] text-sm flex items-center gap-1">
             <BiCopyright className="inline" /> {currentYear} MvDev.{" "}
             {t.footer.copyright}
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-[#64748B] text-sm">
             {t.footer.builtWith}{" "}
-            <span className="text-[var(--primary-color)]">♥</span>
+            <span className="text-[#0A66C2]">♥</span>
           </p>
         </div>
       </div>

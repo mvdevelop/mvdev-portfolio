@@ -120,11 +120,11 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative bg-[#0F172A] px-6 py-14 text-white overflow-hidden md:px-12 md:py-24 lg:px-16"
+      className="relative bg-gradient-to-br from-[#0B0E14] via-[#0F141D] to-[#111722] px-6 py-14 text-white overflow-hidden md:px-12 md:py-24 lg:px-16"
       aria-labelledby="contact-title"
     >
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary-color)]/[0.02] to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A66C2]/[0.02] to-transparent pointer-events-none"></div>
 
       <SectionTitle
         label={t.contact.label}
@@ -137,8 +137,8 @@ export default function ContactSection() {
         className={`grid lg:grid-cols-2 gap-8 md:gap-12 w-full transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         {/* Contact Form */}
-        <div className="bg-gray-500/5 p-6 md:p-8 rounded-xl shadow-lg border border-gray-800/50 hover:border-[var(--primary-color)]/20 transition-all duration-500">
-          <h2 className="text-2xl font-unbounded font-normal text-[color:var(--primary-color)] mb-6">
+        <div className="bg-[#0F1420]/50 p-6 md:p-8 rounded-xl shadow-lg border border-[#232C3F]/50 hover:border-[#60A5FA]/20 transition-all duration-500">
+          <h2 className="text-2xl font-unbounded font-normal text-[#0A66C2] mb-6">
             {t.contact.formTitle}
           </h2>
 
@@ -158,7 +158,7 @@ export default function ContactSection() {
                   autoComplete="given-name"
                   aria-invalid={Boolean(formErrors.firstName)}
                   aria-describedby={formErrors.firstName ? "firstName-error" : undefined}
-                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                  className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500"
                 />
                 {formErrors.firstName && (
                   <p id="firstName-error" role="alert" className="mt-1 text-xs text-red-400">
@@ -178,7 +178,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   placeholder={t.contact.lastName}
                   autoComplete="family-name"
-                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                  className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500"
                 />
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function ContactSection() {
                   autoComplete="email"
                   aria-invalid={Boolean(formErrors.email)}
                   aria-describedby={formErrors.email ? "email-error" : undefined}
-                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                  className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500"
                 />
                 {formErrors.email && (
                   <p id="email-error" role="alert" className="mt-1 text-xs text-red-400">
@@ -218,7 +218,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   placeholder={t.contact.phone}
                   autoComplete="tel"
-                  className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500"
+                  className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500"
                 />
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function ContactSection() {
             </div>
 
             {submitStatus === "success" && (
-              <p role="status" className="text-sm text-green-400">
+              <p role="status" className="text-sm text-[#F8FAFC] shadow-[0_0_8px_#F8FAFC]">
                 {language === "pt"
                   ? "Mensagem enviada com sucesso! Entrarei em contato em breve."
                   : "Message sent successfully! I'll get back to you soon."}
@@ -285,7 +285,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full md:w-auto bg-[var(--primary-color)] hover:bg-white text-white hover:text-black px-8 py-3 rounded-lg font-semibold transition-all duration-500 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--primary-color)]/20 disabled:cursor-wait disabled:opacity-60"
+              className="w-full md:w-auto bg-[#0A66C2] hover:bg-[#084C91] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-500 cursor-pointer hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0A66C2]/20 disabled:cursor-wait disabled:opacity-60"
             >
               {isSubmitting
                 ? language === "pt"
@@ -304,9 +304,9 @@ export default function ContactSection() {
           {t.contact.info.map((item, index) => (
             <div
               key={index}
-              className="contact-col flex items-center space-x-4 border-b border-gray-800 pb-4 md:pb-5 hover:border-[var(--primary-color)]/30 transition-all duration-500 group"
+              className="contact-col flex items-center space-x-4 border-b border-[#232C3F] pb-4 md:pb-5 hover:border-[#60A5FA]/30 transition-all duration-500 group"
             >
-              <span className="bg-[#1a1b1f] p-3 md:p-4 border border-gray-700 group-hover:border-[var(--primary-color)] rounded-lg text-[color:var(--primary-color)] transition-all duration-500 group-hover:shadow-lg group-hover:shadow-[var(--primary-color)]/10">
+              <span className="bg-[#141A28] p-3 md:p-4 border border-[#232C3F] group-hover:border-[#60A5FA] rounded-lg text-[#0A66C2] transition-all duration-500 group-hover:shadow-lg group-hover:shadow-[#60A5FA]/10">
                 {iconMap[item.icon as keyof typeof iconMap]}
               </span>
               <div>
@@ -314,7 +314,7 @@ export default function ContactSection() {
                 {item.icon === "email" ? (
                   <a
                     href={`mailto:${item.value}`}
-                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors text-sm md:text-base"
+                    className="font-medium text-white hover:text-[#0A66C2] transition-colors text-sm md:text-base"
                   >
                     {item.value}
                   </a>
@@ -327,7 +327,7 @@ export default function ContactSection() {
                     }
                     target={item.icon === "message" ? "_blank" : undefined}
                     rel={item.icon === "message" ? "noopener noreferrer" : undefined}
-                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors text-sm md:text-base"
+                    className="font-medium text-white hover:text-[#0A66C2] transition-colors text-sm md:text-base"
                   >
                     {item.value}
                   </a>
@@ -336,7 +336,7 @@ export default function ContactSection() {
                     href={siteConfig.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-white hover:text-[var(--primary-color)] transition-colors text-sm md:text-base"
+                    className="font-medium text-white hover:text-[#0A66C2] transition-colors text-sm md:text-base"
                   >
                     {item.value}
                   </a>

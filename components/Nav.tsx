@@ -124,7 +124,7 @@ export default function Nav() {
           aria-label="MvDev home"
         >
           Mv
-          <span className="text-[var(--primary-color)] font-unbounded">
+          <span className="text-[#F1F5F9] font-unbounded">
             Dev
           </span>
         </Link>
@@ -142,10 +142,10 @@ export default function Nav() {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`text-base font-bold transition-all text-white/80 relative px-4 py-2 rounded-lg hover:text-white ${
+                  className={`nav-link text-base font-bold transition-all text-white/80 relative px-4 py-2 rounded-lg ${
                     isActive
-                      ? "active-links text-[var(--primary-color)]"
-                      : ""
+                      ? "active text-[#F1F5F9]"
+                      : "hover:text-white"
                   }`}
                 >
                   {link.name}
@@ -160,7 +160,7 @@ export default function Nav() {
               onClick={() => setLanguage("en")}
               className={`px-3 py-1.5 text-sm font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "en"
-                  ? "bg-[var(--primary-color)] text-white"
+                  ? "bg-[#0A66C2] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to English"
@@ -171,7 +171,7 @@ export default function Nav() {
               onClick={() => setLanguage("pt")}
               className={`px-3 py-1.5 text-sm font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "pt"
-                  ? "bg-[var(--primary-color)] text-white"
+                  ? "bg-[#0A66C2] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to Portuguese"
@@ -189,7 +189,7 @@ export default function Nav() {
               onClick={() => setLanguage("en")}
               className={`px-2 py-1 text-xs font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "en"
-                  ? "bg-[var(--primary-color)] text-white"
+                  ? "bg-[#0A66C2] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to English"
@@ -200,7 +200,7 @@ export default function Nav() {
               onClick={() => setLanguage("pt")}
               className={`px-2 py-1 text-xs font-bold uppercase transition-all duration-300 cursor-pointer ${
                 language === "pt"
-                  ? "bg-[var(--primary-color)] text-white"
+                  ? "bg-[#0A66C2] text-white"
                   : "text-white/60 hover:text-white"
               }`}
               aria-label="Switch to Portuguese"
@@ -229,7 +229,7 @@ export default function Nav() {
         role="dialog"
         aria-modal="true"
         aria-hidden={!isMenuOpen}
-        className={`lg:hidden bg-[#071108]/95 backdrop-blur-md text-white border-t border-[var(--primary-color)]/20 px-[5%] md:px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${
+        className={`lg:hidden bg-[#0B0F19]/95 backdrop-blur-md text-white border-t border-[#232C3F]/40 px-[5%] md:px-[8%] overflow-hidden transition-all duration-500 ease-in-out ${
           isMenuOpen ? "max-h-96 py-5 opacity-100" : "max-h-0 py-0 opacity-0"
         }`}
       >
@@ -247,7 +247,7 @@ export default function Nav() {
                   className={`block text-base relative py-3 transition-colors ${
                     isActive
                       ? "text-[var(--primary-color)]"
-                      : "text-white/80 hover:text-white"
+                      : "text-white/80 hover:text-[#0A66C2]"
                   }`}
                 >
                   {link.name}

@@ -57,7 +57,7 @@ export default function ResumeSection() {
                   aria-controls={`resume-panel-${tabId}`}
                   className={`px-4 md:px-6 py-3 md:py-4 text-left rounded-md font-semibold transition-all duration-300 cursor-pointer text-sm md:text-base ${
                     activeTab === tabId
-                      ? "bg-[var(--primary-color)] text-white shadow-lg shadow-[var(--primary-color)]/20"
+                      ? "bg-[#0A66C2] text-white shadow-lg shadow-[#0A66C2]/20"
                       : "bg-gray-500/5 text-gray-400 hover:bg-gray-500/20 hover:text-white"
                   }`}
                 >
@@ -75,7 +75,7 @@ export default function ResumeSection() {
           role="tabpanel"
           aria-labelledby={`resume-tab-${activeTab}`}
         >
-          <h2 className="text-2xl md:text-3xl font-unbounded font-bold mb-4 md:mb-6 text-[var(--primary-color)]">
+          <h2 className="text-2xl md:text-3xl font-unbounded font-bold mb-4 md:mb-6 text-[#F8FAFC]">
             {tabLabel}
           </h2>
 
@@ -85,17 +85,17 @@ export default function ResumeSection() {
                 {content.experience.map((exp, index) => (
                   <div
                     key={index}
-                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
+                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#F8FAFC] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[#F8FAFC]/20"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <h3 className="text-[color:var(--primary-color)] font-semibold text-sm md:text-base my-1 md:my-2">
+                    <h3 className="text-[#F8FAFC] font-semibold text-sm md:text-base my-1 md:my-2">
                       {exp.date}
                     </h3>
                     <h4 className="text-xl md:text-2xl font-normal font-unbounded mb-1">
                       {exp.role}
                     </h4>
                     <p className="text-gray-400 flex items-center text-xs md:text-sm mt-2">
-                      <span className="text-[color:var(--primary-color)] text-lg md:text-2xl pe-2">
+                      <span className="text-[#F8FAFC] text-lg md:text-2xl pe-2">
                         &bull;
                       </span>{" "}
                       {exp.company}
@@ -106,7 +106,7 @@ export default function ResumeSection() {
                       {exp.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="text-xs text-[var(--primary-color)] bg-[var(--primary-color)]/10 px-2 py-1 rounded"
+                          className="text-xs text-[#F8FAFC] bg-[var(--primary-color)]/10 px-2 py-1 rounded"
                         >
                           {tech}
                         </span>
@@ -124,16 +124,16 @@ export default function ResumeSection() {
                 {content.education.map((edu, index) => (
                   <div
                     key={index}
-                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[var(--primary-color)] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--primary-color)]/5"
+                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#F8FAFC] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[#F8FAFC]/20"
                   >
-                    <h3 className="text-[color:var(--primary-color)] font-semibold text-sm md:text-base my-1 md:my-2">
+                    <h3 className="text-[#F8FAFC] font-semibold text-sm md:text-base my-1 md:my-2">
                       {edu.year}
                     </h3>
                     <h4 className="text-xl md:text-2xl font-normal font-unbounded mb-1">
                       {edu.degree}
                     </h4>
                     <p className="text-gray-400 flex items-center text-xs md:text-sm mt-2">
-                      <span className="text-[color:var(--primary-color)] text-lg md:text-2xl pe-2">
+                      <span className="text-[#F8FAFC] text-lg md:text-2xl pe-2">
                         &bull;
                       </span>{" "}
                       {edu.institute}
@@ -141,7 +141,7 @@ export default function ResumeSection() {
                     <div className="flex items-center gap-2 mt-2">
                       <span className={`text-xs px-2 py-1 rounded ${
                         edu.type === "academic" ? "bg-blue-500/20 text-blue-400" :
-                        edu.type === "course" ? "bg-green-500/20 text-green-400" :
+                        edu.type === "course" ? "bg-[#F8FAFC]/20 text-[#F8FAFC]" :
                         "bg-purple-500/20 text-purple-400"
                       }`}>
                         {edu.type === "academic"
@@ -151,7 +151,7 @@ export default function ResumeSection() {
                             : (language === "pt" ? "Idioma" : "Language")}
                       </span>
                       {edu.free && (
-                        <span className="text-xs px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 font-medium">
+                        <span className="text-xs px-2 py-1 rounded bg-[#F8FAFC]/20 text-[#F8FAFC] font-medium">
                           {language === "pt" ? "Curso Gratuito" : "Free Course"}
                         </span>
                       )}
@@ -166,7 +166,7 @@ export default function ResumeSection() {
             <div className="space-y-6 md:space-y-8">
               {content.skills.map((group) => (
                 <div key={group.category}>
-                  <h3 className="mb-3 md:mb-4 text-lg md:text-xl font-semibold text-[var(--primary-color)]">{group.category}</h3>
+                  <h3 className="mb-3 md:mb-4 text-lg md:text-xl font-semibold text-[#F8FAFC]">{group.category}</h3>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {group.items.map((skill) => (
                       <li key={skill.name} className="rounded-lg border border-[var(--border-color)] bg-[var(--surface-muted)] p-3 md:p-5">

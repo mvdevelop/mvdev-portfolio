@@ -11,16 +11,20 @@
 
 :root {
   /* ─── BRAND COLORS ─────────────────────────── */
-  --color-primary: #4B83D1;
-  --color-primary-light: rgba(75, 131, 209, 0.14);
-  --color-primary-lighter: rgba(75, 131, 209, 0.24);
-  --color-primary-dark: #315F9F;
-  /* Legacy aliases kept for component compatibility */
-  --primary-color: #4B83D1;
-  --border-color: #2B3548;
-  --surface-muted: #171D2A;
-  --text-muted: #94A3B8;
-  --focus-ring: #8FB8F0;
+  --color-primary: #0A66C2;
+  --color-primary-light: rgba(10, 102, 194, 0.12);
+  --color-primary-lighter: rgba(10, 102, 194, 0.2);
+  --color-primary-dark: #084C91;
+  --color-accent-teal: #F8FAFC;
+  --color-accent-violet: #A78BFA;
+  --color-accent-blue: #60A5FA;
+  --color-accent-success: #F8FAFC;
+  /* Legacy aliases mapped to the master palette */
+  --primary-color: #0A66C2;
+  --border-color: #232C3F;
+  --surface-muted: #141A28;
+  --text-muted: #64748B;
+  --focus-ring: #60A5FA;
 
   /* ─── BACKGROUND LAYERS ───────────────────── */
   --color-bg-primary: #0B0E14;
@@ -43,7 +47,7 @@
   /* ─── STATUS COLORS ───────────────────────── */
   --color-success: #10b981;
   --color-error: #ef4444;
-  --color-warning: #f59e0b;
+  --color-warning: #0A66C2;
   --color-info: #3b82f6;
 
   /* ─── TYPOGRAPHY ──────────────────────────── */
@@ -518,6 +522,53 @@ html.lenis, html.lenis body {
   .animate-pulse-slower {
     animation: none;
   }
+}
+
+/* ============================================
+   NAV HOVER NEON EFFECT
+   ============================================ */
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: rgba(241, 245, 249, 0.8);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #60A5FA;
+  box-shadow: 0 0 8px #60A5FA, 0 0 16px #60A5FA, 0 0 24px rgba(96, 165, 250, 0.5);
+  transform: translateX(-50%);
+  transition: width var(--transition-slower);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-link:hover {
+  color: #F1F5F9;
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+}
+
+/* Active state with neon glow */
+.nav-link.active {
+  color: #F1F5F9;
+}
+
+.nav-link.active::after {
+  width: 80%;
+  background: #60A5FA;
+  box-shadow: 0 0 10px #60A5FA, 0 0 20px #60A5FA, 0 0 30px rgba(96, 165, 250, 0.6);
 }
 
 /* ============================================
