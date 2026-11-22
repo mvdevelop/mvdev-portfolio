@@ -35,7 +35,10 @@ export default function HeroSection() {
             {/* Line 2 — Greeting + Name */}
             <div className="text-[clamp(1.5rem,3.75vw,2.5rem)] font-extrabold leading-[1.15] tracking-tight flex flex-wrap items-baseline gap-x-3">
               <span className="text-white">{t.hero.greeting} </span>
-              <span className="text-[#F8FAFC] inline-block animate-[neon-flicker_4s_infinite_alternate,_neon-glow-pulse_3s_ease-in-out_infinite]" style={{
+              <span
+                className="text-[#F8FAFC] inline-block"
+                style={{
+                  animation: "neon-dynamic 8s ease-in-out infinite, neon-micro-flicker 4s steps(2,end) infinite",
                   textShadow: `
                     0 0 7px rgba(248,250,252,1),
                     0 0 20px rgba(96,165,250,0.9),
@@ -43,26 +46,30 @@ export default function HeroSection() {
                     0 0 82px rgba(96,165,250,0.5),
                     0 0 120px rgba(96,165,250,0.3)
                   `,
-                }}>{t.hero.name}</span>
+                }}
+              >{t.hero.name}</span>
             </div>
             {/* Line 3 — Headline */}
-            <p className="mt-4 text-[clamp(1.1rem,2.2vw,1.4rem)] font-bold leading-tight"
-               style={{
-                 color: "#F8FAFC",
-                 textShadow: `
-                   0 0 4px rgba(248,250,252,0.9),
-                   0 0 12px rgba(96,165,250,0.8),
-                   0 0 24px rgba(96,165,250,0.6),
-                   0 0 48px rgba(96,165,250,0.4),
-                   0 0 80px rgba(96,165,250,0.2)
-                 `,
-               }}>
+            <p
+              className="mt-4 text-[clamp(1.1rem,2.2vw,1.4rem)] font-bold leading-tight"
+              style={{
+                animation: "neon-dynamic 8s ease-in-out infinite",
+                color: "#F8FAFC",
+                textShadow: `
+                  0 0 4px rgba(248,250,252,0.9),
+                  0 0 12px rgba(96,165,250,0.8),
+                  0 0 24px rgba(96,165,250,0.6),
+                  0 0 48px rgba(96,165,250,0.4),
+                  0 0 80px rgba(96,165,250,0.2)
+                `,
+              }}
+            >
               {t.hero.headline}
             </p>
           </div>
           {/* ── END NEON SIGN ── */}
 
-          <p className="mt-2 max-w-[560px] text-base leading-[1.7] text-[#94A3B8]">{t.hero.description}</p>
+          <p className="mt-2 max-w-[560px] text-base leading-[1.7] text-white/80">{t.hero.description}</p>
 
           <div className="mt-6 flex flex-wrap gap-3 text-xs text-[#CBD5E1]">
             <span className="flex items-center gap-2 rounded-full border border-[#334155] bg-[#1E293B] px-3 py-2">

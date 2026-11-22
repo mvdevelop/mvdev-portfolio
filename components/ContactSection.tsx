@@ -232,7 +232,7 @@ export default function ContactSection() {
                 name="service"
                 value={formValues.service}
                 onChange={handleChange}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 appearance-none"
+                className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500 appearance-none"
               >
                 <option value="" disabled>
                   {t.contact.selectService}
@@ -258,7 +258,7 @@ export default function ContactSection() {
                 placeholder={t.contact.message}
                 aria-invalid={Boolean(formErrors.message)}
                 aria-describedby={formErrors.message ? "message-error" : undefined}
-                className="w-full bg-[#0e0f12] border border-gray-700 rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]/30 transition-all duration-500 resize-none"
+                className="w-full bg-[#0F1420] border border-[#232C3F] rounded-lg px-4 py-3 md:py-4 text-sm focus:outline-none focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA]/30 transition-all duration-500 resize-none"
               ></textarea>
               {formErrors.message && (
                 <p id="message-error" role="alert" className="mt-1 text-xs text-red-400">

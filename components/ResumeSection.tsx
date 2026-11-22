@@ -85,7 +85,7 @@ export default function ResumeSection() {
                 {content.experience.map((exp, index) => (
                   <div
                     key={index}
-                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#F8FAFC] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[#F8FAFC]/20"
+                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-[#232C3F] rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#60A5FA]/40 transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[rgba(96,165,250,0.2)]"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <h3 className="text-[#F8FAFC] font-semibold text-sm md:text-base my-1 md:my-2">
@@ -124,7 +124,7 @@ export default function ResumeSection() {
                 {content.education.map((edu, index) => (
                   <div
                     key={index}
-                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-gray-800 rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#F8FAFC] transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[#F8FAFC]/20"
+                    className="bg-gray-500/5 hover:bg-gray-500/10 border border-[#232C3F] rounded-lg px-4 md:px-5 py-4 md:py-6 hover:border-[#60A5FA]/40 transition-all duration-500 cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-[rgba(96,165,250,0.2)]"
                   >
                     <h3 className="text-[#F8FAFC] font-semibold text-sm md:text-base my-1 md:my-2">
                       {edu.year}
@@ -141,7 +141,7 @@ export default function ResumeSection() {
                     <div className="flex items-center gap-2 mt-2">
                       <span className={`text-xs px-2 py-1 rounded ${
                         edu.type === "academic" ? "bg-blue-500/20 text-blue-400" :
-                        edu.type === "course" ? "bg-[#F8FAFC]/20 text-[#F8FAFC]" :
+                        edu.type === "course" ? "bg-[#F8FAFC]/15 text-[#F8FAFC] border border-[#F8FAFC]/25" :
                         "bg-purple-500/20 text-purple-400"
                       }`}>
                         {edu.type === "academic"
@@ -151,7 +151,7 @@ export default function ResumeSection() {
                             : (language === "pt" ? "Idioma" : "Language")}
                       </span>
                       {edu.free && (
-                        <span className="text-xs px-2 py-1 rounded bg-[#F8FAFC]/20 text-[#F8FAFC] font-medium">
+                        <span className="text-xs px-2 py-1 rounded bg-[#F8FAFC]/15 text-[#F8FAFC] border border-[#F8FAFC]/25 font-medium">
                           {language === "pt" ? "Curso Gratuito" : "Free Course"}
                         </span>
                       )}
@@ -169,7 +169,7 @@ export default function ResumeSection() {
                   <h3 className="mb-3 md:mb-4 text-lg md:text-xl font-semibold text-[#F8FAFC]">{group.category}</h3>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {group.items.map((skill) => (
-                      <li key={skill.name} className="rounded-lg border border-[var(--border-color)] bg-[var(--surface-muted)] p-3 md:p-5">
+                      <li key={skill.name} className="rounded-lg border border-[#232C3F] bg-[#141A28] p-3 md:p-5 transition-all duration-300 hover:border-[#60A5FA]/40 hover:bg-[#202938]">
                         <h4 className="font-semibold text-white text-sm md:text-base">{skill.name}</h4>
                         <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-400">{skill.description}</p>
                       </li>

@@ -8,7 +8,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 const serviceMeta = [
   { icon: Code2, color: "#F8FAFC", soft: "rgba(248,250,252,.12)", tech: ["C#", ".NET", "Blazor"] },
   { icon: Braces, color: "#A78BFA", soft: "rgba(167,139,250,.12)", tech: ["TypeScript", "React", "Next.js"] },
-  { icon: Layers, color: "#0A66C2", soft: "rgba(10,102,194,.12)", tech: ["REST API", "Auth", "SQL"] },
+  { icon: Layers, color: "#60A5FA", soft: "rgba(96,165,250,.12)", tech: ["REST API", "Auth", "SQL"] },
   { icon: Cloud, color: "#F8FAFC", soft: "rgba(248,250,252,.12)", tech: ["Docker", "CI/CD", "AWS"] },
 ];
 
