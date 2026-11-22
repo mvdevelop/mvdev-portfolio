@@ -31,7 +31,7 @@ export const projects: Project[] = [
     description: "Organizador Pessoal com Assistente IA",
     tech: ["React", "TypeScript", "Express", "MongoDB"],
     img: "/images/smart-agenda-banner.png",
-    href: "https://smart-agenda.vercel.app/",
+    href: "https://personal-organization.vercel.app/",
     repo: "https://github.com/mvdevelop/personal-organization-app",
   },
   {

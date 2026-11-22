@@ -120,7 +120,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-20 md:py-24 px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] text-white overflow-hidden"
+      className="relative bg-[#0F172A] px-6 py-14 text-white overflow-hidden md:px-12 md:py-24 lg:px-16"
       aria-labelledby="contact-title"
     >
       {/* Background accent */}
@@ -145,7 +145,7 @@ export default function ContactSection() {
           <form className="space-y-5 md:space-y-6" onSubmit={handleSubmit} noValidate>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="sr-only">
+                <label htmlFor="firstName" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                   {t.contact.firstName}
                 </label>
                 <input
@@ -167,7 +167,7 @@ export default function ContactSection() {
                 )}
               </div>
               <div>
-                <label htmlFor="lastName" className="sr-only">
+                <label htmlFor="lastName" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                   {t.contact.lastName}
                 </label>
                 <input
@@ -185,7 +185,7 @@ export default function ContactSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="email" className="sr-only">
+                <label htmlFor="email" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                   {t.contact.email}
                 </label>
                 <input
@@ -207,7 +207,7 @@ export default function ContactSection() {
                 )}
               </div>
               <div>
-                <label htmlFor="phone" className="sr-only">
+                <label htmlFor="phone" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                   {t.contact.phone}
                 </label>
                 <input
@@ -224,7 +224,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label htmlFor="service" className="sr-only">
+              <label htmlFor="service" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                 {t.contact.selectService}
               </label>
               <select
@@ -246,7 +246,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label htmlFor="message" className="sr-only">
+              <label htmlFor="message" className="mb-2 block text-xs font-medium text-[#CBD5E1]">
                 {t.contact.message}
               </label>
               <textarea

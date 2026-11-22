@@ -13,7 +13,15 @@ export default function Nav() {
   const pathname = usePathname();
   const isProjectsRoute = pathname.startsWith("/projects");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -104,7 +112,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="w-full z-50 transition-all duration-300 fixed top-0 left-0 bg-[#071108]/80 backdrop-blur-md border-b border-white/5"
+      className={`w-full z-50 transition-all duration-300 fixed top-0 left-0 ${isScrolled ? "bg-[#0B0E14]/78 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/10" : "bg-transparent border-b border-transparent"}`}
       role="navigation"
       aria-label="Main navigation"
     >

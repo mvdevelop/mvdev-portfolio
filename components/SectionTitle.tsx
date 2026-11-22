@@ -1,25 +1,19 @@
 interface SectionTitleProps {
-    label?: string;
-    title: string;
-    subtitle?: string;
+  label?: string;
+  title: string;
+  subtitle?: string;
 }
 
 export default function SectionTitle({ label, title, subtitle }: SectionTitleProps) {
-    return (
-        <div className="text-center mb-16">
-            {label && (
-                <span className="inline-block text-sm font-semibold text-[var(--primary-color)] px-5 py-1.5 rounded-full bg-[var(--primary-color)]/10 border border-[var(--primary-color)]/20 mb-4">
-                    {label}
-                </span>
-            )}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-unbounded text-white">
-                {title}
-            </h2>
-            {subtitle && (
-                <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mt-4">
-                    {subtitle}
-                </p>
-            )}
-        </div>
-    );
+  return (
+    <div className="mb-12 text-center md:mb-16">
+      {label && (
+        <span className="mb-4 inline-block rounded-full border border-[#1E40AF] bg-[#1E3A8A]/30 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#60A5FA]">
+          {label}
+        </span>
+      )}
+      <h2 className="font-display text-3xl font-bold text-[#F8FAFC] md:text-4xl">{title}</h2>
+      {subtitle && <p className="mx-auto mt-4 max-w-2xl text-base leading-[1.6] text-[#94A3B8] md:text-[17px]">{subtitle}</p>}
+    </div>
+  );
 }

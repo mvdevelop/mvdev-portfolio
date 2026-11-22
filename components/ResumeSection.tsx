@@ -20,7 +20,7 @@ export default function ResumeSection() {
   return (
     <section
       id="resume"
-      className="relative py-20 md:py-24 px-[5%] md:px-[8%] lg:px-[12%] xl:px-[16%] text-white overflow-hidden"
+      className="relative bg-[#0F172A] px-6 py-14 text-white md:px-12 md:py-24 lg:px-16 overflow-hidden"
       aria-labelledby="resume-title"
     >
       {/* Background accent */}
@@ -34,7 +34,7 @@ export default function ResumeSection() {
 
       <div
         ref={ref as React.RefObject<HTMLDivElement>}
-        className={`grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        className={`mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-[35%_65%] gap-8 md:gap-12 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
         {/* Left Sidebar */}
         <div>
@@ -80,7 +80,7 @@ export default function ResumeSection() {
           </h2>
 
           {activeTab === "experience" && (
-            <div className="md:max-h-[400px] lg:max-h-[500px] md:overflow-y-auto md:pr-2 custom-scrollbar">
+            <div className="md:pr-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {content.experience.map((exp, index) => (
                   <div
@@ -119,7 +119,7 @@ export default function ResumeSection() {
           )}
 
           {activeTab === "education" && (
-            <div className="md:max-h-[400px] lg:max-h-[500px] md:overflow-y-auto md:pr-2 custom-scrollbar">
+            <div className="md:pr-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {content.education.map((edu, index) => (
                   <div

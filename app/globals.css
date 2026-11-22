@@ -11,17 +11,23 @@
 
 :root {
   /* ─── BRAND COLORS ─────────────────────────── */
-  --color-primary: #4d8be9;
-  --color-primary-light: rgba(77, 139, 233, 0.1);
-  --color-primary-lighter: rgba(77, 139, 233, 0.2);
-  --color-primary-dark: #3a7bc8;
+  --color-primary: #4B83D1;
+  --color-primary-light: rgba(75, 131, 209, 0.14);
+  --color-primary-lighter: rgba(75, 131, 209, 0.24);
+  --color-primary-dark: #315F9F;
+  /* Legacy aliases kept for component compatibility */
+  --primary-color: #4B83D1;
+  --border-color: #2B3548;
+  --surface-muted: #171D2A;
+  --text-muted: #94A3B8;
+  --focus-ring: #8FB8F0;
 
   /* ─── BACKGROUND LAYERS ───────────────────── */
-  --color-bg-primary: #071108;
-  --color-bg-secondary: #0e1510;
-  --color-surface-muted: rgba(255, 255, 255, 0.04);
-  --color-surface-hover: rgba(255, 255, 255, 0.08);
-  --color-surface-elevated: rgba(255, 255, 255, 0.06);
+  --color-bg-primary: #0B0E14;
+  --color-bg-secondary: #111722;
+  --color-surface-muted: #171D2A;
+  --color-surface-hover: #202938;
+  --color-surface-elevated: #202938;
 
   /* ─── BORDERS & SEPARATORS ────────────────── */
   --color-border: rgba(255, 255, 255, 0.12);
