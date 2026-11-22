@@ -62,7 +62,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-all duration-300"
                 aria-label="GitHub profile"
               >
                 <FaGithub size={20} />
@@ -71,7 +71,7 @@ export default function Footer() {
                 href={siteConfig.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-all duration-300"
                 aria-label="LinkedIn profile"
               >
                 <FaLinkedin size={20} />
@@ -80,14 +80,14 @@ export default function Footer() {
                 href={siteConfig.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-all duration-300"
                 aria-label="Instagram profile"
               >
                 <FaInstagram size={20} />
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#007bff]/10 transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232C3F] text-[#94A3B8] hover:border-[#F8FAFC] hover:text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-all duration-300"
                 aria-label="Send email"
               >
                 <FaEnvelope size={20} />
