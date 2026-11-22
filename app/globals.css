@@ -722,3 +722,44 @@ html.lenis, html.lenis body {
   position: relative;
   cursor: pointer;
 }
+
+/* ============================================
+   NEON OUTDOOR SIGN EFFECT
+   ============================================ */
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes neon-glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 7px rgba(248, 250, 252, 0.9),
+      0 0 10px rgba(248, 250, 252, 0.8),
+      0 0 21px rgba(248, 250, 252, 0.7),
+      0 0 42px rgba(96, 165, 250, 0.6),
+      0 0 82px rgba(96, 165, 250, 0.4),
+      0 0 92px rgba(96, 165, 250, 0.3),
+      0 0 102px rgba(96, 165, 250, 0.2),
+      0 0 151px rgba(96, 165, 250, 0.1);
+  }
+  50% {
+    text-shadow:
+      0 0 4px rgba(248, 250, 252, 0.95),
+      0 0 7px rgba(248, 250, 252, 0.9),
+      0 0 15px rgba(248, 250, 252, 0.8),
+      0 0 30px rgba(96, 165, 250, 0.7),
+      0 0 60px rgba(96, 165, 250, 0.5),
+      0 0 70px rgba(96, 165, 250, 0.4),
+      0 0 80px rgba(96, 165, 250, 0.3),
+      0 0 120px rgba(96, 165, 250, 0.15);
+  }
+}
+
+/* Neon glow keyframes — applied via inline className on individual elements */
+
