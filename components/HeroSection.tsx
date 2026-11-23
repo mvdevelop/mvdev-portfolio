@@ -110,7 +110,7 @@ export default function HeroSection() {
             <div className="absolute -inset-2 rounded-full border-8 border-[rgba(248,250,252,0.15)] shadow-[0_0_40px_rgba(248,250,252,0.2)]" />
             <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 bg-[#1E293B] p-1 shadow-2xl">
               <Image
-                src="/images/mvdevelop-newphoto.jpg"
+                src="/images/mvdevelop-newphoto-02.png"
                 alt={`${t.hero.name} - Full Stack Developer`}
                 fill
                 className="scale-[1.15] object-[50%_40%] object-cover"
