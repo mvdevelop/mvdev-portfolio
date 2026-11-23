@@ -113,7 +113,8 @@ export default function HeroSection() {
                 src="/images/mvdevelop-newphoto-02.png"
                 alt={`${t.hero.name} - Full Stack Developer`}
                 fill
-                className="scale-[1.15] object-[50%_40%] object-cover"
+                className="scale-[1.15] object-cover object-[50%_40%]"
+                quality={100}
                 priority
                 sizes="(max-width: 1024px) 320px, 380px"
               />
