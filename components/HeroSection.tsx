@@ -115,6 +115,7 @@ export default function HeroSection() {
                 fill
                 className="scale-[1.15] object-cover object-[50%_40%]"
                 quality={100}
+                unoptimized
                 priority
                 sizes="(max-width: 1024px) 320px, 380px"
               />
