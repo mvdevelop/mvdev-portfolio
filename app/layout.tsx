@@ -85,7 +85,7 @@ const englishMetadata: Metadata = {
         type: "image/png",
       },
       {
-        url: "/images/mvdevelop.jpeg",
+        url: "/images/mvdevelop-newphoto.jpg",
         width: 320,
         height: 320,
         alt: "Vinicius Dilly - Full Stack Developer",

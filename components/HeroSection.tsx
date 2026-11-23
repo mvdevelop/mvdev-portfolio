@@ -27,12 +27,7 @@ export default function HeroSection() {
         <div>
           {/* ── NEON OUTDOOR SIGN ── */}
           <div id="hero-title" className="relative font-unbounded leading-tight select-none">
-            {/* Line 1 — Role tag */}
-            <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#F8FAFC]">
-              <span className="h-px w-8 bg-[#F8FAFC] shadow-[0_0_10px_#F8FAFC]" />
-              {t.hero.role}
-            </div>
-            {/* Line 2 — Greeting + Name */}
+            {/* Greeting + Name */}
             <div className="text-[clamp(1.5rem,3.75vw,2.5rem)] font-extrabold leading-[1.15] tracking-tight flex flex-wrap items-baseline gap-x-3">
               <span className="text-white">{t.hero.greeting} </span>
               <span
@@ -111,13 +106,14 @@ export default function HeroSection() {
         {/* Photo */}
         <div className="flex justify-center lg:justify-end">
           <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-[380px] lg:w-[380px]">
+            <div className="absolute left-1/2 top-1/2 h-[75%] w-[75%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 blur-3xl shadow-[0_0_70px_35px_rgba(248,250,252,0.3)]" />
             <div className="absolute -inset-2 rounded-full border-8 border-[rgba(248,250,252,0.15)] shadow-[0_0_40px_rgba(248,250,252,0.2)]" />
             <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 bg-[#1E293B] p-1 shadow-2xl">
               <Image
-                src="/images/mvdevelop.jpeg"
+                src="/images/mvdevelop-newphoto.jpg"
                 alt={`${t.hero.name} - Full Stack Developer`}
                 fill
-                className="object-cover"
+                className="scale-[1.15] object-[50%_40%] object-cover"
                 priority
                 sizes="(max-width: 1024px) 320px, 380px"
               />
