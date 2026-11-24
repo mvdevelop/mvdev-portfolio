@@ -564,7 +564,7 @@ html.lenis, html.lenis body {
 /* Active state with white-smoke neon glow */
 .nav-link.active {
   color: #F8FAFC;
-  text-shadow: 0 0 6px rgba(248,250,252,0.81), 0 0 14px rgba(248,250,252,0.54);
+  text-shadow: 0 0 6px rgba(248,250,252,0.729), 0 0 14px rgba(248,250,252,0.486);
 }
 
 .nav-link.active::after {
