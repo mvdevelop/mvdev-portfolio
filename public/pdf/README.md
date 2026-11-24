@@ -38,9 +38,6 @@ FORMAÇÃO ACADÊMICA
 Ciência da Computação (em curso)
 Unif | 2022 — 2026
 
-ENGINHARIA DEVOPS
-FIAP | 2024 — 2025
-
 IDIOMAS
 Inglês Avançado (C1) | IBL | 2021 — 2023
 

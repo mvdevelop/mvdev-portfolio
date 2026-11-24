@@ -195,9 +195,7 @@ export const translations: Record<Language, Translations> = {
       ],
       educations: [
         { year: "2022 — 2026", degree: "Computer Science", institute: "Unif" },
-        { year: "2024 — 2025", degree: "DevOps Engineering", institute: "FIAP" },
         { year: "2021 — 2023", degree: "English Proficiency C1", institute: "IBL" },
-        { year: "2021 — 2022", degree: "CS50's Introduction to Computer Science", institute: "Harvard University" },
       ],
       aboutParts: [
         "I'm a Full Stack Developer with a focus on backend engineering, currently studying Computer Science and working professionally in the Microsoft ecosystem.\n\nOn the backend, I develop RESTful APIs and business logic using C#, .NET Core, and Entity Framework. I work with both relational databases (SQL Server) and NoSQL stores (MongoDB), applying clean architecture and dependency injection to keep systems maintainable.\n\nOn the frontend, I build responsive interfaces with React, Next.js, and TypeScript — always prioritizing performance and accessibility. I also have experience extending C# to the browser with Blazor Server/WASM.\n\nBeyond coding, I manage deployments with Docker, follow Git workflows in Agile teams, and am comfortable working across Linux environments.\n\nI'm currently looking for Full Stack or Backend opportunities where I can contribute to well-structured systems and continue growing as an engineer.",
@@ -325,9 +323,7 @@ export const translations: Record<Language, Translations> = {
       ],
       educations: [
         { year: "2022 — 2026", degree: "Ciência da Computação", institute: "Unif" },
-        { year: "2024 — 2025", degree: "Engenharia DevOps", institute: "FIAP" },
         { year: "2021 — 2023", degree: "Proficiência em Inglês C1", institute: "IBL" },
-        { year: "2021 — 2022", degree: "CS50's Introdução à Ciência da Computação", institute: "Harvard University" },
       ],
       aboutParts: [
         "Sou Desenvolvedor Full Stack com foco em engenharia de backend, atualmente cursando Ciência da Computação e atuando profissionalmente no ecossistema Microsoft.\n\nNo backend, desenvolvo APIs REST e regras de negócio usando C#, .NET Core e Entity Framework. Trabalho com bancos relacionais (SQL Server) e NoSQL (MongoDB), aplicando clean architecture e injeção de dependência para manter os sistemas sustentáveis.\n\nNo frontend, construo interfaces responsivas com React, Next.js e TypeScript — sempre priorizando performance e acessibilidade. Também tenho experiência estendendo C# para o navegador com Blazor Server/WASM.\n\nAlém de codar, gerencio deploys com Docker, sigo fluxos de Git em times Ágeis e me sinto confortável trabalhando em ambientes Linux.\n\nEstou em busca de oportunidades Full Stack ou Backend onde possa contribuir com sistemas bem estruturados e continuar crescendo como engenheiro.",
