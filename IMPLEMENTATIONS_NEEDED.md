@@ -6,6 +6,38 @@
 
 ---
 
+## 🟣 PLANO FUTURO — AJUSTE DE POSICIONAMENTO PROFISSIONAL
+
+**Status:** Documentado para implementação futura — não aplicar ainda.
+
+### Objetivo
+Adequar a comunicação da aplicação e dos currículos para refletir com precisão um perfil de **Desenvolvedor Full Stack Júnior avançado / Pleno inicial**, com foco em backend C#/.NET, sem remover competências reais.
+
+### Alterações planejadas
+- Substituir ou suavizar termos que podem sugerir senioridade excessiva:
+  - `Backend Engineer`;
+  - `production-grade`;
+  - `distributed systems`;
+  - `expertise`;
+  - `solutions that scale`;
+  - `from concept to production`.
+- Preferir linguagem como `Full Stack Developer focused on backend development` e `experiência prática`.
+- Revisar o hero, resumo profissional, seção About e currículos em inglês e português para manter consistência.
+- Separar tecnologias por nível de familiaridade: competências principais, experiência prática e conhecimentos/fundamentos.
+- Manter as competências técnicas verdadeiras, evitando apresentar domínio profissional equivalente em todas as tecnologias listadas.
+- Atualizar a data dos currículos, atualmente indicada como novembro de 2024.
+- Revisar o `PROJECT_CONTEXT.md`, que ainda possui referências antigas às formações removidas.
+
+### Texto-base sugerido
+**EN:** `Early-career Full Stack Developer focused on backend development with C# and .NET, with professional experience building web applications, REST APIs, and system integrations.`
+
+**PT:** `Desenvolvedor Full Stack em início de carreira, com foco em desenvolvimento backend usando C# e .NET, experiência profissional na construção de aplicações web, APIs REST e integrações de sistemas.`
+
+### Critério de implementação
+Aplicar somente após confirmar a experiência real, o nível de autonomia e a profundidade em cada tecnologia. Não alterar ou remover competências sem validação do proprietário.
+
+---
+
 ## 📊 Resumo Executivo
 
 | Categoria | Total | Concluído | Pendente | % |
